@@ -1,0 +1,106 @@
+/* Mobile and Tablet Styles */
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+    .Ribbon {
+      flex-direction: column;
+      padding: 10px;
+      width: 98vw;
+      height: 12vh;
+      margin-top: 4vh;
+    margin-left: 0.4vw;
+    border: 5px solid whitesmoke;
+    border-radius: 60px;
+    justify-content:center;
+    align-items: center;
+background-color:#F5F5F5;
+overflow: visible;
+font-size: medium;
+    }
+  
+    table td{
+        padding: 3px;
+         vertical-align: middle;
+     }
+  
+     .logo{
+        border-radius: 50%;
+        padding: 2px;
+    }
+/*---------------------------------------------------------------SEARCH CONTAINER------------------------------------------------------------------------------------------------------------*/
+
+.search-container {
+    position: relative; 
+     
+}
+
+.WholeLocationContainer{
+    width: 150px;
+    height: 25px;
+    padding: 7.5px;
+  position: relative;
+  top: 15px;
+}
+
+.MaterialSearch{
+    width:5px;
+    height: 25px;
+    padding: 7.5px;
+    position: relative;
+    display: flex;
+}
+
+.dropdown, .Organic, .Account , .buyy{
+    display: none;
+}
+
+    /* Hamburger Icon for mobile */
+    .hamburger-icon {
+      display: block; /* Show hamburger icon only on mobile */
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin: 10px auto;
+      position: absolute;
+      top: 30px;
+      right: 30px;
+    }
+  
+    .hamburger-icon svg {
+      font-size: 36px;
+    }
+  
+   
+   
+  
+    /* Sell button styling for mobile */
+    .sell-button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Tablet Styles (greater than 768px but smaller than 1024px) */
+  @media only screen and (max-width: 1024px) and (min-width: 769px) {
+    /* Hide hamburger on tablet */
+    .hamburger-icon {
+      display: none;
+    }
+  
+    /* Ensure the regular nav links are visible on tablet */
+
+  }
+  
+  /* Desktop Styles (1024px and above) */
+  @media only screen and (min-width: 1025px) {
+    /* Hide hamburger icon on desktop */
+    .hamburger-icon {
+      display: none;
+    }
+  
+    /* Ensure regular nav links are always visible */
+  
+  }
+  

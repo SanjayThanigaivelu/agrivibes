@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+
+body{
+    font-family: 'Lora', serif;
+    line-height: 1.6;
+    margin: 0;  
+   overflow-y: scroll; 
+}
+
+.gridContainer{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:20px;
+    margin-top: 30px;
+    padding: 30px;
+   
+
+}
+.imageContainer{
+    border:1px solid black;
+padding: 10px;
+height: 400px;
+cursor: pointer;
+}
+.imageOnly{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+
+}
+.Pagination{
+    margin-top: 20px;
+    text-align: center;
+}
+.pagebutt{
+    margin: 5px;
+    padding: 10px,15px;
+    cursor: pointer;
+}
+.noResultsContainer{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+
+
+/*-----------------------------------------------------------SECOND DETAILED PAGE-------------------------------------------------------------------*/
+.DetailedBying{
+    padding: 50px;
+    padding-top: 50px;
+    position: relative;
+}
+.imageInsideContainer{
+    display: flex;
+    align-items:center;
+justify-content: center;
+    border: 1px solid black;
+    width: 950px;
+    height: 500px;
+    gap: 10px;
+}
+.prevbutt{
+    position: relative;
+    left: -150px;
+}
+.nextbutt{
+    position: relative;
+    left: 150px;
+    
+}
+.detailImage{
+    width: 500px;
+    height:400px;
+    object-fit: cover;
+    margin: 0px,20px;
+    position: relative;
+    left: 10px;
+    
+}
+
+.empty, .empty1 {
+    height: 100%;
+    width: 70%; /* Adjust width as needed */
+    background-color: black;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+}
+
+.mainWritting{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 350px;
+    height: 150px;
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 50px;
+right: 30px;
+background-color:whitesmoke;
+padding: 10px;
+}
+.contact{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 350px;
+    height: 100px;
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 250px;
+right: 30px;
+background-color:whitesmoke;
+padding: 10px;
+}
+.address{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 350px;
+    height: 140px;
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 400px;
+right: 30px;
+background-color:whitesmoke;
+padding: 10px;
+}
+
+/*-----------------------------------------------------OTHER PRODUCT DETAILS------------------------------------------------*/
+.fullInfo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+   padding: 55px;
+   
+}
+.extraInfor{
+ border: 1px solid black;
+ border-radius: 15px;
+ width: 35%;
+ height: 100%;
+ background-color: whitesmoke;
+ box-sizing: content-box;
+padding: 20px;
+}
+.spanning{
+    text-decoration: none;
+    font-weight:normal;
+}
+
+/*--------------------------------------------------------LINE HEIGHT CONTROLL-----------------------------------------------------*/
+
+h1, h2,h3,h4, p {
+    margin: 0;
+    line-height: 2.2;
+}
+
+
+/*---------------------------------------------------------------PREVIW IMAGE---------------------------------------------------*/
+.previwContianer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    position: relative;
+    left: 5%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.previwImage{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}

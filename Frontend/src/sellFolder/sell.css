@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+
+body{
+    font-family: 'Lora', serif;
+    line-height: 1.6;
+    margin: 0;  
+   overflow-y: scroll; 
+   height: 100%;
+}
+.Full{
+    height: 100vh;
+}
+.tractor,.cow{
+    margin-top: 25px;
+    width: 100%;
+    position: relative;
+    z-index: 1; 
+}
+.wheat, .fertilizer{
+    margin-top: 25px;
+    width: 100%;
+    height: 85vh;
+    position: relative;
+    z-index: 1;
+}
+.bannerImage{
+    position: relative;
+}
+.bannerImage .content{
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 100; /* Ensure it’s above the image */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    pointer-events: all;
+    line-height: 20px;
+}
+.bannerImage1{
+    position: relative;
+}
+.bannerImage1 .content1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 100; /* Ensure it’s above the image */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    pointer-events: all;
+    line-height: 20px;
+}
+.bannerTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;       
+}
+.bannerTitle h1{
+    border: 1px solid white;
+    position:relative;
+    border-radius: 5px;
+    width: 70%;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #475569;
+    color: white;
+    margin-top:100px
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 220px;
+}

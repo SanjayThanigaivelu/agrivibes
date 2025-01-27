@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+
+body{
+    font-family: 'Lora', serif;
+    line-height: 1.6;
+    margin: 0;  
+   overflow-y: scroll; 
+}
+.Full{
+    height: 100vh;
+}
+
+/*---------------------------------------------------------------QUOTES---------------------------------------------------------------- */
+.heading{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.Quotes{
+    padding: 50px;
+}
+
+.ClassCartoon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.quotes1{
+ padding: 50px;
+  background-color: #fdba74 ;
+  border-radius: 30px;
+  width: 300px;
+  height: 80px;
+  box-sizing: content-box;
+  margin-left: 27px;
+}
+.content1,.content2, .content3{
+    position: relative;
+    bottom: 15px;
+    font-size: large;
+}
+
+.quotes2{
+background-color:#a5b4fc;
+border-radius: 30px;
+width: 300px;
+height: 80px;
+padding: 50px;
+box-sizing: content-box;
+position: relative;
+left: 36%;
+bottom:25vh;
+}
+
+.quotes3{
+background-color:#fda4af;
+border-radius: 30px;
+width: 300px;
+height: 80px;
+padding: 50px;
+position: relative;
+left: 70%;
+bottom:51vh;
+}
+/*-------------------------------------------------------------ORGANIC FARMING STARTS----------------------------------------------------------------------------------- */
+.organicHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   position: relative;
+   bottom: 250px;
+}
+
+.Organic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+position: relative;
+bottom: 250px;
+}
+.organicPara{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   padding-left: 50px;
+   padding-right: 50px;
+}
+
+.videoHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 55px;
+}
+
+.videoFrame{
+    margin-top: 20px;
+}
+.video2{
+    padding-left: 15px;
+}
+.webheading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.website{
+    display: grid;
+    grid-template-columns:repeat(2,minmax(200px,1fr));
+    padding: 50px;
+    gap: 20px;
+}
+.firstWeb,.secondWeb ,.thirdWeb,.fourthWeb{
+    border: 1px solid black;
+    border-radius: 30px;
+    padding:50px ;
+}
+.firstWeb h4,.secondWeb h4,.thirdWeb h4 ,.fourthWeb h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
+
+
+.image1,.image2,.image3,.image4{
+    width:300px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+
+/*--------------------------------------------------------FORMERS-------------------------------------------------------------------------------------------------------------------- */
+
+.formersHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   position: relative;
+   bottom: 150px;
+}
+.Formers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    bottom: 150px;
+}
+.TheFormers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+}
+.formerPic{
+    border-radius: 50px;
+}
+/*---------------------------------------------------------IDEAS WELCOMED----------------------------------------------------------------------------------------------------- */
+.NewsLetter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #67c4c9;
+    height: 300px;
+    position: relative;
+    top: 50px;
+}
+.ideas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    font-size: large;
+}

@@ -1,0 +1,86 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent horizontal scrolling */
+   
+}
+/* New wrapping grid container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items:center;   
+    box-sizing: border-box;
+   
+}
+.Inputfeild{
+display: grid;
+justify-content: center;
+align-items: center;
+align-content: center;
+
+}
+
+
+a.log {
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    color:#66bb6a;
+}
+.login{
+    display: flex;
+    position: relative;
+    gap: 5px;
+    left: 200px;
+    bottom: 47px;
+}
+.log:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+    opacity: 0.7; /* Slightly reduce opacity to emphasize effect */
+    filter: brightness(80%);
+
+}
+
+
+.images{
+    display: grid;
+    margin-left: 30px;
+    
+}
+.former-img{
+    height: 100%;
+}
+.heading{
+    position: relative;
+    left: 150px;
+    top:20px
+}
+.blur-background{
+    filter: blur(35px);
+    pointer-events:none;
+    transition: filter 0.3s ease;
+}
+.otp-model{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+.modal-content{
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    z-index:10000;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.25);
+    
+}
