@@ -13,7 +13,7 @@ import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import KeyIcon from '@mui/icons-material/Key';
 import LockIcon from '@mui/icons-material/Lock';
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login({ setIsAuthenticated }) {
   const navigate = useNavigate();
@@ -176,7 +176,7 @@ function submitNow(formData) {
 
       if (response.data.exists) {
         // Success case
-        alert(response.data.message || "You have been Successfully Logged in...");
+        toast(response.data.message || "You have been Successfully Logged in...");
         reset({
           Email: "",
           Password: ""
@@ -191,23 +191,23 @@ function submitNow(formData) {
       if (error.response) {
         const backendMessage = error.response.data.message;
         if (backendMessage) {
-          alert(backendMessage); // Show the specific error message from the backend
+          toast(backendMessage); // Show the specific error message from the backend
           reset({
             Email: "",
             Password: ""
           });
         } else {
-          alert("An error occurred. Please try again.");
+          toast("An error occurred. Please try again.");
         }
       } else {
-        alert("Unable to connect to the server. Please try again later.");
+        toast("Unable to connect to the server. Please try again later.");
       }
       console.error("API Error:", error);
       console.log("Document Cookies:", document.cookie);
     });
   } catch (error) {
     // Handle unexpected errors in the frontend
-    alert("Unexpected Error occurred.");
+    toast("Unexpected Error occurred.");
     console.error("Unexpected Error:", error);
   }
 }
@@ -225,7 +225,7 @@ function emailChecker(Data) {
       .then((response) => {
         // Successful response handling
         if (response.status === 200) {
-          alert("Email Verified and Reset OTP is sent to your Email");
+          toast("Email Verified and Reset OTP is sent to your Email");
           setCircularProgress(false);
           setDisableOTP(false);
           setDisableEmail(true);
@@ -243,7 +243,7 @@ function emailChecker(Data) {
           
           if (status === 400 && message && message.includes("Mail id was not found")) {
             
-            alert("Email not found. Please register to continue.");
+            toast("Email not found. Please register to continue.");
             setCircularProgress(false);
         resetForget({
           EMAIL:""
@@ -251,14 +251,14 @@ function emailChecker(Data) {
         boxModelClose();
          
           } else if (status === 500) {
-            alert("Failed to send OTP. Please try again later.");
+            toast("Failed to send OTP. Please try again later.");
             setCircularProgress(false);
         resetForget({
           EMAIL:""
         })
         boxModelClose();
           } else {
-            alert(`Unexpected error: ${message || "Unknown error occurred."}`);
+            toast(`Unexpected error: ${message || "Unknown error occurred."}`);
             setCircularProgress(false);
             resetForget({
               EMAIL:""
@@ -266,14 +266,14 @@ function emailChecker(Data) {
             boxModelClose();
           }
         } else if (serverError.request) {
-          alert("No response from the server. Please check your connection.");
+          toast("No response from the server. Please check your connection.");
           setCircularProgress(false);
         resetForget({
           EMAIL:""
         })
         boxModelClose();
         } else {
-          alert(`Error: ${serverError.message || "An unknown error occurred."}`);
+          toast(`Error: ${serverError.message || "An unknown error occurred."}`);
           setCircularProgress(false);
         resetForget({
           EMAIL:""
@@ -283,7 +283,7 @@ function emailChecker(Data) {
 
       });
   } catch (error) {
-    alert(`An error occurred: ${error.message}`);
+    toast(`An error occurred: ${error.message}`);
     setCircularProgress(false);
     resetForget({
       EMAIL:""
@@ -300,7 +300,7 @@ setCircularProgress2(true);
     if (response.status === 200){
       stopTimer();
       setCircularProgress2(false);
-      alert("OTP Verfication is succesfull...");
+      toast("OTP Verfication is succesfull...");
       resetForget1({
         emailOTP:''
       })
@@ -316,7 +316,7 @@ setCircularProgress2(true);
     setCircularProgress2(false);
     stopTimer();
     const errorMessage=error.response?.data?.error ||"Failed to Verify the OTP. Try again..."
-  alert(errorMessage)
+  toast(errorMessage)
   resetForget1({
     emailOTP:''
   })
@@ -355,7 +355,7 @@ try{
   }).then((response)=>{
     if(response.status===200){
       setCirularProgress3(false);
-      alert("Passwords updated successfully.Pleas proceed to login")
+      toast("Passwords updated successfully.Pleas proceed to login")
       PassReset({
         Password1:'',
         RePassword:''
@@ -365,7 +365,7 @@ try{
     }
   }).catch(error=>{
     setCirularProgress3(false);
-    alert("Failed to update passwords. Try again later")
+    toast("Failed to update passwords. Try again later")
     PassReset({
       Password1:'',
       RePassword:''

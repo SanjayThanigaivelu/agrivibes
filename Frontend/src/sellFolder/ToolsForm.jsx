@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import tractor from '../assets/Banner/AgriMachine-banner-1.jpg'
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
+import { ToastContainer, toast } from 'react-toastify';
 
 function ToolsForm() {
     
@@ -240,7 +241,7 @@ function ToolsForm() {
               })
               .then((response) => {
                 console.log("Product uploaded successfully:", response.data);
-                alert("Product uploaded successfully!");
+                toast("Product uploaded successfully!");
                 setCircularProgress(false);
                 setIsSubmitting(false)
                 reset({
@@ -264,7 +265,7 @@ function ToolsForm() {
               })
               .catch((error) => {
                 console.error("Error uploading product:", error.response?.data || error.message);
-                alert("Error uploading product. Please try again.");
+                toast("Error uploading product. Please try again.");
                 reset({
                   MachineName: "",
                   BrandName: "",

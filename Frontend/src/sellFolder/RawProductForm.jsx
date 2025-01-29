@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import wheat from '../assets/Banner/wheat-4.jpeg';
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
+import { ToastContainer, toast } from 'react-toastify';
 
 function RawProductForm() {
   
@@ -294,7 +295,7 @@ Images: yup
           })
           .then((response) => {
             console.log("Product uploaded successfully:", response.data);
-            alert("Product uploaded successfully!");
+            toast("Product uploaded successfully!");
             setCircularProgress(false);
             setIsSubmitting(false)
             reset({
@@ -317,7 +318,7 @@ Images: yup
           })
           .catch((error) => {
             console.error("Error uploading product:", error.response?.data || error.message);
-            alert("Error uploading product. Please try again.");
+            toast("Error uploading product. Please try again.");
             reset({
               NameOfProduct: '', // Initialize with an empty string or default value
             WeightinKg: '',

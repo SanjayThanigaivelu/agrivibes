@@ -42,6 +42,7 @@ import {LocationContext} from '../Context/LocationContext.jsx';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Noresult from '../assets/No-result.jpeg'
+import { ToastContainer, toast } from 'react-toastify';
 
 function Profile({ isAuthenticated, setIsAuthenticated }) {
  
@@ -264,7 +265,7 @@ const handleNavigate = (event) => {
 if (!inputValue.trim()) {
   event.preventDefault(); // Prevent navigation
   setIsInputValid(false); // Set input as invalid
-  alert("Please enter a location before proceeding!");
+  toast("Please enter a location before proceeding!");
 } else {
   setIsInputValid(true); // Reset validation state if input is valid
   // Store the current inputValue in the context
@@ -282,12 +283,12 @@ if (!searchValue.trim() || !inputValue.trim()) {
 
 if(!searchValue.trim()){
 e.preventDefault(); 
-alert("Please enter something to search");
+toast("Please enter something to search");
 return;
 }
 else if(!inputValue.trim()){
 e.preventDefault();
-alert("Please enter a location before proceeding!");
+toast("Please enter a location before proceeding!");
 return;
 }
 }
@@ -511,7 +512,7 @@ const email=DataInfo.NewEmail
       //phoneNo:phone
   })
   .then(response => {
-      alert('Email sent successfully');
+      toast('Email sent successfully');
       setOtp(false);
       startTimer();
       OtpSendButton(true);
@@ -519,7 +520,7 @@ const email=DataInfo.NewEmail
   })
   .catch(error => {
       console.error('Error sending email:', error);
-      alert('Failed to send email. Please try again.');
+      toast('Failed to send email. Please try again.');
       setOtp(false);
       OtpSendButton(false);
       
@@ -547,7 +548,7 @@ OtpSendButton(false);
 }
 }) .catch(error => {
   const errorMessage = error.response?.data?.error || "Failed to login. Try again...";
-  alert(errorMessage)
+  toast(errorMessage)
   OtpSendButton(false);
   stopTimer();
   closeProfile2();
@@ -567,7 +568,7 @@ OtpSendButton(false);
     });
     
     if (response.status === 200) {
-      alert(response.data.message);
+      toast(response.data.message);
  
       try {
         const deleteResponse = await axios.post('http://localhost:5000/deleteOtp', { Id: OTPID });
@@ -581,7 +582,7 @@ OtpSendButton(false);
   } catch (error) {
     if (error.response) {
       console.log(error.response.data.error);
-      alert(error.response.data.error);
+      toast(error.response.data.error);
     } else {
       console.error("Unexpected Error:", error);
     }
@@ -597,7 +598,7 @@ axios.post('http://localhost:5000/profile/UserDelete',{
   DeleteUser:data
 }).then((response)=>{
   if(response.data.message){
-    alert(response.data.message);
+    toast(response.data.message);
     resetForm2({
       EmailDelete:'',
       Password:'',
@@ -609,7 +610,7 @@ axios.post('http://localhost:5000/profile/UserDelete',{
 }).catch(Error=>{
   const Errormessage=Error.response.data.error || "Can 't able to delete the User";
   console.log(Errormessage);
-alert(Errormessage);
+toast(Errormessage);
 resetForm2({
   EmailDelete:'',
   Password:'',
@@ -626,7 +627,7 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
   ProductId:itemID
 }).then((response)=>{
   if(response.data.message){
-    alert(response.data.message);
+    toast(response.data.message);
   }
 }).catch(error=>{
   const Errormessage=error.response.data.error || "can 't able to delete the product"
@@ -729,199 +730,108 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
       </td>
        
   
-          <td>
-          <Box sx={{ display: 'flex', alignItems: 'center',position:"relative" }}>
-        {/* Input field */}
-        <form style={{ display: 'flex', alignItems: 'center' }} onSubmit={handleSearchSubmit}>
-        <TextField
-    value={searchValue} // Pre-fill with the persisted value
-    onChange={handleSearchChange} // Handle typing
-    label="Find Tractor, Motor Pumps and more..."
-    variant="outlined"
-    sx={{
-      "& .MuiOutlinedInput-root": {
-        width: '450px',
-        height: "50px",
-        borderRadius:"25px",
-        "& fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "2px",
-        },
-        "&:hover fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "1.5px",
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "3px",
-        },
-      },
-      "& .MuiInputBase-input": {
-        padding: "8px",
-      },
-      "& .MuiInputLabel-root": {
-        color: "#000",
-        "&.Mui-focused": {
-          color: "#6B8E23",
-        },
-        "&:hover": {
-          color: "#6B8E23",
-        },
-      },
-    }}
-  />
-  <IconButton
-    type="submit"
-    color="primary"
-    sx={{
-      color: "#6B8E23",
-      position: "absolute",
-      right: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
-    }}
-  >
-    <SearchIcon />
-  </IconButton>
-        </form>
-      </Box>
-          </td>
-  
-          <td className="dropdown">
-              <ul className="select">
-                  <li>
-                  <ThemeProvider theme={theme}>
-                  <Button onClick={handleClick1}  sx={{
-            display: 'flex',
-            justifyContent: 'center', // Center content horizontally
-            alignItems: 'center', // Center content vertically
-            width: '100%', // Optional: set a fixed width
-          }}
-          className='button-type1'
-          >
-          <Flag code="IN" style={{ width: '24px', height: '16px', marginRight: '8px' }} />
-          {language ? `    ${language}` : 'Language'}
-          <FontAwesomeIcon icon={faChevronDown}  className={`fa-chevron-down ${isOpen ? 'open' : ''}`}/>
-        </Button>
-        <Menu
-          anchorEl={anchorEl1}
-          open={Boolean(anchorEl1)}
-          onClose={() => setAnchorEl1(null)}
-          PaperProps={{
-      style: {
-        width: '200px',  // Custom width for the menu
-      },
-    }}
-        >
-          <MenuItem onClick={() => handleClose1('English')}>English</MenuItem>
-          <MenuItem onClick={() => handleClose1('Tamil')}>Tamil</MenuItem>
-        </Menu>
-        </ThemeProvider>
-                  </li>
-              </ul> 
-          </td>
-  
-          <td><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
-          
-          <Box  
-          sx={{
-            fontSize: "large",
-            display: "flex",
-             flexDirection: "column",
-            height: "15vh",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "visible",
-            marginRight:"5px",  
-          }}
-          
-          >
-        {/* Account Link */}
+      <td className="MaterialSearch">
+  <Box className="MaterialBox">
+    {/* Input field */}
+    <form className="SearchContainerForm" onSubmit={handleSearchSubmit}>
+      <TextField
+        className="MaterialText"
+        value={searchValue}
+        onChange={handleSearchChange}
+        label="Find Tractor, Motor Pumps and more..."
+        variant="outlined"
+      />
+      <IconButton
+        type="submit"
+        className="search-icon-button"
+      >
+        <SearchIcon />
+      </IconButton>
+    </form>
+  </Box>
+</td>
+
+
+        <td className='Organic'><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
+        <td className= 'Account'>
+        <Box  
+     className='AccountBox'>
+      {/* Account Link */}
+    
+
+      <ThemeProvider theme={theme}>
       
-  
-        <ThemeProvider theme={theme}>
-        
-        <Button
-          onClick={handleClick}
-          variant="text"
-          sx={{
-        padding: "8px 10px", // Keep button size consistent
-        borderRadius: "35px",
-      }}
-      className='button-type1'
-          >
-          Account
-        </Button>
-       
-         {/* Dropdown Menu */}
-         <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          PaperProps={{
-      style: {
-        marginTop:'15px',
-        width: '300px',  // Custom width for the menu
-      },
-    }}
+      <Button
+        onClick={handleClick}
+        variant="text"
+    className='button-type1'
         >
-          {/* Menu Items */}
-          <MenuItem onClick={() => {
-             console.log("MenuItem clicked");
-    Logout();
-    handleClose();
-  }}>
-          {isAuthenticated ? (
-            <>   
-           
-        <LogoutIcon fontSize="small" sx={{ marginRight: "8px" }} />
-        <span>Logout</span> 
-    </>
-  ): (  <>
-          <LoginIcon fontSize="small" sx={{ marginRight: "8px" }} />
-            <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
-              Login
-            </Link> 
-          </>
-  )
-          }
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-          <PersonIcon fontSize="small" sx={{ marginRight: "8px" }} />
-            <Link
-              to="/profilee"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Profile
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-          <FavoriteIcon fontSize="small" sx={{ marginRight: "8px" }} />
-            <Link
-              to="/liked-items"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Liked Items
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-          <HelpOutlineIcon fontSize="small" sx={{ marginRight: "8px" }} />
-            <Link to="/help" style={{ textDecoration: "none", color: "inherit" }}>
-              Help
-            </Link>
-          </MenuItem>
-        </Menu>
-        </ThemeProvider>
-      </Box>
+        Account
+      </Button>
      
+       {/* Dropdown Menu */}
+       <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        PaperProps={{
+    style: {
+      marginTop:'15px',
+      width: '300px',  // Custom width for the menu
+    },
+  }}
+      >
+        {/* Menu Items */}
+        <MenuItem onClick={() => {
+           console.log("MenuItem clicked");
+  Logout();
+  handleClose();
+}}>
+        {isAuthenticated ? (
+          <>   
+         
+      <LogoutIcon fontSize="small" sx={{ marginRight: "8px" }} />
+      <span>Logout</span> 
+  </>
+): (  <>
+        <LoginIcon fontSize="small" sx={{ marginRight: "8px" }} />
+          <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+            Login
+          </Link> 
+        </>
+)
+        }
+        </MenuItem>
+        <MenuItem
+  onClick={() => {
+    navigate('/profilee'); // Navigate to the profile page
+    handleClose(); // Close the dropdown
+  }}
+>
+ <PersonIcon fontSize="small" sx={{ marginRight: "8px" }} />
+  Profile
+</MenuItem>
+
+        <MenuItem onClick={handleClose}>
+        <HelpOutlineIcon fontSize="small" sx={{ marginRight: "8px" }} />
+          <Link to="https://mail.google.com/mail/?view=cm&fs=1&to=agrivibes07@gmail.com.com&su=Query%20Enquiry" target="_blank"
+          rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
+            Help
+          </Link>
+        </MenuItem>
+      </Menu>
+      </ThemeProvider>
+    </Box>
+   </td>
+
   
           <td><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
       </tr>

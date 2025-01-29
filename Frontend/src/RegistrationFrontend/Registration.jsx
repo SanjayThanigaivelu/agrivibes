@@ -16,6 +16,7 @@ import axios from 'axios';
 
 import IndianFormerBg2 from '../assets/IndianFormerBg2.png'
 import { text } from '@fortawesome/fontawesome-svg-core';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 // Validation schema using Yup
@@ -166,7 +167,7 @@ setFormDetails(formData)
       //phoneNo:phone
   })
   .then(response => {
-      alert('Email sent successfully');
+      toast('Email sent successfully');
       setOtp(false);
       OtpSendButton(true);
       startTimer();
@@ -175,7 +176,7 @@ setFormDetails(formData)
   })
   .catch(error => {
       console.error('Error sending email:', error);
-      alert('Failed to send email. Please try again.');
+      toast('Failed to send email. Please try again.');
       setOtp(false);
       OtpSendButton(false);
       
@@ -217,7 +218,7 @@ OtpSendButton(false);
 
   .catch(error => {
     const errorMessage = error.response?.data?.error || "Failed to login. Try again...";
-    alert(errorMessage)
+    toast(errorMessage)
     OtpSendButton(false);
     stopTimer();
     reset({
@@ -257,7 +258,7 @@ OtpSendButton(false);
      }).then(response=>{
        if(response.status===200){
          console.log("Loged in....succesfully");
-         alert("You have been loged in...")
+         toast("You have been loged in...")
       
          axios.post('http://localhost:5000/deleteOtp',{
            Id:OTPID
@@ -273,7 +274,7 @@ OtpSendButton(false);
      }).catch(error=>{
        const errorMessage = error.response?.data?.error || "Failed to login. Try again...";
       console.log( "Backend Error:", error.response?.data || error);
-       alert(errorMessage)
+       toast(errorMessage)
      })
      }
    

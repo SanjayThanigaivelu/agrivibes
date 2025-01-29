@@ -38,38 +38,154 @@ table td{
 
 
                     /*--------------------SEARCH CONTAINER----------------- */
-.search-container {
-    position: relative; 
-     
-}
-.search {
-    font-size: large;
-    height: 50px;
+                  /* Box container for the search form */
+
+
+/* MaterialBox for centering the form */
+.MaterialBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Form container to handle flex layout and responsive width */
+  .SearchContainerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    max-width: 800px; /* Remove max-width for more flexibility */
+    padding: 0 10px;  /* Optional padding to avoid edges on small screens */
+    position: relative;
+  }
+  
+  /* MaterialText styles for TextField */
+  .MaterialText {
+    width: 100%; /* Ensure full width */
+    height: 50px; /* Adjust height */
+    border-radius: 25px;
+  }
+  
+  .MaterialText .MuiOutlinedInput-root {
+    width: 100%;
+    border-radius: 25px;
+    height: 150px;
+  }
+  
+  .MaterialText .MuiOutlinedInput-root fieldset {
+    border-color: #6B8E23;
+    border-width: 2px;
+  }
+  
+  .MaterialText .MuiOutlinedInput-root:hover fieldset {
+    border-color: #6B8E23;
+    border-width: 1.5px;
+  }
+  
+  .MaterialText .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #6B8E23;
+    border-width: 3px;
+  }
+  
+  .MaterialText .MuiInputBase-input {
+    padding: 8px;
+  }
+  
+  .MaterialText .MuiInputLabel-root {
+    color: #000;
+  }
+  
+  .MaterialText .MuiInputLabel-root.Mui-focused {
+    color: #6B8E23;
+  }
+  
+  .MaterialText .MuiInputLabel-root:hover {
+    color: #6B8E23;
+  }
+  
+  /* Icon button styling (change color to desired color here) */
+  .search-icon-button {
+    color: #333; /* Example: Dark grey color for the icon */
+    position: absolute;
+    right: 50px;
+    top: 18px;
+    transform: translateY(-50%);
+  }
+  
+
+
+  /*-------------------------------------------------LOCATION CONTAINER---------------------------------------------*/
+  
+  .WholeLocationContainer{
     width: 500px;
     padding: 15px;
-    border: 2px solid #6B8E23;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
+  }
+/* Base styles for LocationText */
+.LocationText .MuiOutlinedInput-root {
+    height: 50px; /* Adjust height of input */
+    border-radius: 25px; /* Rounded corners */
+  }
+  
+  /* Fieldset styling */
+  .LocationText .MuiOutlinedInput-root fieldset {
+    border-width: 2px; /* Default border width */
+  }
+  
+  /* Valid state: Green border and label */
+  .LocationText.valid .MuiOutlinedInput-root fieldset {
+    border-color: #6B8E23;
+  }
+  
+  .LocationText.valid .MuiOutlinedInput-root:hover fieldset {
+    border-color: #6B8E23;
+    border-width: 1.5px;
+  }
+  
+  .LocationText.valid .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #6B8E23;
+    border-width: 3px;
+  }
+  
+  /* Invalid state: Red border and label */
+  .LocationText.invalid .MuiOutlinedInput-root fieldset {
+    border-color: red;
+    border-width: 3px;
+  }
+  
+  .LocationText.invalid .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: red;
+    border-width: 3px;
+  }
+  
+  /* Input padding */
+  .LocationText .MuiInputBase-input {
+    padding: 8px;
+  }
+  
+  /* Label styles */
+  .LocationText .MuiInputLabel-root {
+    color: #000; /* Default label color */
+  }
+  
+  /* Label styling when valid */
+  .LocationText.valid .MuiInputLabel-root.Mui-focused {
+    color: #6B8E23;
+  }
+  
+  /* Label styling when invalid */
+  .LocationText.invalid .MuiInputLabel-root {
+    color: red;
+  }
+  
+  .LocationText.invalid .MuiInputLabel-root.Mui-focused {
+    color: red;
+  }
 
-.search-icon {
-    position: absolute; 
-    right: 4px;
-    bottom: 27px;
-    height: 50px; 
-    width: 50px; 
-    border: none;
-    border-radius: 5px;
-    background-color: #6B8E23;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    cursor: pointer; 
-    z-index: 10; 
-    padding: 0;
-}
+  
 
-                                 /*------------ DROPDOWNBOX------------ */
+
+                                 /*------------ DROPDOWNBOX------------
 .dropdown ul ,.dropdown li{
     margin: 0;
     padding: 0;
@@ -87,13 +203,13 @@ table td{
 }
 
 .fa-chevron-down {
-    transition: transform 0.3s ease; /* Smooth transition for rotation */
+    transition: transform 0.3s ease; /* Smooth transition for rotation 
   }
   
   .fa-chevron-down.open {
-    transform: rotate(-180deg); /* Rotate the icon when dropdown is open */
+    transform: rotate(-180deg);
   }
-  
+   */
 
                              /* Login and organic Button */
 
@@ -105,7 +221,7 @@ table td{
                                 text-wrap: nowrap;
                                 border-left: 5px solid transparent; /* Transparent border initially */
                                 box-sizing: border-box; /* Ensures padding and border don't affect width */
-                            margin-right: 15px;
+                            margin-right: 35px;
                             }
                             
                             .button-type:hover {
@@ -120,6 +236,7 @@ table td{
                                 border-left: 5px solid transparent;
                                 border-radius: 35px;
                                 box-sizing: border-box;
+                                margin-right: 40px;
                               }
                               
                               button.button-type1:hover {
@@ -129,6 +246,15 @@ table td{
                                 transition: all 0.3s ease;
                               }
 
+                              .AccountBox{
+                                font-size: large;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                margin-right: "15px";
+                                overflow: visible;
+                              }
 
                            /* SELL Button */
 
@@ -206,6 +332,16 @@ background-color: white;
   .writtings h4 {
     margin: 0;
   }
+
+  .BannerButton{
+    width: 150px !important;
+    padding: 8px 16px !important;
+  border-radius: 35px !important;
+  height: 45px !important;
+  background-color: transparent !important;  /* Makes it transparent */
+    border: 2px solid #66bb6a !important;
+  }
+
 
 .Banner-image {
     display: flex;
@@ -335,6 +471,21 @@ background-color: white;
   .icon-link:hover {
     background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
   }
+
+.social-icon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 25px;
+  position: absolute;
+  bottom: 23px;
+  left: 93%;
+  transform: translate(-50%);
+}
+
+
+
+
 /*---------------------------------------------------Category Images--------------------------------------------------------------------*/
 
 .categoryHead{
@@ -358,11 +509,12 @@ row-gap: 45px;
     height: 350px;
     padding: 12px;
     box-sizing: content-box;
+    border-radius: 30px;
     
 }
 .Agri{
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 15px;
     width: 420px;
     height: 420px;
     display: flex;

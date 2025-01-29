@@ -19,10 +19,8 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Flag from 'react-world-flags';
 import axios from 'axios';
-
 import { LoadScript } from '@react-google-maps/api';
 import { Autocomplete, TextField } from "@mui/material";
-
 
 import { LocationContext } from '../Context/LocationContext.jsx';
 
@@ -30,8 +28,12 @@ import NamalvarFormal from '../assets/Namalvar Formal.jpg'
 import Portfolio from '../assets/portfolio5.jpg'
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
+import AgricultureIcon from '@mui/icons-material/Agriculture';
 import WorkIcon from '@mui/icons-material/Work';
+import { ToastContainer, toast } from 'react-toastify';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
 
 
 const importAll = (requireContext) => {
@@ -48,6 +50,8 @@ const categoryImages=importAll(require.context('../assets/categories',true, /\.(
 const bannerImages=importAll(require.context('../assets/Banner',false,/\.(png|jpe?g|svg)$/));
 
 const restImages=importAll(require.context('../assets' ,false,/\.(png|jpe?g|svg)$/));
+
+const bannerImages1=importAll(require.context('../assets/PhoneScreen',false,/\.(png|jpe?g|svg)$/));
 
 const getRandomImage=(imageKeys)=>{
   const randomIndex=Math.floor(Math.random() * imageKeys.length);
@@ -72,7 +76,7 @@ const theme = createTheme({
           justifyContent: "center",
           alignItems: "center",
           color: "black",
-          padding: "8px 16px",
+         
           boxShadow: "none", // No shadow initially
           textDecoration: "none",
           fontWeight: "normal",
@@ -214,7 +218,7 @@ const handleNavigate = (event) => {
   if (!inputValue.trim()) {
     event.preventDefault(); // Prevent navigation
     setIsInputValid(false); // Set input as invalid
-    alert("Please enter a location before proceeding!");
+    toast("Please enter a location before proceeding!");
   } else {
     setIsInputValid(true); // Reset validation state if input is valid
     // Store the current inputValue in the context
@@ -234,12 +238,12 @@ const handleSearchSubmit = (e) => {
     
     if(!searchValue.trim()){
     e.preventDefault(); 
-    alert("Please enter something to search");
+    toast("Please enter something to search");
     return;
     }
     else if(!inputValue.trim()){
       e.preventDefault();
-      alert("Please enter a location before proceeding!");
+      toast("Please enter a location before proceeding!");
       return;
     }
   }
@@ -266,19 +270,15 @@ navigate("/buy", { state: { searchValue, inputValue } });
 //---------------------------------------------------------------------------------------------------------------------------------------
   const Writings = () => (
     <div className="writtings">
-      <h1>Agrivibes...Vibes of Modern Agriculture</h1>
-      <h2>You Grow, We Sell</h2>
-        <ThemeProvider theme={theme1}>
-      <Button variant="contained" component={Link}
-  to="/buy" onClick={handleNavigate} sx={{width: "150px", padding: "8px 16px",borderRadius:"25px",height:"45px"}}>BUY...</Button>
-      </ThemeProvider>
+      <h1>AgriVibes...Vibes of Modern Agriculture</h1>
+      <h2>You Grow, We Sell</h2> 
+      <Button variant="contained" component={Link} className='BannerButton'
+  to="/buy" onClick={handleNavigate} startIcon={<ShoppingCartIcon/>}>BUY...</Button>
     </div>
   );
   
   const Icon=()=>(
-    <div className='social-icon' style={{ display: "flex", justifyContent: "flex-end",alignItems:"flex-end", gap: "25px",position: "absolute",
-     bottom: "20px", left: "93%", transform: "translateX(-50%)", 
-    }}>
+    <div className='social-icon'>
     {/* Facebook */}
     <a
       href="https://www.facebook.com"
@@ -329,23 +329,9 @@ const Icon1=()=>(
   <table className="container">
     <thead>
     <tr className="row1">
-        {/* Hamburger Icon for Mobile View */}
-        <td className="hamburger-icon">
-        <IconButton
-  sx={{
-    display: { xs: 'block', sm: 'none' }, // Only show on small screens
-  }}
-  onClick={handleMenuToggle} // Toggle the mobile menu visibility
->
-  <MenuIcon />
-</IconButton>
-
-              </td>
         <td><Link to ="/"><img className="logo"  src={restImages['AgriVibesFinal.jpg']} alt="AgriVibes Logo" /></Link></td>
 
-        <td style={{    
-     width: "500px",
-    padding: "15px"}} className='WholeLocationContainer'> 
+        <td className='WholeLocationContainer'> 
   <LoadScript
   googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
   libraries={libraries}
@@ -382,170 +368,52 @@ const Icon1=()=>(
     }}
     renderInput={(params) => (
       <TextField
-        {...params}
-        label="Enter Location"
-        variant="outlined"
-        className='LocationText'
-        sx={{
-          "& .MuiOutlinedInput-root": {
-            height: "50px", // Adjust height of input
-            borderRadius:"25px",
-            "& fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Red border if invalid
-              borderWidth: isInputValid ? "2px" : "3px", // Thicker border if invalid
-            },
-            "&:hover fieldset": {
-              borderColor: "#6B8E23",
-              borderWidth: "1.5px",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Keep red if focused and invalid
-              borderWidth: "3px",
-            },
-          },
-          "& .MuiInputBase-input": {
-            padding: "8px",
-          },
-          "& .MuiInputLabel-root": {
-            color: isInputValid ? "#000" : "red", // Red label if invalid
-            "&.Mui-focused": {
-              color: isInputValid ? "#6B8E23" : "red", // Green or red when focused
-            },
-          },
-        }}
-      />
+  {...params}
+  label="Enter Location"
+  variant="outlined"
+  className={`LocationText ${isInputValid ? 'valid' : 'invalid'}`}
+/>
     )}
   />
 </LoadScript>
 
     </td>
+
+    
      
-
-        <td className='MaterialSearch'>
-        <Box sx={{ display: 'flex', alignItems: 'center',position:"relative" }}>
-      {/* Input field */}
-      <form style={{ display: 'flex', alignItems: 'center' }} onSubmit={handleSearchSubmit} >
-      <TextField className='MaterialText'
-    value={searchValue} // Pre-fill with the persisted value
-    onChange={handleSearchChange} // Handle typing
-    label="Find Tractor, Motor Pumps and more..."
-    variant="outlined"
-    sx={{
-      "& .MuiOutlinedInput-root": {
-        width: '450px',
-        height: "50px",
-        borderRadius:"25px",
-      
-        "& fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "2px",
-          
-        },
-        "&:hover fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "1.5px",
-        
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "3px",
-          
-        },
-      },
-      "& .MuiInputBase-input": {
-        padding: "8px",
-      },
-      "& .MuiInputLabel-root": {
-        color: "#000",
-       
-        "&.Mui-focused": {
-          color: "#6B8E23",
-          
-        },
-        "&:hover": {
-          color: "#6B8E23",
-        },
-      },
-    }}
-  />
-  <IconButton
-    type="submit"
-    color="primary"
-    sx={{
-      color: "#6B8E23",
-      position: "absolute",
-      right: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
-    }}
-  >
-    <SearchIcon />
-  </IconButton>
-      </form>
-    </Box>
-        </td>
-
-        <td className="dropdown">
-            <ul className="select">
-                <li>
-                <ThemeProvider theme={theme}>
-                <Button onClick={handleClick1}  sx={{
-          display: 'flex',
-          justifyContent: 'center', // Center content horizontally
-          alignItems: 'center', // Center content vertically
-          width: '100%', // Optional: set a fixed width
-        }}
-        className='button-type1'
-        >
-        <Flag code="IN" style={{ width: '24px', height: '16px', marginRight: '8px' }} />
-        {language ? `    ${language}` : 'Language'}
-        <FontAwesomeIcon icon={faChevronDown}  className={`fa-chevron-down ${isOpen ? 'open' : ''}`}/>
-      </Button>
-      <Menu
-        anchorEl={anchorEl1}
-        open={Boolean(anchorEl1)}
-        onClose={() => setAnchorEl1(null)}
-        PaperProps={{
-    style: {
-      width: '200px',  // Custom width for the menu
-    },
-  }}
+    <td className="MaterialSearch">
+  <Box className="MaterialBox">
+    {/* Input field */}
+    <form className="SearchContainerForm" onSubmit={handleSearchSubmit}>
+      <TextField
+        className="MaterialText"
+        value={searchValue}
+        onChange={handleSearchChange}
+        label="Find Tractor, Motor Pumps and more..."
+        variant="outlined"
+      />
+      <IconButton
+        type="submit"
+        className="search-icon-button"
       >
-        <MenuItem onClick={() => handleClose1('English')}>English</MenuItem>
-        <MenuItem onClick={() => handleClose1('Tamil')}>Tamil</MenuItem>
-      </Menu>
-      </ThemeProvider>
-                </li>
-            </ul> 
-        </td>
+        <SearchIcon />
+      </IconButton>
+    </form>
+  </Box>
+</td>
+
 
         <td className='Organic'><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
         <td className= 'Account'>
-        <Box 
-        sx={{
-          fontSize: "large",
-          display: "flex",
-           flexDirection: "column",
-          height: "15vh",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "visible",
-          marginRight:"5px",  
-        }}
-        
-        >
+        <Box className='AccountBox'>
       {/* Account Link */}
     
 
       <ThemeProvider theme={theme}>
       
-      <Button
+      <Button 
         onClick={handleClick}
         variant="text"
-        sx={{
-      padding: "8px 10px", // Keep button size consistent
-      borderRadius: "35px",
-    }}
     className='button-type1'
         >
         Account
@@ -615,11 +483,94 @@ const Icon1=()=>(
     </td>
 
         <td className='buyy'><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
+   
     {/* Mobile Menu */}
-
+    <td className="hamburger-icon">
+  <IconButton
+    className="hamburger-button"
+    onClick={handleMenuToggle} // Toggle the mobile menu visibility
+  >
+    <MenuIcon />
+  </IconButton>
+</td>
     </tr>
     </thead>
 </table>
+
+ {/* Entire Box Component (visible only when menuActive is true) */}
+ {menuActive && (
+        <Box className="menu-container1">
+          <div className="MaterialSearch1">
+            <Box className="MaterialBox1">
+              <form className="SearchContainerForm1" onSubmit={handleSearchSubmit}>
+                <TextField
+                  className="MaterialText1"
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  label="Find Tractor and more..."
+                  variant="outlined"
+                />
+                <IconButton type="submit" className="search-icon-button1">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Box>
+          </div>
+
+          <div className="Organic1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/organicForming' className='button-type2' startIcon={<AgricultureIcon/>}>Organic</Button>
+          </ThemeProvider>
+          </div>
+
+          <div className="Account1">
+            <Box className="AccountBox1">
+              <ThemeProvider theme={theme}>
+                <Button onClick={handleClick} variant="text" className="button-type2" startIcon={<AccountCircleIcon/>}>
+                  Account
+                </Button>
+                </ThemeProvider>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                  transformOrigin={{ vertical: "top", horizontal: "left" }}
+                  PaperProps={{
+                    style: { marginTop: "15px", width: "300px" },
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      console.log("MenuItem clicked");
+                      handleClose();
+                    }}
+                  >
+                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Logout
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <HelpOutlineIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Help
+                  </MenuItem>
+                </Menu>
+             
+            </Box>
+          </div>
+
+          <div className="buyy1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/buy' onClick={handleNavigate} startIcon={<ShoppingCartIcon />} // Material-UI icon
+      className="sell-button1">Buy</Button>
+      </ThemeProvider>
+          </div>
+        </Box>
+      )}
+
     </div>
    
 
@@ -632,54 +583,116 @@ const Icon1=()=>(
  <Writings />
  <Icon />
  <Icon1/>
-   <Link to="/sell/agriculture-rawproduct"><img src={bannerImages["banan-6.jpg"]} alt="banana"/></Link>
+   <Link to="/sell/Rawproduct"><img src={bannerImages["banan-6.jpg"]} alt="banana"/></Link>
  </div>
 
  <div className="slide-image" key={bannerImages["goods-banner-1.png"]} >
  <Writings />
  <Icon/>
  <Icon1/>
- <Link to="/sell/finished-products"><img src={bannerImages["goods-banner-1.png"]} alt="goods" /></Link>
+ <Link to="/sell/Finishedproduct"><img src={bannerImages["goods-banner-1.png"]} alt="goods" /></Link>
  </div>
 
  <div className="slide-image" key={bannerImages["cows 6-banner.jpg"]} >
  <Writings />
  <Icon/>
  <Icon1/>
-    <Link to="/sell/agriculture-livestock"><img src={bannerImages["cows 6-banner.jpg"]} alt="cattles" /></Link>
+    <Link to="/sell/Livestock"><img src={bannerImages["cows 6-banner.jpg"]} alt="cattles" /></Link>
  </div>
 
  <div className="slide-image" key={bannerImages["finishedProduct-banner-1.jpg"]} >
  <Writings />
  <Icon/>
  <Icon1/>
-   <Link to="/sell/finished-products"><img src={bannerImages["finishedProduct-banner-1.jpg"]} alt="FinishedProduct" /></Link>
+   <Link to="/sell/Finishedproduct"><img src={bannerImages["finishedProduct-banner-1.jpg"]} alt="FinishedProduct" /></Link>
  </div>
 
  <div className="slide-image"key= {bannerImages["fertilizer-7-banner.jpg"]}>
  <Writings />
  <Icon/>
  <Icon1/>
-   <Link to="/sell/organic-fertilizers"><img src={bannerImages["fertilizer-7-banner.jpg"]} alt="Fertilizer"/></Link>
+   <Link to="/sell/Fertilizers"><img src={bannerImages["fertilizer-7-banner.jpg"]} alt="Fertilizer"/></Link>
  </div>
  
  <div className="slide-image"key= {bannerImages["wheat-4.jpeg"]}>
  <Writings />
  <Icon/>
  <Icon1/>
-   <Link to="/sell/agriculture-rawproduct"><img src={bannerImages["wheat-4.jpeg"]} alt="wheat"/></Link>
+   <Link to="/sell/Rawproduct"><img src={bannerImages["wheat-4.jpeg"]} alt="wheat"/></Link>
  </div>
 
  <div className="slide-image" key={bannerImages['AgriMachine-banner-1.jpg']}>
  <Writings />
  <Icon/>
  <Icon1/>
-<Link to="/sell/agriculture-machine"><img src={bannerImages["AgriMachine-banner-1.jpg"]} alt="Tractor" /></Link>
+<Link to="/sell/Machine"><img src={bannerImages["AgriMachine-banner-1.jpg"]} alt="Tractor" /></Link>
  </div>
 
 
 </div>
 </div>
+
+
+<div className="Banner-image1">
+    <div className="slide-wrapper">
+
+ 
+
+  <div className="slide-image"key= {bannerImages1["BananaRes4.jpg"]}>
+ <Writings />
+ <Icon />
+ <Icon1/>
+   <Link to="/sell/Rawproduct"><img src={bannerImages1["BananaRes4.jpg"]} alt="banana"/></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages1["For2.jpg"]} >
+ <Writings />
+ <Icon/>
+ <Icon1/>
+ <Link to="/sell/Finishedproduct"><img src={bannerImages1["For2.jpg"]} alt="goods" /></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages1["MobileRes-cow1.jpg"]} >
+ <Writings />
+ <Icon/>
+ <Icon1/>
+    <Link to="/sell/Livestock"><img src={bannerImages1["MobileRes-cow1.jpg"]} alt="cattles" /></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages1["MobRes-Grains1.jpg"]} >
+ <Writings />
+ <Icon/>
+ <Icon1/>
+   <Link to="/sell/Finishedproduct"><img src={bannerImages1["MobRes-Grains1.jpg"]} alt="FinishedProduct" /></Link>
+ </div>
+
+ <div className="slide-image"key= {bannerImages1["FertilizerTry.jpg"]}>
+ <Writings />
+ <Icon/>
+ <Icon1/>
+   <Link to="/sell/Fertilizers"><img src={bannerImages1["FertilizerTry.jpg"]} alt="Fertilizer"/></Link>
+ </div>
+ 
+ <div className="slide-image"key= {bannerImages1["MobileRes-Wheat.jpg"]}>
+ <Writings />
+ <Icon/>
+ <Icon1/>
+   <Link to="/sell/Rawproduct"><img src={bannerImages1["MobileRes-Wheat.jpg"]} alt="wheat"/></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages['Tractor-5.jpg']}>
+ <Writings />
+ <Icon/>
+ <Icon1/>
+<Link to="/sell/Machine"><img src={bannerImages1["Tractor-5.jpg"]} alt="Tractor" /></Link>
+ </div>
+
+
+</div>
+</div>
+
+
+
 
 <div className="categoryHead">
 <h1>Top Category</h1>

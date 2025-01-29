@@ -33,7 +33,7 @@ import kisan from '../assets/KisanWeb.png'
 import TamilNaduAgri from '../assets/TamilnaduGovt.png'
 import Organicweb from '../assets/OrganicWeb.png'
 import TheFormer from '../assets/former image.jpg'
-
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
@@ -201,7 +201,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
         if (!inputValue.trim()) {
           event.preventDefault(); // Prevent navigation
           setIsInputValid(false); // Set input as invalid
-          alert("Please enter a location before proceeding!");
+          toast("Please enter a location before proceeding!");
         } else {
           setIsInputValid(true); // Reset validation state if input is valid
           // Store the current inputValue in the context
@@ -221,12 +221,12 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
           
           if(!searchValue.trim()){
           e.preventDefault(); 
-          alert("Please enter something to search");
+          toast("Please enter something to search");
           return;
           }
           else if(!inputValue.trim()){
             e.preventDefault();
-            alert("Please enter a location before proceeding!");
+            toast("Please enter a location before proceeding!");
             return;
           }
         }
@@ -389,119 +389,33 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     </td>
      
 
-        <td>
-        <Box sx={{ display: 'flex', alignItems: 'center',position:"relative" }}>
-      {/* Input field */}
-      <form style={{ display: 'flex', alignItems: 'center' }} onSubmit={handleSearchSubmit} >
+          
+    <td className="MaterialSearch">
+  <Box className="MaterialBox">
+    {/* Input field */}
+    <form className="SearchContainerForm" onSubmit={handleSearchSubmit}>
       <TextField
-    value={searchValue} // Pre-fill with the persisted value
-    onChange={handleSearchChange} // Handle typing
-    label="Find Tractor, Motor Pumps and more..."
-    variant="outlined"
-    sx={{
-      "& .MuiOutlinedInput-root": {
-        width: '450px',
-        height: "50px",
-        borderRadius:"25px",
-      
-        "& fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "2px",
-          
-        },
-        "&:hover fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "1.5px",
-        
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: "#6B8E23",
-          borderWidth: "3px",
-          
-        },
-      },
-      "& .MuiInputBase-input": {
-        padding: "8px",
-      },
-      "& .MuiInputLabel-root": {
-        color: "#000",
-       
-        "&.Mui-focused": {
-          color: "#6B8E23",
-          
-        },
-        "&:hover": {
-          color: "#6B8E23",
-        },
-      },
-    }}
-  />
-  <IconButton
-    type="submit"
-    color="primary"
-    sx={{
-      color: "#6B8E23",
-      position: "absolute",
-      right: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
-    }}
-  >
-    <SearchIcon />
-  </IconButton>
-      </form>
-    </Box>
-        </td>
-
-        <td className="dropdown">
-            <ul className="select">
-                <li>
-                <ThemeProvider theme={theme}>
-                <Button onClick={handleClick1}  sx={{
-          display: 'flex',
-          justifyContent: 'center', // Center content horizontally
-          alignItems: 'center', // Center content vertically
-          width: '100%', // Optional: set a fixed width
-        }}
-        className='button-type1'
-        >
-        <Flag code="IN" style={{ width: '24px', height: '16px', marginRight: '8px' }} />
-        {language ? `    ${language}` : 'Language'}
-        <FontAwesomeIcon icon={faChevronDown}  className={`fa-chevron-down ${isOpen ? 'open' : ''}`}/>
-      </Button>
-      <Menu
-        anchorEl={anchorEl1}
-        open={Boolean(anchorEl1)}
-        onClose={() => setAnchorEl1(null)}
-        PaperProps={{
-    style: {
-      width: '200px',  // Custom width for the menu
-    },
-  }}
+        className="MaterialText"
+        value={searchValue}
+        onChange={handleSearchChange}
+        label="Find Tractor, Motor Pumps and more..."
+        variant="outlined"
+      />
+      <IconButton
+        type="submit"
+        className="search-icon-button"
       >
-        <MenuItem onClick={() => handleClose1('English')}>English</MenuItem>
-        <MenuItem onClick={() => handleClose1('Tamil')}>Tamil</MenuItem>
-      </Menu>
-      </ThemeProvider>
-                </li>
-            </ul> 
-        </td>
+        <SearchIcon />
+      </IconButton>
+    </form>
+  </Box>
+</td>
 
-        <td><Link to="#" className="button-type">Organic Farming</Link></td>
-        
+
+        <td className='Organic'><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
+        <td className= 'Account'>
         <Box  
-        sx={{
-          fontSize: "large",
-          display: "flex",
-           flexDirection: "column",
-          height: "15vh",
-          justifyContent: "center",
-          alignItems: "center",
-          overflow: "visible",
-          marginRight:"5px",  
-        }}
-        
-        >
+     className='AccountBox'>
       {/* Account Link */}
     
 
@@ -510,10 +424,6 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
       <Button
         onClick={handleClick}
         variant="text"
-        sx={{
-      padding: "8px 10px", // Keep button size consistent
-      borderRadius: "35px",
-    }}
     className='button-type1'
         >
         Account
@@ -580,7 +490,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
       </Menu>
       </ThemeProvider>
     </Box>
-   
+   </td>
 
         <td><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
     </tr>
@@ -591,58 +501,61 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     <div className="Banner-image">
     <div className="slide-wrapper">
 
+ 
 
-<div className="slide-image"key= {bannerImages["banan-6.jpg"]}>
+  <div className="slide-image"key= {bannerImages["banan-6.jpg"]}>
  <Writings />
  <Icon />
  <Icon1/>
-   <Link to="/sell/agriculture-rawproduct"><img src={bannerImages["banan-6.jpg"]} alt="banana"/></Link>
+   <Link to="/sell/Rawproduct"><img src={bannerImages["banan-6.jpg"]} alt="banana"/></Link>
  </div>
 
  <div className="slide-image" key={bannerImages["goods-banner-1.png"]} >
  <Writings />
  <Icon/>
  <Icon1/>
- <Link to="/sell/finished-products"><img src={bannerImages["goods-banner-1.png"]} alt="goods" /></Link>
+ <Link to="/sell/Finishedproduct"><img src={bannerImages["goods-banner-1.png"]} alt="goods" /></Link>
  </div>
 
  <div className="slide-image" key={bannerImages["cows 6-banner.jpg"]} >
  <Writings />
  <Icon/>
  <Icon1/>
-    <Link to="/sell/agriculture-livestock"><img src={bannerImages["cows 6-banner.jpg"]} alt="cattles" /></Link>
+    <Link to="/sell/Livestock"><img src={bannerImages["cows 6-banner.jpg"]} alt="cattles" /></Link>
  </div>
 
  <div className="slide-image" key={bannerImages["finishedProduct-banner-1.jpg"]} >
  <Writings />
  <Icon/>
  <Icon1/>
-   <Link to="/sell/finished-products"><img src={bannerImages["finishedProduct-banner-1.jpg"]} alt="FinishedProduct" /></Link>
+   <Link to="/sell/Finishedproduct"><img src={bannerImages["finishedProduct-banner-1.jpg"]} alt="FinishedProduct" /></Link>
  </div>
 
  <div className="slide-image"key= {bannerImages["fertilizer-7-banner.jpg"]}>
  <Writings />
  <Icon/>
  <Icon1/>
-   <Link to="/sell/organic-fertilizers"><img src={bannerImages["fertilizer-7-banner.jpg"]} alt="Fertilizer"/></Link>
+   <Link to="/sell/Fertilizers"><img src={bannerImages["fertilizer-7-banner.jpg"]} alt="Fertilizer"/></Link>
  </div>
  
  <div className="slide-image"key= {bannerImages["wheat-4.jpeg"]}>
  <Writings />
  <Icon/>
  <Icon1/>
-   <Link to="/sell/agriculture-rawproduct"><img src={bannerImages["wheat-4.jpeg"]} alt="wheat"/></Link>
+   <Link to="/sell/Rawproduct"><img src={bannerImages["wheat-4.jpeg"]} alt="wheat"/></Link>
  </div>
 
  <div className="slide-image" key={bannerImages['AgriMachine-banner-1.jpg']}>
  <Writings />
  <Icon/>
  <Icon1/>
-<Link to="/sell/agriculture-machine"><img src={bannerImages["AgriMachine-banner-1.jpg"]} alt="Tractor" /></Link>
+<Link to="/sell/Machine"><img src={bannerImages["AgriMachine-banner-1.jpg"]} alt="Tractor" /></Link>
  </div>
 
-     </div>
+
 </div>
+</div>
+
 <h1 className= {style.heading}>Nammazhvar Quotes</h1>
 <div className= {style.Quotes}>
 

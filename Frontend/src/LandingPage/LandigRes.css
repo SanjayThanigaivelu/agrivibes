@@ -1,21 +1,20 @@
-/* Mobile and Tablet Styles */
-/* Mobile Styles */
+
 @media only screen and (max-width: 768px) {
-    .Ribbon {
-      flex-direction: column;
-      padding: 10px;
-      width: 98vw;
-      height: 12vh;
-      margin-top: 4vh;
-    margin-left: 0.4vw;
-    border: 5px solid whitesmoke;
-    border-radius: 60px;
-    justify-content:center;
+  
+  .Ribbon {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
     align-items: center;
-background-color:#F5F5F5;
-overflow: visible;
-font-size: medium;
-    }
+    padding: 10px;
+    width: 90vw; 
+    margin: 4vh auto; 
+    border: 2px solid whitesmoke;
+    border-radius: 60px;
+    background-color: #F5F5F5;
+    font-size: medium;
+    height: 8vh;
+  }
   
     table td{
         padding: 3px;
@@ -25,44 +24,298 @@ font-size: medium;
      .logo{
         border-radius: 50%;
         padding: 2px;
+        width:60px;
+        margin-right: 35px;
     }
-/*---------------------------------------------------------------SEARCH CONTAINER------------------------------------------------------------------------------------------------------------*/
-
-.search-container {
-    position: relative; 
-     
-}
+/*---------------------------------------------------------------SEARCH CONTAINER---------------------*/
 
 .WholeLocationContainer{
-    width: 150px;
-    height: 25px;
-    padding: 7.5px;
-  position: relative;
-  top: 16px;
-}
-
-.MaterialSearch{
-    width:5px;
-    height: 25px;
-    padding: 7.5px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    height: 10px;
+    padding: 5px;
     position: relative;
-    display: flex;
+    right: 30px;
+}
+/*----------------------------------------------------HAMBURGER--------------------------------------*/
+   
+   .hamburger-icon {
+    display: block; /* Show hamburger icon only on mobile */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 10px auto;
+    position: relative;
+  bottom: 5px;
+  right: 10px;
+  }
+
+  .hamburger-icon svg {
+    font-size: 36px;
+  }
+
+
+.menu-container1 {
+  display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 5px solid whitesmoke;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    z-index: 1;
+    position: absolute; /* Positioned relative to its nearest parent */
+    top: 80px; /* Appears below the hamburger icon */
 }
 
-.dropdown, .Organic, .Account , .buyy{
+.MaterialBox1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-left: 15px;
+}
+.SearchContainerForm1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.MaterialText1 {
+  width: 100%; 
+  height: 20px; 
+  border-radius: 25px;
+position: relative;
+bottom: 15px;
+}
+.MaterialText1 .MuiOutlinedInput-root {
+  width: 100%;
+  border-radius: 25px;
+  height: 60px;
+}
+.MaterialText1 .MuiOutlinedInput-root fieldset {
+  border-color: #6B8E23;
+  border-width: 2px;
+}
+.MaterialText1 .MuiOutlinedInput-root:hover fieldset {
+  border-color: #6B8E23;
+  border-width: 1.5px;
+}
+
+.MaterialText1 .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #6B8E23;
+  border-width: 3px;
+}
+
+.MaterialText1 .MuiInputLabel-root {
+  color: #000;
+}
+
+.MaterialText1 .MuiInputLabel-root.Mui-focused {
+  color: #6B8E23;
+}
+
+.MaterialText1 .MuiInputLabel-root:hover {
+  color: #6B8E23;
+}
+
+.search-icon-button1 {
+  color: #333; /* Example: Dark grey color for the icon */
+  position: absolute;
+  transform: translateY(-50%);
+  top: 22px;
+  right: 40px;
+}
+.Organic1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+}
+
+
+.AccountBox1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+
+}
+
+.buyy1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 35px;
+}
+
+/*--------------------------------------------------------MOVING SLIDER IMAGES-------------------------------------------------------------------------------------------*/
+
+.Banner-image1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 0;
+  width: 100vw; /* Make sure it takes full viewport width */
+  height: 400px;
+  position: relative;
+  overflow: hidden; /* Hide any overflowing content */
+  box-sizing: border-box;
+  bottom: 10px;
+}
+
+.slide-wrapper1 {
+  display: flex;
+  position: relative;
+  width: 100vw; /* Each slide should fit within the viewport */
+  height: 400px;
+  flex-wrap: nowrap;
+  overflow: hidden; /* Prevent any overflow */
+}
+
+.slide-image1 {
+  flex: 0 0 100vw; /* Each image takes the full viewport width */
+  height: 400px;
+  position: relative;
+}
+
+.slide-image1 img {
+  width: 100vw; /* Force image to fit the viewport width */
+  height: 400px;
+  object-fit: cover; /* Ensure no empty space */
+  display: block;
+}
+/*---------------------------------------------------WRITTINGS-------------------------------------------------------------------*/
+.writtings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 100; /* Ensure it's above all other elements */
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  pointer-events:all; /* Avoid blocking interactions with slides */
+  line-height: 8px;
+  width: 400px;
+  font-size:8px;
+}
+
+.writtings h1,
+.writtings h4 {
+  margin: 0;
+}
+
+.BannerButton{
+  width: 100px !important;
+  padding: 8px 16px;
+border-radius: 35px !important;
+height: 35px !important;
+background-color: transparent !important;  /* Makes it transparent */
+  border: 2px solid #66bb6a !important;
+}
+
+.social-icon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 5px;
+  position: absolute;
+  bottom: 23px;
+  left: 85%;
+  transform: translate(-50%);
+}
+
+.icon-link{
+width: 30px !important;
+height: 30px !important;
+}
+
+.whatsapp a{
+  width: 30px !important;
+height: 30px !important;
+}
+.whatsapp{
+  position: absolute;
+  left: 40px;
+  width: 30px !important;
+height: 30px !important;
+}
+/*---------------------------------------------------CATEGORY IMAGES---------------------------------------------------------------------------*/
+.Category-image {
+  margin-top: 20px;
+  margin-left: 0; /* Adjust margin for mobile */
+  display: flex; /* Use flexbox for the container */
+  flex-direction: column; /* Stack items vertically (one per row) */
+  align-items: center; /* Center items horizontally */
+  justify-content: flex-start; /* Align to top of the container */
+  position: relative;
+}
+
+.Agri {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 300px; /* Adjust width as needed */
+  height: 300px;
+  display: flex;
+  justify-content: center; /* Center content inside */
+  align-items: center; /* Center content inside */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  transform-origin: center;
+  overflow: hidden;
+  margin-bottom: 20px; /* Add space between items */
+}
+
+.Agri img{
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  padding-top: 5px;
+  box-sizing: content-box;
+  border-radius: 30px;
+}
+
+.Agri h3{
+  display: flex;
+  justify-content: center;
+position: relative;
+bottom: 5px;
+text-decoration: none;
+color: black;
+}
+
+/*-----------------------------------------------------HIDING CONTAINERS-------------------------------------------------------------*/
+.dropdown, .Organic, .Account , .buyy ,.SearchContainerForm ,.Banner-image{
+  display: none;
+}
+
+}
+
+@media only screen and (max-width: 480px) {
+
+.dropdown, .Organic, .Account , .buyy ,.SearchContainerForm ,.Banner-image{
     display: none;
 }
 
-    /* Hamburger Icon for mobile */
+    
     .hamburger-icon {
       display: block; /* Show hamburger icon only on mobile */
       width: 40px;
       height: 40px;
       cursor: pointer;
       margin: 10px auto;
-      position: absolute;
-      top: 30px;
-      right: 30px;
+      position: relative;
+    bottom: 5px;
+    right: 10px;
     }
   
     .hamburger-icon svg {
@@ -81,15 +334,189 @@ font-size: medium;
       font-size: 14px;
     }
   }
+
+
+
   
-  /* Tablet Styles (greater than 768px but smaller than 1024px) */
+  /*-----------------------------------------Tablet Styles (greater than 768px but smaller than 1024px)------------------------------------------- */
+
   @media only screen and (max-width: 1024px) and (min-width: 769px) {
-    /* Hide hamburger on tablet */
+
+
+    
+  .Ribbon {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center all content */
+    align-items: center;
+    padding: 10px;
+    width: 90vw; /* Fit most of the screen width */
+    margin: 4vh auto; /* Centered with vertical margin */
+    border: 2px solid whitesmoke;
+    border-radius: 60px;
+    background-color: #F5F5F5;
+    font-size: medium;
+    height: 8vh;
+  }
+  
+    table td{
+        padding: 3px;
+         vertical-align: middle;
+     }
+  
+     .logo{
+        border-radius: 50%;
+        padding: 2px;
+        width:90px;
+        margin-right: 35px;
+    }
+/*---------------------------------------------------------------SEARCH CONTAINER---------*/
+
+.WholeLocationContainer{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    height: 10px;
+    padding: 5px;
+    position: relative;
+    right: 30px;
+}
+
+/*----------------------------------------------------HAMBURGER---------------*/
+   
+   .hamburger-icon {
+    display: block; /* Show hamburger icon only on mobile */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 10px auto;
+    position: relative;
+  bottom: 5px;
+  right: 10px;
+  }
+
+  .hamburger-icon svg {
+    font-size: 36px;
+  }
+   
     .hamburger-icon {
-      display: none;
+      display: block; /* Show hamburger icon only on mobile */
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin: 10px auto;
+      position: relative;
+    bottom: 5px;
+    right: 10px;
     }
   
-    /* Ensure the regular nav links are visible on tablet */
+    .hamburger-icon svg {
+      font-size: 36px;
+    }
+
+
+
+  .menu-container1 {
+    display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border: 5px solid whitesmoke;
+      border-radius: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 500px;
+      z-index: 1;
+      position: absolute; /* Positioned relative to its nearest parent */
+      top: 80px; /* Appears below the hamburger icon */
+  }
+  
+  .MaterialBox1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 15px;
+  }
+  .SearchContainerForm1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .MaterialText1 {
+    width: 100%; 
+    height: 20px; 
+    border-radius: 25px;
+  position: relative;
+  bottom: 15px;
+  }
+  .MaterialText1 .MuiOutlinedInput-root {
+    width: 100%;
+    border-radius: 25px;
+    height: 60px;
+  }
+  .MaterialText1 .MuiOutlinedInput-root fieldset {
+    border-color: #6B8E23;
+    border-width: 2px;
+  }
+  .MaterialText1 .MuiOutlinedInput-root:hover fieldset {
+    border-color: #6B8E23;
+    border-width: 1.5px;
+  }
+  
+  .MaterialText1 .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #6B8E23;
+    border-width: 3px;
+  }
+  
+  .MaterialText1 .MuiInputLabel-root {
+    color: #000;
+  }
+  
+  .MaterialText1 .MuiInputLabel-root.Mui-focused {
+    color: #6B8E23;
+  }
+  
+  .MaterialText1 .MuiInputLabel-root:hover {
+    color: #6B8E23;
+  }
+  
+  .search-icon-button1 {
+    color: #333; /* Example: Dark grey color for the icon */
+    position: absolute;
+    transform: translateY(-50%);
+    top: 22px;
+    right: 40px;
+  }
+  .Organic1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+  }
+  
+  
+  .AccountBox1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+  
+  }
+  
+  .buyy1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 35px;
+  }
+
+  .dropdown, .Organic, .Account , .buyy,.SearchContainerForm,.Banner-image{
+    display: none;
+}
 
   }
   
@@ -100,7 +527,9 @@ font-size: medium;
       display: none;
     }
   
-    /* Ensure regular nav links are always visible */
+    .Banner-image1{
+      display: none;
+    }
   
   }
   

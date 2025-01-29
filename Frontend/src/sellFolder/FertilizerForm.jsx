@@ -19,6 +19,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
+import { ToastContainer, toast } from 'react-toastify';
 function FertilizerForm () {
 
 
@@ -274,7 +275,7 @@ function FertilizerForm () {
                   })
                   .then((response) => {
                     console.log("Product uploaded successfully:", response.data);
-                    alert("Product uploaded successfully!");
+                    toast("Product uploaded successfully!");
                     setCircularProgress(false);
                     setIsSubmitting(false)
                     reset({
@@ -296,7 +297,7 @@ function FertilizerForm () {
                   })
                   .catch((error) => {
                     console.error("Error uploading product:", error.response?.data || error.message);
-                    alert("Error uploading product. Please try again.");
+                    toast("Error uploading product. Please try again.");
                     reset({
                         FertilizerName: '', // Initialize with an empty string or default value
                         EfficieantPeriod:null,

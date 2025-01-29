@@ -11,6 +11,8 @@ import { LocationProvider } from '../Context/LocationContext.jsx';
 import ByingProductDetail from '../Buy/ByingProductDetail.jsx';
 import OrganicForming from '../OrganicForming/OrganicForming.jsx';
 const Profile = lazy(() => import("../UserProfile/ProfilePage.jsx"));
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,6 +53,45 @@ function App() {
   return (
     <LocationProvider>
 <Router>
+ {/* Add the ToastContainer here */}
+ <ToastContainer
+  position="top-right"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  toastStyle={{
+    backgroundColor: "#1C1C2B ", 
+    color: "#FFFFFF", // White text for contrast
+    fontWeight: "bold", // Bold text
+    borderRadius: "10px", // Rounded corners
+    padding: "10px", // Spacing
+    fontSize: "16px", // Larger font
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.3)", // Subtle shadow
+  }}
+  closeButton={
+  <button
+    style={{
+      position: "absolute", // Absolute positioning to place it at the corner
+      top: "10px", // Adjust the distance from the top
+      right: "10px", // Adjust the distance from the right
+      color: "#FFFFFF", // White close button
+      fontWeight: "bold", // Make it stand out
+      fontSize: "14px", // Slightly larger size
+      border: "none", // Remove border
+      background: "transparent", // Transparent background
+      cursor: "pointer", // Pointer for better UX
+    }}
+  >
+    ✖
+  </button>
+}
+/>
+
   <Routes>
   <Route 
           path="/"
