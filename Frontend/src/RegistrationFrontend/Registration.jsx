@@ -330,6 +330,8 @@ OtpSendButton(false);
     <div className={styles.Inputfeild}>
    
     <Typography variant='h4' className={styles.heading}>Sign up</Typography>
+
+    
     
     <br/>
       <Box component="form" onSubmit={handleSubmit(submitNow)} noValidate autoComplete="off"
@@ -340,15 +342,15 @@ OtpSendButton(false);
           name="FullName"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextField className= {styles.FullName}
               {...field} 
               disabled={apiLoading}
               error={!!errors.FullName}
               helperText={errors.FullName?.message}
               label="Full Name"
               variant="standard"
-              
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{ height: '80px' ," & .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.FullName ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -368,19 +370,53 @@ OtpSendButton(false);
             />
           )}
         />
+ <Controller
+          name="FullName"
+          control={control}
+          render={({ field }) => (
+            <TextField className= {styles.FullName1}
+              {...field} 
+              disabled={apiLoading}
+              error={!!errors.FullName}
+              helperText={errors.FullName?.message}
+              label="Full Name"
+              variant="standard"
+              sx={{width:"28ch", height: '80px' ," & .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+    color: errors.FullName ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: errors.FullName ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&:hover fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#66bb6a',
+    },
+  },}}
+            />
+          )}
+        />
+
+
 <br/>
         {/* Phone Number Field */}
         <Controller
           name="PhoneNumber"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextField className= {styles.PhoneNumber}
               {...field} disabled={apiLoading}
               error={!!errors.PhoneNumber}
               helperText={errors.PhoneNumber?.message}
               label="Phone Number"
               variant="standard"
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.PhoneNumber ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -400,19 +436,86 @@ OtpSendButton(false);
             />
           )}
         />
+
+
+ {/* Phone Number Field */}
+ <Controller
+          name="PhoneNumber"
+          control={control}
+          render={({ field }) => (
+            <TextField className= {styles.PhoneNumber1}
+              {...field} disabled={apiLoading}
+              error={!!errors.PhoneNumber}
+              helperText={errors.PhoneNumber?.message}
+              label="Phone Number"
+              variant="standard"
+              sx={{ width:"28ch", height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+    color: errors.PhoneNumber ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: errors.PhoneNumber ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&:hover fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#66bb6a',
+    },
+  } }}
+            />
+          )}
+        />
+
 <br/>
         {/* Email Field */}
         <Controller
           name="Email"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextField className= {styles.Email}
               {...field} disabled={apiLoading}
               error={!!errors.Email}
               helperText={errors.Email?.message}
               label="Email"
               variant="standard"
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+    color: errors.Email ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: errors.Email ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&:hover fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#66bb6a',
+    },
+  } }}
+            />
+          )}
+        />
+
+        {/* Email Field */}
+        <Controller
+          name="Email"
+          control={control}
+          render={({ field }) => (
+            <TextField className= {styles.Email1}
+              {...field} disabled={apiLoading}
+              error={!!errors.Email}
+              helperText={errors.Email?.message}
+              label="Email"
+              variant="standard"
+              sx={{ width:"28ch",height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.Email ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -438,14 +541,62 @@ OtpSendButton(false);
           name="Password"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextField className= {styles.Password}
               {...field} disabled={apiLoading}
               error={!!errors.Password}
               helperText={errors.Password?.message}
               label="Password"
               type={showPass ? 'text' : 'password'}
               variant="standard"
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+    color: errors.Password?'#FF0000':'#66bb6a',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: errors.Password ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&:hover fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#66bb6a',
+    },
+  } }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPass}
+                      onMouseDown={handleMouseDownPassword}
+                      
+                    >
+                      {showPass? <VisibilityOff sx={{ fontSize: '15px' }} /> : <Visibility sx={{ fontSize: '15px' }}/>}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          )}
+        />
+
+          {/* Password Field */}
+          <Controller
+          name="Password"
+          control={control}
+          render={({ field }) => (
+            <TextField className= {styles.Password1}
+              {...field} disabled={apiLoading}
+              error={!!errors.Password}
+              helperText={errors.Password?.message}
+              label="Password"
+              type={showPass ? 'text' : 'password'}
+              variant="standard"
+              sx={{ width:"28ch",height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.Password?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -485,14 +636,62 @@ OtpSendButton(false);
           name="RePassword"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextField className={styles.RePassword}
               {...field} disabled={apiLoading}
               error={!!errors.RePassword}
               helperText={errors.RePassword?.message}
               label="Confirm Password"
               type={showPassword ? 'text' : 'password'} // Toggle the type based on visibility state
               variant="standard"
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+    color: errors.RePassword?'#FF0000':'#66bb6a',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: errors.RePassword ?'#FF0000':'#66bb6a',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&:hover fieldset': {
+      borderColor: '#66bb6a',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#66bb6a',
+    },
+  }}}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                     
+                    >
+                      {showPassword ? <VisibilityOff sx={{ fontSize: '15px'}} /> : <Visibility sx={{ fontSize: '15px'}} />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          )}
+        />
+
+         {/* Confirm Password Field */}
+         <Controller
+          name="RePassword"
+          control={control}
+          render={({ field }) => (
+            <TextField className={styles.RePassword1}
+              {...field} disabled={apiLoading}
+              error={!!errors.RePassword}
+              helperText={errors.RePassword?.message}
+              label="Confirm Password"
+              type={showPassword ? 'text' : 'password'} // Toggle the type based on visibility state
+              variant="standard"
+              sx={{ width:"28ch",height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.RePassword?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -530,12 +729,12 @@ OtpSendButton(false);
 
 <ThemeProvider theme={theme}>
 
- {apiLoading ? (<CircularProgress/>):(<Button disabled={apiLoading} variant="contained" color="primary" type="submit" startIcon={<HowToRegIcon />} >
+ {apiLoading ? (<CircularProgress/>):(<Button disabled={apiLoading} variant="contained" color="primary" type="submit" startIcon={<HowToRegIcon />} size='small' className={styles.RegisterButt} >
   Register
 </Button> )}
 </ThemeProvider>
 
-<h5 className={styles.login}>Already registered? Please <Link to="/" className={styles.log}> log in</Link></h5>
+<h5 className={styles.login}>Registered?<Link to="/" className={styles.log}> log in</Link></h5>
       </Box>
       </div>
       <div className={styles.images}>
@@ -551,43 +750,19 @@ OtpSendButton(false);
 <Modal open={isOtpModalOpen} onClose={handleotpModelClose} BackdropProps={{
           onClick: (e) => e.stopPropagation() // Override the default close behavior for clicks on the backdrop
         }}>
-        <Box
-          sx={{
-            width: 400,
-            height:"auto",
-            margin: "auto",
-            backgroundColor: "white",
-            padding: 3,
-            borderRadius: 2,
-            boxShadow: 24,
-            textAlign: "center",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          
-          }}
+        <Box className={styles.Box1}
           onClick={(e) => e.stopPropagation()}
         >
           <Typography variant="h6" sx={{ mb: 2 }}>
             Verify Your OTP
           </Typography>
-          <Box component="form" onSubmit={handleOtpFormSubmit(otpValidator)}
-          sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 4, 
-        alignItems:'stretch',
-        minHeight: 200,
-        // Ensures content fills the box evenly
-      }}
-      >
+          <Box component="form" onSubmit={handleOtpFormSubmit(otpValidator)} className={styles.Box2}>
           {/* Email OTP Field */}
           <Controller
           name="emailOtp"
                 control={otpControl}
                 render={({ field }) => (
-                  <TextField
+                  <TextField className={styles.emailOTP}
                     {...field}
                     label="Email OTP"
                     error={!!otpErrors.emailOtp}
@@ -648,7 +823,7 @@ OtpSendButton(false);
               </Typography>
             )}
 
-          <Box sx={{ mt: 1, display: "flex", gap: 2, justifyContent: "center"  }}> 
+          <Box  className={styles.Box3} sx={{ mt: 1, display: "flex", gap: 2, justifyContent: "center"  }}> 
           <ThemeProvider theme={theme1}>
           {otpLoading ? (<CircularProgress/>): (<Button variant='contained' disabled={otpbutt} color="primary"  onClick={()=>otpGenerator(getValues("Email"),getValues("PhoneNumber"))} startIcon={<SendIcon />} >Send OTP</Button>)}
           <Button variant="contained" color="primary" type="submit"  startIcon={<VerifiedIcon />}>

@@ -85,3 +85,710 @@ body{
     align-items: flex-start;
     margin-left: 220px;
 }
+
+
+
+
+/*-------------------------------------------------------MEDIA QUERY-------------------------------------------------*/
+
+@media only screen and (max-width:480px){
+
+        .bannerImage {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          width: 100%;
+          flex-wrap: nowrap;
+          overflow: hidden;
+          position: relative;
+        }
+      
+        .tractor1 {
+          width: 100vw;  
+          height: 100%; 
+          object-fit: cover; 
+          display: block;
+          min-height: 400px;
+          
+        }
+      
+      
+.content h1,h2{
+    font-size: 15px;
+}
+
+.bannerTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    position: relative;
+    left: 29.5%;
+margin-top: 10%;
+}
+.bannerTitle h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: small;
+}
+
+.heading h1{
+    font-size: 15px;
+    margin-top: 3%;
+}
+
+.MachineName ,.BrandName,.Year,.Price, .State{
+width: 52%;
+position: relative;
+left: 1%;
+}
+
+.Address,.PinCode{
+    width: 52%;
+position: relative;
+}
+
+.WordCount{
+    position:absolute;
+ right: 45%;
+ bottom: -12%;
+}
+
+.HeadingOwner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 23%;
+    bottom: 10px;
+}
+.owner-btn {
+    width: 9%; 
+    text-align: center;
+    position:relative;
+    left: 1%;
+  }
+  .Features ,.Description{
+    width: 52%;
+    position: relative;
+    left: 2%;
+  }
+.FeatureError,.DescripText{
+    color: gray !important;
+    font-size: 9px !important;
+    margin-left: 5% !important;
+    margin-top: 0px !important;
+}
+.UploadImages{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 20%;
+    bottom: 25px;
+}
+
+.UploadBox{
+    position: relative;
+    width:200px;
+    height: 100%;
+    overflow: hidden;
+    gap: 2px;
+    margin: 0px;
+}
+.District{
+    position: relative;
+    width: 52%;
+}
+
+
+
+
+    .SubmitButt{
+        border-radius: 30px !important;
+        position: relative !important;
+        left: 12% !important;
+    }
+
+    .tractor{
+        display: none !important;
+    }
+/*--------------------------------------------------------LIVESTOCK-----------------------------------------------------------------------------------------------------*/
+
+.owner-btn1{
+  width: 15%;
+  text-align: center;
+  position: relative;
+  left: 3%;
+  font-size: small !important;
+}
+
+.HeadingOwner1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 10px;
+}
+
+.District1{
+  position: relative;
+  width: 52%;
+  right: 1%;
+}
+.options{
+  margin-bottom: 2px;
+  margin-left: 1.5px;
+}
+
+/*-----------------------------------------------------FERTILIZER-------------------------------------------------------------------------------------------*/
+
+.DatePicker {
+ width:52%
+}
+
+}
+
+/*-------------------------------------------------------------------MEDIA QUERY - 1-----------------------------------------------------------------------*/
+
+
+@media only screen and (min-width:481px) and (max-width:780px){
+
+
+    .bannerImage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        position: relative;
+      }
+    
+      .tractor1 {
+        width: 100vw;  
+        height: 100%; 
+        object-fit: cover; 
+        display: block;
+        min-height: 400px;
+        
+      }
+    
+    .content h1{
+        white-space:nowrap;
+    }
+.content h1,h2{
+  font-size: 18px;
+ display: inline-block !important;
+ 
+}
+
+.bannerTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  position: relative;
+  left: 9%;
+margin-top: 10%;
+}
+.bannerTitle h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: medium;
+}
+
+.heading h1{
+  font-size: 18px;
+  margin-top: 3%;
+}
+
+.Form{
+    position: relative;
+    margin-top: 50px;
+}
+
+.MachineName ,.BrandName,.Year,.Price,.State{
+width: 80%;
+position: relative;
+right: 15%;
+}
+
+.Address,.PinCode{
+    width: 80%;
+position: relative;
+right: 16%;
+}
+
+.WordCount{
+    position:absolute;
+ right: 30%;
+ bottom: 0%;
+}
+.HeadingOwner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 23%;
+  bottom: 10px;
+}
+.owner-btn {
+  width: 12%; 
+  text-align: center;
+  position:relative;
+  right: 8%;
+}
+.Features ,.Description{
+  width: 80%;
+  position: relative;
+right: 15%;
+}
+.FeatureError,.DescripText{
+  color: gray !important;
+  font-size: 12px !important;
+  position: relative !important;
+ right: 14% !important;
+  margin-top: 0px !important;
+}
+.UploadImages{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 25px;
+}
+
+.UploadBox{
+  position: relative;
+  width:200px;
+  height: 100%;
+  overflow: hidden;
+  gap: 2px;
+  margin: 0px;
+  position: relative;
+}
+.District{
+  position: relative;
+  width: 80%;
+  right: 9%;
+}
+
+
+
+  .SubmitButt{
+      border-radius: 30px !important;
+    position: relative !important;
+    left: 12% !important;
+  }
+
+  .tractor{
+      display: none !important;
+  }
+
+  /*--------------------------------------------------------LIVESTOCK-----------------------------------------------------------------------------------------------------*/
+
+.owner-btn1{
+  width: 20%;
+  text-align: center;
+  position: relative;
+  right: 20%;
+  font-size: small !important;
+}
+
+.HeadingOwner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 10px;
+}
+
+.HeadingOwner1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 35%;
+  bottom: 10px;
+}
+
+.District1{
+  position: relative;
+  width: 80%;
+  right: 9%;
+}
+.options{
+  margin-bottom: 2px;
+ position: relative;
+ right: 12% ;
+}
+/*-----------------------------------------------------FERTILIZER-------------------------------------------------------------------------------------------*/
+
+.DatePicker {
+  width: 80%;
+  position: relative;
+  right: 16%;
+}
+
+}
+@media only screen and (min-width:781px) and (max-width:1024px){
+
+
+    .content h1{
+        white-space:nowrap;
+    }
+.content h1,h2{
+  font-size: 20px;
+ display: inline-block !important;
+ 
+}
+
+.bannerTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+  position: relative;
+margin-top: 10%;
+}
+.bannerTitle h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: large;
+}
+
+.heading h1{
+  font-size: 22px;
+  margin-top: 3%;
+}
+
+.Form{
+    position: relative;
+    margin-top: 50px;
+}
+
+.MachineName ,.BrandName,.Year,.Price,.State{
+width: 60%;
+position: relative;
+right: 15%;
+}
+
+.Address,.PinCode{
+    width: 60%;
+    position: relative;
+    right: 16%; 
+}
+
+.WordCount{
+    position:absolute;
+ right: 20%;
+ bottom: 0%;
+}
+.HeadingOwner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 23%;
+  bottom: 10px;
+}
+.owner-btn {
+  width: 15%; 
+  text-align: center;
+  position:relative;
+  right: 15%;
+}
+.Features ,.Description{
+  width: 100%;
+  position: relative;
+right: 22%;
+}
+.FeatureError,.DescripText{
+  color: gray !important;
+  font-size: 14px !important;
+  position: relative !important;
+ right: 20% !important;
+  margin-top: 0px !important;
+}
+.UploadImages{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 25px;
+}
+
+.UploadBox{
+  position: relative;
+  width:200px;
+  height: 100%;
+  overflow: hidden;
+  gap: 2px;
+  margin: 0px;
+
+}
+
+.UploadGrid{
+  position: relative;
+  right: 18%;
+}
+
+
+.District{
+  position: relative;
+  width: 80%;
+  right: 9%;
+}
+
+
+
+  .SubmitButt{
+      border-radius: 30px !important;
+    position: relative !important;
+    left: 12% !important;
+  }
+
+
+   
+ /*--------------------------------------------------------LIVESTOCK-----------------------------------------------------------------------------------------------------*/
+
+ .owner-btn1{
+  width: 30%;
+  text-align: center;
+  position: relative;
+  right: 35%;
+  font-size: small !important;
+}
+
+.HeadingOwner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 10px;
+}
+
+.HeadingOwner1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 45%;
+  bottom: 10px;
+}
+
+.District1{
+  position: relative;
+  width: 60%;
+  right: 10%;
+}
+.options{
+  margin-bottom: 2px;
+ position: relative;
+ right: 14.5% ;
+}
+/*-----------------------------------------------------FERTILIZER-------------------------------------------------------------------------------------------*/
+
+.DatePicker {
+  width: 60%;
+  position: relative;
+  right: 15%;
+}
+
+.tractor1{
+  display: none !important;
+}
+}
+/*---------------------------------------------------------MEDIA QUERY-2--------------------------------------------------------------------------------------------*/
+
+@media only screen and (min-width:1025px){
+
+    .content h1{
+        white-space:nowrap;
+    }
+.content h1,h2{
+  font-size: 30px;
+ display: inline-block !important;
+ 
+}
+
+.bannerTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%px;
+  position: relative;
+margin-top: 10%;
+}
+.bannerTitle h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+}
+
+.heading h1{
+  font-size: 28px;
+  margin-top: 3%;
+}
+
+.Form{
+    position: relative;
+    margin-top: 50px;
+}
+
+.MachineName ,.BrandName,.Year,.Price,.State{
+width: 60%;
+position: relative;
+right: 15%;
+}
+
+.Address,.PinCode{
+    width: 60%;
+    position: relative;
+    right: 16%; 
+}
+
+.WordCount{
+    position:absolute;
+ right: 20%;
+ bottom: 0%;
+}
+.HeadingOwner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 23%;
+  bottom: 10px;
+}
+.owner-btn {
+  width: 15%; 
+  text-align: center;
+  position:relative;
+  right: 15%;
+}
+.Features ,.Description{
+  width: 100%;
+  position: relative;
+right: 28%;
+}
+.FeatureError,.DescripText{
+  color: gray !important;
+  font-size: 14px !important;
+  position: relative !important;
+ right: 25% !important;
+  margin-top: 0px !important;
+}
+.UploadImages{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 25px;
+}
+
+.UploadBox{
+  position: relative;
+  width:200px;
+  height: 100%;
+  overflow: hidden;
+  gap: 2px;
+  margin: 0px;
+  
+}
+
+.UploadGrid{
+  position: relative;
+  right: 14.5%;
+}
+
+.District{
+  position: relative;
+  width: 60%;
+  right: 10%;
+}
+
+
+
+  .SubmitButt{
+      border-radius: 30px !important;
+    position: relative !important;
+    left: 8% !important;
+  }
+
+  /*--------------------------------------------------------LIVESTOCK-----------------------------------------------------------------------------------------------------*/
+
+ .owner-btn1{
+  width: 50%;
+  text-align: center;
+  position: relative;
+  right: 45%;
+  font-size: small !important;
+}
+
+.HeadingOwner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 20%;
+  bottom: 10px;
+}
+
+.HeadingOwner1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 50%;
+  bottom: 10px;
+}
+
+.District1{
+  position: relative;
+  width: 60%;
+  right: 10%;
+}
+.options{
+  margin-bottom: 2px;
+ position: relative;
+ right: 14.5% ;
+}
+
+/*-----------------------------------------------------FERTILIZER-------------------------------------------------------------------------------------------*/
+
+.DatePicker {
+  width: 40%;
+  position: relative;
+  right: 15%;
+}
+
+    .tractor1{
+    display: none !important;
+}
+
+
+}

@@ -19,13 +19,13 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { ContactMail } from "@mui/icons-material";
 import Flag from 'react-world-flags';
 import axios from 'axios';
-
+import MenuIcon from '@mui/icons-material/Menu'; 
 import { LoadScript } from '@react-google-maps/api';
 import { Autocomplete, TextField } from "@mui/material";
 
 
 import { LocationContext } from '../Context/LocationContext.jsx';
-import logo from '../assets/AgriVibesFinal.jpg'
+import logo from '../assets/SmallOnly.png'
 import NamalvarCartton from '../assets/Cartton.png'
 
 import Govtagri from '../assets/govtAgri.png'
@@ -34,6 +34,7 @@ import TamilNaduAgri from '../assets/TamilnaduGovt.png'
 import Organicweb from '../assets/OrganicWeb.png'
 import TheFormer from '../assets/former image.jpg'
 import { ToastContainer, toast } from 'react-toastify';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
@@ -135,132 +136,134 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
    
 
 
-       const [anchorEl, setAnchorEl] = useState(null);
+        const [anchorEl, setAnchorEl] = useState(null);
+
+ 
         const handleClick = (event) => {
-            setAnchorEl(event.currentTarget);
-          };
-        
-          // Close menu
-          const handleClose = () => {
-            setAnchorEl(null);
-            console.log("Not Blocking")
-          };
-        
-          const open = Boolean(anchorEl);
-      
-          const [anchorEl1, setAnchorEl1] = useState(null);
-        const [language, setLanguage] = useState('');
-        const [isOpen, setIsOpen] = useState(false);
-      
-      
-        const handleClick1 = (event) => {
-          setAnchorEl1(event.currentTarget);
-          setIsOpen((prevState) => !prevState);
+          setAnchorEl(event.currentTarget);
         };
       
-        const handleClose1 = (lang) => {
-          setLanguage(lang);
-          setAnchorEl1(null);
-          setIsOpen(false)
+        // Close menu
+        const handleClose = () => {
+          setAnchorEl(null);
+          console.log("Not Blocking")
         };
-        //---------------------------------------------------LOCATION-----------------------------------------------------------------
-        const libraries = ["places"];
-        const [options, setOptions] = useState([]);
-        const [isApiLoaded, setIsApiLoaded] = useState(false);
-        
-        const { inputValue, setInputValue, isInputValid, setIsInputValid,searchValue,setSearchValue } = useContext(LocationContext); //Usage of Context API
       
-        const fetchPlaceSuggestions = (input) => {
-          if (window.google && window.google.maps) {
-            const service = new window.google.maps.places.AutocompleteService();
+        const open = Boolean(anchorEl);
+    
+        const [anchorEl1, setAnchorEl1] = useState(null);
+      const [language, setLanguage] = useState('');
+      const [isOpen, setIsOpen] = useState(false);
+    
+    
+      const handleClick1 = (event) => {
+        setAnchorEl1(event.currentTarget);
+        setIsOpen((prevState) => !prevState);
+      };
+    
+      const handleClose1 = (lang) => {
+        setLanguage(lang);
+        setAnchorEl1(null);
+        setIsOpen(false)
+      };
+      //---------------------------------------------------LOCATION-----------------------------------------------------------------
+      const libraries = ["places"];
+      const [options, setOptions] = useState([]);
+      const [isApiLoaded, setIsApiLoaded] = useState(false);
       
-            service.getPlacePredictions(
-              {
-                input,
-                componentRestrictions: { country: "in" },
-                types: ["(cities)"],
-              },
-              (predictions, status) => {
-                if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-                  setOptions(
-                    predictions.map((prediction) => ({
-                      label: prediction.description,
-                      place_id: prediction.place_id,
-                    }))
-                  );
-                } else {
-                  setOptions([]);
-                }
+      const { inputValue, setInputValue, isInputValid, setIsInputValid,searchValue,setSearchValue } = useContext(LocationContext); //Usage of Context API
+    
+      const fetchPlaceSuggestions = (input) => {
+        if (window.google && window.google.maps) {
+          const service = new window.google.maps.places.AutocompleteService();
+    
+          service.getPlacePredictions(
+            {
+              input,
+              componentRestrictions: { country: "in" },
+              types: ["(cities)"],
+            },
+            (predictions, status) => {
+              if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                setOptions(
+                  predictions.map((prediction) => ({
+                    label: prediction.description,
+                    place_id: prediction.place_id,
+                  }))
+                );
+              } else {
+                setOptions([]);
               }
-            );
-          } else {
-            console.error("Google Maps API is not loaded yet");
-          }
-        };
-      const handleNavigate = (event) => {
-        if (!inputValue.trim()) {
-          event.preventDefault(); // Prevent navigation
-          setIsInputValid(false); // Set input as invalid
-          toast("Please enter a location before proceeding!");
+            }
+          );
         } else {
-          setIsInputValid(true); // Reset validation state if input is valid
-          // Store the current inputValue in the context
+          console.error("Google Maps API is not loaded yet");
         }
       };
-      //------------------------------------------------------SEARCH CONTAINER------------------------------------------------------------------
-        
+    const handleNavigate = (event) => {
+      if (!inputValue.trim()) {
+        event.preventDefault(); // Prevent navigation
+        setIsInputValid(false); // Set input as invalid
+        toast("Please enter a location before proceeding!");
+      } else {
+        setIsInputValid(true); // Reset validation state if input is valid
+        // Store the current inputValue in the context
+      }
+    };
+    //------------------------------------------------------SEARCH CONTAINER------------------------------------------------------------------
       
-      const handleSearchChange = (e) => {
-        const input = e.target.value;
-        setSearchValue(input);
-      };
+    
+    const handleSearchChange = (e) => {
+      const input = e.target.value;
+      setSearchValue(input);
+    };
+    
+    const handleSearchSubmit = (e) => {
       
-      const handleSearchSubmit = (e) => {
+      if (!searchValue.trim() || !inputValue.trim()) {
         
-        if (!searchValue.trim() || !inputValue.trim()) {
-          
-          if(!searchValue.trim()){
-          e.preventDefault(); 
-          toast("Please enter something to search");
+        if(!searchValue.trim()){
+        e.preventDefault(); 
+        toast("Please enter something to search");
+        return;
+        }
+        else if(!inputValue.trim()){
+          e.preventDefault();
+          toast("Please enter a location before proceeding!");
           return;
-          }
-          else if(!inputValue.trim()){
-            e.preventDefault();
-            toast("Please enter a location before proceeding!");
-            return;
-          }
         }
-      
-      navigate("/buy", { state: { searchValue, inputValue } });
-        console.log("Searching for:", searchValue);
-      };
-          
-      
-      //----------------------------------------------------LOGOUT FUNCTION-------------------------------------------------------------------
-        async function Logout() {
-          try {
-            const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
-            console.log("Logout response:", response.data);
+      }
+    
+    navigate("/buy", { state: { searchValue, inputValue } });
+      console.log("Searching for:", searchValue);
+    };
         
-            setIsAuthenticated(false);
-            console.log("IsAuthenticated set to:", false);
-        
-            //navigate("/"); // Redirect to the login pagep
-          } catch (error) {
-            console.error("Logout failed:", error);
-          }
+    
+    //----------------------------------------------------LOGOUT FUNCTION-------------------------------------------------------------------
+      async function Logout() {
+        try {
+          const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+          console.log("Logout response:", response.data);
+      
+          setIsAuthenticated(false);
+          console.log("IsAuthenticated set to:", false);
+      
+          //navigate("/"); // Redirect to the login pagep
+        } catch (error) {
+          console.error("Logout failed:", error);
         }
-      //---------------------------------------------------------------------------------------------------------------------------------------
-        const Writings = () => (
-          <div className= 'writtings'>
-            <h1>The Future is Organic, Sowing Seeds of Sustainability</h1>
-            <h2>You Grow, We Sell</h2>
-              <ThemeProvider theme={theme1}>
-            <Button variant="contained" component={Link}
-        to="/buy" onClick={handleNavigate} sx={{width: "150px", padding: "8px 16px",borderRadius:"25px",height:"45px"}}>BUY...</Button>
-            </ThemeProvider>
-          </div>
-        );
+      }
+    //---------------------------------------------------------------------------------------------------------------------------------------
+      const Writings = () => (
+        <div className="writtings">
+          <h1>AgriVibes...Vibes of Modern Agriculture</h1>
+          <h2>You Grow, We Sell</h2> 
+          <br/>
+          <Button variant="contained" component={Link} className='BannerButton'
+      to="/buy" onClick={handleNavigate} startIcon={<ShoppingCartIcon/>}>BUY...</Button>
+        </div>
+      );
+      
         
         const Icon=()=>(
           <div className='social-icon' style={{ display: "flex", justifyContent: "flex-end",alignItems:"flex-end", gap: "25px",position: "absolute",
@@ -301,6 +304,11 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
       );
       
       
+       const [menuActive, setMenuActive] = useState(false);
+      
+        const handleMenuToggle = () => {
+          setMenuActive(!menuActive);
+        };
       
  
     return (
@@ -310,11 +318,9 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
   <table className="container">
     <thead>
     <tr className="row1">
-       
-        <td><Link to ="/"><img className="logo"  src={logo} alt="AgriVibes Logo"/></Link></td>
-        <td style={{    
-     width: "500px",
-    padding: "15px"}}> 
+        <td><Link to ="/"><img className="logo"  src={logo} alt="AgriVibes Logo" /></Link></td>
+
+        <td className='WholeLocationContainer'> 
   <LoadScript
   googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
   libraries={libraries}
@@ -351,45 +357,19 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     }}
     renderInput={(params) => (
       <TextField
-        {...params}
-        label="Enter Location"
-        variant="outlined"
-        sx={{
-          "& .MuiOutlinedInput-root": {
-            height: "50px", // Adjust height of input
-            borderRadius:"25px",
-            "& fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Red border if invalid
-              borderWidth: isInputValid ? "2px" : "3px", // Thicker border if invalid
-            },
-            "&:hover fieldset": {
-              borderColor: "#6B8E23",
-              borderWidth: "1.5px",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Keep red if focused and invalid
-              borderWidth: "3px",
-            },
-          },
-          "& .MuiInputBase-input": {
-            padding: "8px",
-          },
-          "& .MuiInputLabel-root": {
-            color: isInputValid ? "#000" : "red", // Red label if invalid
-            "&.Mui-focused": {
-              color: isInputValid ? "#6B8E23" : "red", // Green or red when focused
-            },
-          },
-        }}
-      />
+  {...params}
+  label="Enter Location"
+  variant="outlined"
+  className={`LocationText ${isInputValid ? 'valid' : 'invalid'}`}
+/>
     )}
   />
 </LoadScript>
 
     </td>
-     
 
-          
+    
+     
     <td className="MaterialSearch">
   <Box className="MaterialBox">
     {/* Input field */}
@@ -414,14 +394,13 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
 
         <td className='Organic'><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
         <td className= 'Account'>
-        <Box  
-     className='AccountBox'>
+        <Box className='AccountBox'>
       {/* Account Link */}
     
 
       <ThemeProvider theme={theme}>
       
-      <Button
+      <Button 
         onClick={handleClick}
         variant="text"
     className='button-type1'
@@ -459,12 +438,12 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
           <>   
          
       <LogoutIcon fontSize="small" sx={{ marginRight: "8px" }} />
-      <span>Logout</span> 
+      <span>Login</span> 
   </>
 ): (  <>
         <LoginIcon fontSize="small" sx={{ marginRight: "8px" }} />
           <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
-            Login
+            Logout
           </Link> 
         </>
 )
@@ -490,13 +469,99 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
       </Menu>
       </ThemeProvider>
     </Box>
-   </td>
+    </td>
 
-        <td><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
+        <td className='buyy'><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
+   
+    {/* Mobile Menu */}
+    <td className="hamburger-icon">
+  <IconButton
+    className="hamburger-button"
+    onClick={handleMenuToggle} // Toggle the mobile menu visibility
+  >
+    <MenuIcon />
+  </IconButton>
+</td>
     </tr>
     </thead>
 </table>
+
+ {/* Entire Box Component (visible only when menuActive is true) */}
+ {menuActive && (
+        <Box className="menu-container1">
+          <div className="MaterialSearch1">
+            <Box className="MaterialBox1">
+              <form className="SearchContainerForm1" onSubmit={handleSearchSubmit}>
+                <TextField
+                  className="MaterialText1"
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  label="Find Tractor and more..."
+                  variant="outlined"
+                />
+                <IconButton type="submit" className="search-icon-button1">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Box>
+          </div>
+
+          <div className="Organic1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/organicForming' className='button-type2' startIcon={<AgricultureIcon/>}>Organic</Button>
+          </ThemeProvider>
+          </div>
+
+          <div className="Account1">
+            <Box className="AccountBox1">
+              <ThemeProvider theme={theme}>
+                <Button onClick={handleClick} variant="text" className="button-type2" startIcon={<AccountCircleIcon/>}>
+                  Account
+                </Button>
+                </ThemeProvider>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                  transformOrigin={{ vertical: "top", horizontal: "left" }}
+                  PaperProps={{
+                    style: { marginTop: "15px", width: "300px" },
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      console.log("MenuItem clicked");
+                      handleClose();
+                    }}
+                  >
+                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Logout
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <HelpOutlineIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Help
+                  </MenuItem>
+                </Menu>
+             
+            </Box>
+          </div>
+
+          <div className="buyy1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/buy' onClick={handleNavigate} startIcon={<ShoppingCartIcon />} // Material-UI icon
+      className="sell-button1">Buy</Button>
+      </ThemeProvider>
+          </div>
+        </Box>
+      )}
+
     </div>
+   
 
     <div className="Banner-image">
     <div className="slide-wrapper">

@@ -4,7 +4,7 @@ import {TextField,Box,Button, InputAdornment,IconButton, Modal, Typography,Circu
 import { createTheme , ThemeProvider} from '@mui/material/styles';
 import styles from './loginstyle.module.css';
 import * as yup from 'yup';
-import bgremoveAgriVibes1 from '../assets/bgremoveAgriVibes1.png'
+import bgremoveAgriVibes1 from '../assets/bgremoveAgriVibes1.png';
 import { useForm,Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {Visibility, VisibilityOff } from '@mui/icons-material';
@@ -14,6 +14,7 @@ import KeyIcon from '@mui/icons-material/Key';
 import LockIcon from '@mui/icons-material/Lock';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import FinalAgriTractor from '../assets/FinalAgriTractor-1.png'
 
 export default function Login({ setIsAuthenticated }) {
   const navigate = useNavigate();
@@ -396,90 +397,175 @@ try{
 return (
     <div className={styles.login}>
 <div className={styles.background}>
-        <img src={bgremoveAgriVibes1} alt="Large Logo" className={styles.large}/>
+        <img src={FinalAgriTractor} alt="Large Logo" className={styles.large}/>
        
       </div>
- <Box
-      component="form" onSubmit={handleSubmit(submitNow)} noValidate autoComplete='off'
-      sx={{
-        '& .MuiTextField-root': {m: 1}
-      }}
-    
-    >
+ <Box className={styles.box1}
+      component="form" onSubmit={handleSubmit(submitNow)} noValidate autoComplete='off' >
 
 <div className={styles.content}>
 
+<div className= {styles.logomain}>
     <img src={bgremoveAgriVibes1} alt='Logo' className={styles.logo2}></img>
+</div>
 
-  <Controller
+    <Controller className={styles.Email}
   name="Email"
   control={control}
-  render={({field})=>(
-    <TextField 
-    {...field}
-    error={!!errors.Email} helperText={errors.Email?.message} label="Email"
-     id="Email-id" 
-variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: errors.Email ? 'red' : '#66bb6a', // Green for correct validation
-      }
-    },
-    "& .MuiFormLabel-root.Mui-focused": {
-      color: errors.Email ? 'red' : '#66bb6a', // Green for label color
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-    },
-    height: '50px',
-    
-    }} />
-  )}
-  />
- <br/><br/>
- <Controller 
- name="Password"
- control={control}
- render={({field})=>(
-  
+  render={({ field }) => (
     <TextField
-    {...field}  
-    error={!!errors.Password}
-    helperText={errors.Password?.message} 
-    label="Password" 
-    type={PasswordShow?'text':'password'}
-    //autoComplete="new-password" // Disables browser's built-in password manager suggestions
-     variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: errors.Password ? 'red' : '#66bb6a',
-      }
-    },
-    "& .MuiFormLabel-root.Mui-focused": {
-      color: errors.Password ? 'red' : '#66bb6a', 
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-    },
-    height: '80px',
-    
-    }}
-InputProps={{
-  endAdornment:(
-    <InputAdornment position='end'>
-    <IconButton
-      aria-label="toggle password visibility"
-    onClick={handleClickShowPass}
-    onMouseDown={handleMouseDownPassword}
-     >
-     {PasswordShow? <VisibilityOff sx={{fontSize:'15px'}}/>:<Visibility sx={{fontSize:'15px'}}/>}
-      </IconButton>
-    </InputAdornment>
-  ),
-}}
- />
- )}
- />
+      className={`${styles.LoginEmail1} ${errors.Email ? styles.error : ''}`}
+      {...field}
+      error={!!errors.Email}
+      helperText={errors.Email?.message}
+      label="Email"
+      id="Email-id"
+      variant="outlined"
+      sx={{
+        "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+          borderColor: errors.Email ? 'red' : '#66bb6a', // Green or red border based on error
+        },
+        "& .MuiFormLabel-root.Mui-focused": {
+          color: errors.Email ? 'red' : '#66bb6a', // Green or red label color based on error
+        },
+      }}
+    />
+  )}
+/>
+
+
+<Controller 
+  name="Email"
+  control={control}
+  render={({ field }) => (
+    <TextField
+      className={`${styles.LoginEmail01} ${errors.Email ? styles.error : ''}`}
+      {...field}
+      error={!!errors.Email}
+      helperText={errors.Email?.message}
+      label="Email"
+      id="Email-id"
+      variant="outlined"
+      size='small'
+      fullWidth
+      sx={{
+        "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+          borderColor: errors.Email ? 'red' : '#66bb6a', // Green or red border based on error
+        },
+        "& .MuiFormLabel-root.Mui-focused": {
+          color: errors.Email ? 'red' : '#66bb6a', // Green or red label color based on error
+        },
+      }}
+    />
+  )}
+/>
+
+
+ <br/><br/>
+ <Controller
+  name="Password"
+  control={control}
+  render={({ field }) => (
+    <TextField
+      className={`${styles.LoginPassword1} ${errors.Password ? styles.error : ''}`}
+      {...field}
+      error={!!errors.Password}
+      helperText={errors.Password?.message}
+      label="Password"
+      type={PasswordShow ? 'text' : 'password'}
+      variant="outlined"
+      sx={{
+        "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+          borderColor: errors.Password ? 'red' : '#66bb6a', // Green or red border based on error
+        },
+        "& .MuiFormLabel-root.Mui-focused": {
+          color: errors.Password ? 'red' : '#66bb6a', // Green or red label color based on error
+        },
+      }}
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPass}
+              onMouseDown={handleMouseDownPassword}
+            >
+              {PasswordShow ? (
+                <VisibilityOff sx={{ fontSize: '15px' }} />
+              ) : (
+                <Visibility sx={{ fontSize: '15px' }} />
+              )}
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
+    />
+  )}
+/>
+
+
+<Controller
+  name="Password"
+  control={control}
+  render={({ field }) => (
+    <TextField
+      className={`${styles.LoginPassword01} ${errors.Password ? styles.error : ''}`}
+      {...field}
+      error={!!errors.Password}
+      helperText={errors.Password?.message}
+      label="Password"
+      type={PasswordShow ? 'text' : 'password'}
+      variant="outlined"
+      size='small'
+      fullWidth
+      sx={{
+        "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+          borderColor: errors.Password ? 'red' : '#66bb6a', // Green or red border based on error
+        },
+        "& .MuiFormLabel-root.Mui-focused": {
+          color: errors.Password ? 'red' : '#66bb6a', // Green or red label color based on error
+        },
+      }}
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPass}
+              onMouseDown={handleMouseDownPassword}
+            >
+              {PasswordShow ? (
+                <VisibilityOff sx={{ fontSize: '15px' }} />
+              ) : (
+                <Visibility sx={{ fontSize: '15px' }} />
+              )}
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
+    />
+  )}
+/>
+
+
+
     <br/><br/>
-    <ThemeProvider theme={theme}> 
-    <Button variant="text" size="medium" color="secondary" id='loginButton' type="button"  className={styles.ForgetPassword} onClick={boxModel} disableRipple sx={{ borderRadius: '35px' }}>Forget Password</Button>
-    <Button variant="contained" size="medium" color="secondary" id={styles.loginButton} type="submit" sx={{ borderRadius: '35px' }} startIcon={<LockOpenIcon />} >Login</Button>
+    
+   
+    <div className= {styles.container}>
+  <button
+    type="button"
+    id="loginButton"
+    className={styles.ForgetPasswordButton1}
+    onClick={boxModel}
+  >
+    Forget Password
+  </button>
+</div>
+
+<ThemeProvider theme={theme}> 
+<Button variant='text' size='medium' color='secondary' onClick={boxModel} className={styles.ForgetPasswordButton} >Forget Password</Button>
+    <Button variant="contained" size="small" color="secondary" id={styles.loginButton} type="submit" className={styles.LoginButton}  startIcon={<LockOpenIcon />} >Login</Button>
     </ThemeProvider>
 <h4 className={styles.register}>Don&apos;t have an account? <Link to='/register' className={styles.reg}>Register!</Link></h4>
 </div>
@@ -492,43 +578,22 @@ InputProps={{
  <Modal open={forgetBoxOpen} onClose={boxModelClose} BackdropProps={{
   onClick:(e)=> e.stopPropagation()
  }}>
-  <Box
-  sx={{
-    width: 400,
-    height: "auto",
-    margin: "auto",  
-    backgroundColor: "white",
-    padding: 3,
-    borderRadius: 2,
-    boxShadow: 24,
-    textAlign: "center",
-    position: "absolute", // Ensure it uses `absolute` for the modal positioning
-    top: "50%", // Center vertically
-    left: "50%", // Center horizontally
-    transform: "translate(-50%, -50%)",
-  }}
+  <Box className={styles.Box2}
   onClick={(e)=>e.stopPropagation()}
   >
   <Typography variant='h6' sx={{mb:2}}>
     Forget Password
   </Typography>
-  <Box component="form"
+  <Box component="form" className={styles.Box3}
   id="emailForm"
    onSubmit={handleForgetSubmit(emailChecker)}
-  sx={{
-    display:'flex',
-    flexDirection:'column',
-    gap:1,
-    alignItems:'stretch', 
-    minHeight:100,
-  }}
   >
     <Controller
     name="EMAIL"
     control={forgetControl}
     rules={{ required: "Email is required" }}
     render={({field})=>(
-      <TextField 
+      <TextField className={styles.ForgetPassEmail2}
       {...field}
       label="Email"
       disabled={disableEmail}
@@ -552,23 +617,51 @@ InputProps={{
       />
     )}
     /> 
+
+
+<Controller
+    name="EMAIL"
+    control={forgetControl}
+    rules={{ required: "Email is required" }}
+    render={({field})=>(
+      <TextField className={styles.ForgetPassEmail02}
+      {...field}
+      label="Email"
+      disabled={disableEmail}
+      error={!!forgetErrors.EMAIL}
+      helperText={forgetErrors.EMAIL?.message||" "}
+      size='small'
+      fullWidth
+      sx={{
+    // Styling for the TextField wrapper
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: forgetErrors.EMAIL ? "red" : "#66bb6a", // Dynamic border color
+      },
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: forgetErrors.EMAIL ? "red" : "#66bb6a", // Dynamic label color
+    },
+    "& .MuiFormHelperText-root": {
+      minHeight: "20px", // Consistent helper text height
+    },
+      }}
+      />
+    )}
+    /> 
+
+
+
   </Box>
-  <Box component="form" onSubmit={handleForgetSubmit1(OtpChecker)}
+  <Box component="form" onSubmit={handleForgetSubmit1(OtpChecker)} className={styles.Box4}
   id="otpForm"
-    sx={{
-    display:'flex',
-    flexDirection:'column',
-    gap:1,
-    alignItems:'stretch', 
-    minHeight:100,
-  }}
   >
     <Controller
     name='emailOTP'
     control={forgetControl1}
     rules={{ required: "OTP is required" }}
     render={({field})=>(
-      <TextField
+      <TextField className={styles.emailOTP}
       {...field}
       label="Email OTP"
       error={!!forgetErrors1.emailOTP}
@@ -592,6 +685,39 @@ InputProps={{
       />
     )}
     />
+
+<Controller
+    name='emailOTP'
+    control={forgetControl1}
+    rules={{ required: "OTP is required" }}
+    render={({field})=>(
+      <TextField className={styles.emailOTP2}
+      {...field}
+      label="Email OTP"
+      error={!!forgetErrors1.emailOTP}
+      disabled={disableOTP}
+      helperText={forgetErrors1.emailOTP?.message||" "}
+      size='small'
+      fullWidth
+      sx={{
+    // Styling for the TextField wrapper
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: forgetErrors1.emailOTP ? "red" : "#66bb6a", // Dynamic border color
+      },
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: forgetErrors1.emailOTP ? "red" : "#66bb6a", // Dynamic label color
+    },
+    "& .MuiFormHelperText-root": {
+      minHeight: "20px", // Consistent helper text height
+    },
+      }}
+      />
+    )}
+    />
+
+
     </Box>
   
     {timerActive && (
@@ -600,7 +726,7 @@ InputProps={{
               </Typography>
             )}
       {/* Buttons Row */}
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2,ml:2.5,mr:2.5,gap:1}}>
+      <Box className={styles.Box5}>
         <ThemeProvider theme={theme1}>
           {CircularProgress1 ? (
             <CircularProgress />
@@ -609,6 +735,7 @@ InputProps={{
               variant="contained"
               color="primary"
               disabled={disableEmail}
+              size='small'
               type="submit"
               form="emailForm" // Use `form` attribute to bind to the email form
               startIcon={<MarkEmailReadIcon />}
@@ -622,6 +749,7 @@ InputProps={{
             variant="contained"
             color="primary"
             disabled={disableOTP}
+            size='small'
             type="submit"
             form="otpForm" // Use `form` attribute to bind to the OTP form
             startIcon={<KeyIcon />}
@@ -640,46 +768,23 @@ InputProps={{
 <Modal open={forgetBoxOpen1} onClose={boxModelClose1} BackdropProps={{
   onClick:(e)=> e.stopPropagation()
  }}>
-<Box
-  sx={{
-    width: 400,
-    height: "auto",
-    margin: "auto",  
-    backgroundColor: "white",
-    padding: 3,
-    borderRadius: 2,
-    boxShadow: 24,
-    textAlign: "center",
-    position: "absolute", // Ensure it uses `absolute` for the modal positioning
-    top: "50%", // Center vertically
-    left: "50%", // Center horizontally
-    transform: "translate(-50%, -50%)",
-  }}
+<Box className={styles.Box6}
   onClick={(e)=>e.stopPropagation()}>
   <Typography variant='h6' sx={{mb:2}}>
     Forget Password
   </Typography>
-  <Box component="form" onSubmit={Passwordsub(PasswordChanging)}
-  sx={{
-    display:'flex',
-    flexDirection:'column',
-    gap:4,
-    alignItems:'stretch', 
-    minHeight:200,
-  }}
-  >
+  <Box component="form" onSubmit={Passwordsub(PasswordChanging)} className={styles.Box7}>
   
   <Controller
     name="Password1"
     control={PassControl}
     render={({field})=>(
-      <TextField 
+      <TextField className= {styles.password1}
       {...field}
       label="Enter New Password"
       error={!!PassErrors.Password1}
       helperText={PassErrors.Password1?.message||" "}
       type={PasswordShow1?'text':'password'}
-      fullWidth
       sx={{
     // Styling for the TextField wrapper
     "& .MuiOutlinedInput-root": {
@@ -715,13 +820,12 @@ InputProps={{
     name="RePassword"
     control={PassControl}
     render={({field})=>(
-      <TextField 
+      <TextField className={styles.RePassword}
       {...field}
       label="Confirm New Password"
       error={!!PassErrors.RePassword}
       helperText={PassErrors.RePassword?.message||" "}
       type={PasswordShow2?'text':'password'}
-      fullWidth
       sx={{
     // Styling for the TextField wrapper
     "& .MuiOutlinedInput-root": {
@@ -752,9 +856,9 @@ InputProps={{
       />
     )}
     />
-<Box sx={{mt: 1, display:"flex",gap:2, justifyContent:"center"}}>
+<Box className={styles.Box8}>
 <ThemeProvider theme={theme1}>
-{CircularProgress3 ? (<CircularProgress/>):(<Button variant='contained' color="primary"  type='submit'  startIcon={<LockIcon />} >Confirm Password</Button>)}
+{CircularProgress3 ? (<CircularProgress/>):(<Button variant='contained' color="primary"  type='submit' size='small'  startIcon={<LockIcon />} >Confirm Password</Button>)}
 </ThemeProvider> 
     </Box>
   </Box>

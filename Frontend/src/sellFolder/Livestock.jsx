@@ -16,6 +16,7 @@ import cow from '../assets/Banner/cows 6-banner.jpg';
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
+import cow1 from '../assets/PhoneScreen/MobileRes-cow1.jpg'
 
 
 function Livestock() {
@@ -326,12 +327,13 @@ function Livestock() {
 
   return (
     <div className='liveStack-full'>
-<div className="bannerImage1">
-    <div className="content1">
+<div className="bannerImage">
+    <div className="content">
           <h1>Agrivibes...Vibes of Modern Agriculture</h1>
           <h2>You Grow, We Sell</h2>
           </div>
-    <Link to={" "}><img className='cow' src={cow} alt="tractor machine"/></Link>
+    <Link to={" "}><img className='tractor' src={cow} alt="tractor machine"/></Link>
+    <Link to={" "}><img className='tractor1' src={cow1} alt="tractor machine"/></Link>
     </div>
 
     <div className="bannerTitle"><h1>Sell LiveStock</h1></div>
@@ -345,13 +347,13 @@ function Livestock() {
                      name="CattleType"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='MachineName'
                        {...field}
                        error={!!errors.CattleType}
               helperText={errors.CattleType?.message}
               label="LiveStock Type *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.CattleType ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -362,8 +364,6 @@ function Livestock() {
       marginTop: '4px', // Adjust space between the input and helper text
       marginLeft:"0px" 
     },
-    height: '50px',
-    width:'500px'
     }} />
   )}
   />
@@ -372,13 +372,13 @@ function Livestock() {
                      name="BreadName"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='BrandName'
                        {...field}
                        error={!!errors.BreadName}
               helperText={errors.BreadName?.message}
               label="Bread Name *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.BreadName ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -389,8 +389,6 @@ function Livestock() {
       marginTop: '4px', // Adjust space between the input and helper text
       marginLeft:"0px" 
     },
-    height: '50px',
-    width:'500px'
     }} />
   )}
   />
@@ -399,13 +397,13 @@ function Livestock() {
                        name="age"
                        control={control}
                        render={({ field }) => (
-                         <TextField
+                         <TextField className='BrandName'
                          {...field}
                          error={!!errors.age}
                 helperText={errors.age?.message}
                 label="Age of LiveStock *"
                 disabled={isSubmitting}
-                variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+                variant="outlined" sx={{"& .MuiOutlinedInput-root": {
         "&.Mui-focused fieldset": {
           borderColor: errors.age ? 'red' : '#66bb6a', // Green for correct validation
         }
@@ -416,45 +414,39 @@ function Livestock() {
         marginTop: '5px',
         marginLeft:"0px" ,
       },
-      height: '50px',
-      width:"500px",
       }} />
     )}
     />
     <br/><br/><br/>
-     <Typography 
-        variant="h6" 
-        sx={{ marginBottom: "8px", marginLeft: "10px" }} // Adds spacing and aligns with the group
+     <Typography className='HeadingOwner1'
+        variant="h6"
       >
         Health Condition of LiveStock *
       </Typography>
        <Controller
-              name="HealthCondition"
+              name="HealthCondition1"
               control={control}
               defaultValue=""
               disabled={isSubmitting}
               render={({ field }) => (
-                <ToggleButtonGroup
+                <ToggleButtonGroup className='Owner1'
                   {...field}
                   exclusive
                   onChange={(e, value) => field.onChange(value)} // Ensures proper integration with react-hook-form
                   aria-label="Health Condition of LiveStock"
                   sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
                     gap: 1,
-                  marginLeft:"10px",
-                  borderRadius: "8px", // Adds border-radius to the entire group
             "& .MuiToggleButtonGroup-grouped": {
           border: "1px solid rgba(0, 0, 0, 0.23)", 
           borderRadius:"8px",
+          margin: "0 8px 8px 0",
         },
                   }}
                 >
-                  <ToggleButton value="Very Good" aria-label="Very Good" sx={{ width: '100px' }}>Very Good</ToggleButton>
-                  <ToggleButton value="Good" aria-label="Good" sx={{ width: '100px' }}>Good</ToggleButton>
-                  <ToggleButton value="Average" aria-label="Average" sx={{ width: '100px' }}>Average</ToggleButton>
-                  <ToggleButton value="Bad" aria-label="Bad" sx={{ width: '100px' }}>Bad</ToggleButton>
+                  <ToggleButton value="Very Good" aria-label="Very Good" className="owner-btn1">Very Good</ToggleButton>
+                  <ToggleButton value="Good" aria-label="Good" className="owner-btn1">Good</ToggleButton>
+                  <ToggleButton value="Average" aria-label="Average" className="owner-btn1">Avg</ToggleButton>
+                  <ToggleButton value="Bad" aria-label="Bad" className="owner-btn1">Bad</ToggleButton>
                 </ToggleButtonGroup>
               )}
             />
@@ -464,12 +456,10 @@ function Livestock() {
               </Typography>
             )}
             <br/><br/>
-            <FormControl
+            <FormControl className='options'
   component="fieldset"
   error={!!errors.Vaccinated}
   sx={{
-    marginBottom: 2,
-    marginLeft: 1.5,
     '& .MuiFormLabel-root': {
       color: !!errors.Vaccinated ? 'red' : 'black', // Default to black, red if error
       '&.Mui-focused': {
@@ -512,7 +502,7 @@ function Livestock() {
         name="VacinationName"
         control={control}
         render={({ field }) => (
-          <TextField
+          <TextField className='BrandName'
             {...field}
             error={!!errors.VacinationName}
             helperText={errors.VacinationName?.message}
@@ -520,7 +510,6 @@ function Livestock() {
             disabled={vaccinatedValue !== 'Yes'} // Disable when "No" is selected
             variant="outlined"
             sx={{
-              width: '40ch',
               '& .MuiOutlinedInput-root': {
                 '&.Mui-focused fieldset': {
                   borderColor: errors.VacinationName ? 'red' : '#66bb6a',
@@ -533,8 +522,6 @@ function Livestock() {
                 marginTop: '4px',
                 marginLeft: '0px',
               },
-              height: '50px',
-              width: '500px',
             }}
           />
         )}
@@ -542,7 +529,7 @@ function Livestock() {
       <br/><br/><br/>
       <Typography 
           variant="h6" 
-          sx={{ marginBottom: "8px", marginLeft: "10px" }} // Adds spacing and aligns with the group
+          className='HeadingOwner'
         >
           No. of Owners *
         </Typography>
@@ -552,7 +539,7 @@ function Livestock() {
                 defaultValue=""
                 disabled={isSubmitting}
                 render={({ field }) => (
-                  <ToggleButtonGroup
+                  <ToggleButtonGroup className='Owner'
                     {...field}
                     exclusive
                     onChange={(e, value) => field.onChange(value)} // Ensures proper integration with react-hook-form
@@ -569,11 +556,11 @@ function Livestock() {
           },
                     }}
                   >
-                    <ToggleButton value="1" aria-label="1st" sx={{ width: '60px' }}>1st</ToggleButton>
-                    <ToggleButton value="2" aria-label="2nd" sx={{ width: '60px' }}>2nd</ToggleButton>
-                    <ToggleButton value="3" aria-label="3rd" sx={{ width: '60px' }}>3rd</ToggleButton>
-                    <ToggleButton value="4" aria-label="4th" sx={{ width: '60px' }}>4th</ToggleButton>
-                    <ToggleButton value="4+" aria-label="4+" sx={{ width: '60px' }}>4+</ToggleButton>
+                    <ToggleButton value="1" aria-label="1st"  className="owner-btn">1st</ToggleButton>
+                    <ToggleButton value="2" aria-label="2nd"  className="owner-btn">2nd</ToggleButton>
+                    <ToggleButton value="3" aria-label="3rd"  className="owner-btn">3rd</ToggleButton>
+                    <ToggleButton value="4" aria-label="4th"  className="owner-btn">4th</ToggleButton>
+                    <ToggleButton value="4+" aria-label="4+"  className="owner-btn">4+</ToggleButton>
                   </ToggleButtonGroup>
                 )}
               />
@@ -590,7 +577,7 @@ function Livestock() {
                 defaultValue=""
                 render={({ field }) => (
                   <Box sx={{ position: "relative", width: "500px" }}>
-                    <TextField
+                    <TextField className='Description'
                       {...field}
                       error={!!errors.Description}
                       helperText={errors.Description?.message}
@@ -600,7 +587,6 @@ function Livestock() {
                       multiline
                       rows={6}
                       sx={{
-                        width: "100%",
                         "& .MuiOutlinedInput-root": {
                           "&.Mui-focused fieldset": {
                             borderColor: errors.Description? 'red' : '#66bb6a',
@@ -618,27 +604,15 @@ function Livestock() {
                       }}
                     />
                     
-                    {/* Word Counter */}
-                    <Typography
+                    <Typography className='WordCount'
                       variant="caption"
-                      sx={{
-                        position: "absolute",
-                        bottom: "0px",
-                        right: "0px",
-                        color: wordCount1 > 2000 ? "red" : "gray",
-                      }}
                     >
                       {wordCount1} / 2000 words
                     </Typography>
               
-                    {/* Instruction Line at Bottom */}
-                    <Typography
+                   
+                    <Typography className='DescripText'
                       variant="body2"
-                      sx={{
-                        marginTop: "0px",
-                        marginLeft:"10px", // Spacing between the text field and instruction line
-                        color: "gray",
-                      }}
                     >
                     Include condition, features and reason for selling
                     </Typography>
@@ -651,13 +625,13 @@ function Livestock() {
                                    name="setPrice"
                                    control={control}
                                    render={({ field }) => (
-                                     <TextField
+                                     <TextField className='Price'
                                      {...field}
                                      error={!!errors.setPrice}
                             helperText={errors.setPrice?.message}
                             label="₹ Price *"
                             disabled={isSubmitting}
-                            variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+                            variant="outlined" sx={{"& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: errors.setPrice ? 'red' : '#66bb6a', // Green for correct validation
                     }
@@ -665,36 +639,25 @@ function Livestock() {
                   "& .MuiFormLabel-root.Mui-focused": {
                     color: errors.setPrice ? 'red' : '#66bb6a', // Green for label color
                   }, "& .MuiFormHelperText-root": {
-                    marginTop: '4px', // Adjust space between the input and helper text
+                    marginTop: '4px',
                     marginLeft:"0px" 
-                  },
-                  height: '50px',
-                  width:'500px'
+                  }
                   }} />
                 )}
                 />
                 <br/><br/><br/>
-  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+  <Typography variant="h6" className='UploadImages'>
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0}>
+<Grid container spacing={0} rowGap={2} columnGap={0} className='UploadGrid"'>
   {Array.from({ length: 5 }).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box
-            sx={{
-              position: "relative",
-              width: "200px",
-              height: "100%", 
-              overflow: "hidden", 
-              gap:"2px",
-          margin: "0px", 
-              
-            }}
+          <Box className= 'UploadBox'
           >
             <input
               accept="image/*"
@@ -746,11 +709,9 @@ function Livestock() {
   </Typography>
 )}
 <br/><br/><br/>
-     <FormControl
-       fullWidth
+     <FormControl className='State'
        error={!!errors.State} // Dynamically apply error styles
        sx={{
-         width:"500px",
          "& .MuiOutlinedInput-root": {
            "&.Mui-focused fieldset": {
              borderColor: errors.State ? 'red' : '#66bb6a', // Red for errors, green for valid
@@ -791,20 +752,20 @@ function Livestock() {
       
       {/* Autocomplete for District */}
       <Controller
-        name="District"
+        name="District1"
         control={control}
         render={({ field }) => (
-          <Autocomplete
+          <Autocomplete className='District1'
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
-            value={placeOptions.find((option) => option.label === field.value) || null} // Bind the selected value
+            value={placeOptions.find((option) => option.label === field.value) || null} 
             onInputChange={(event, value) => {
-              if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
+              if (value) fetchPlaceSuggestions(value); 
             }}
             onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
             renderInput={(params) => (
-              <TextField
+              <TextField className='District1'
                 {...params}
                 label="Enter your town or city *"
                 variant="outlined"
@@ -813,9 +774,6 @@ function Livestock() {
                 disabled={isSubmitting}
                 sx={{
                   position:"relative",
-                  width: "500px",
-                  marginLeft: "15px",
-                  right:"10px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: errors.District ? "red" : "#66bb6a",
@@ -837,25 +795,20 @@ function Livestock() {
                      name="Address"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Address'
                        {...field}
                        error={!!errors.Address}
               helperText={errors.Address?.message}
               label="Address *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{display:"relative","& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.Address ? 'red' : '#66bb6a', // Green for correct validation
       }
     },
     "& .MuiFormLabel-root.Mui-focused": {
       color: errors.Address ? 'red' : '#66bb6a', // Green for label color
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-      marginLeft:"0px" 
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
@@ -867,32 +820,26 @@ function Livestock() {
                      name="PinCode"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='PinCode'
                        {...field}
                        error={!!errors.PinCode}
               helperText={errors.PinCode?.message}
               label="PinCode *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{display:"relative","& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.PinCode ? 'red' : '#66bb6a', // Green for correct validation
       }
     },
     "& .MuiFormLabel-root.Mui-focused": {
       color: errors.PinCode ? 'red' : '#66bb6a', // Green for label color
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-      marginLeft:"0px" 
-    },
-    height: '50px',
-    width:'500px',
-    marginRight:"5px"
+    }
     }} />
   )}
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme1}>
-{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit">
+{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit" className='SubmitButt'>
             Post AD
           </Button>)}
           </ThemeProvider>

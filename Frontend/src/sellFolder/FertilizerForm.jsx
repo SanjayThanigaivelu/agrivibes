@@ -20,6 +20,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
+import fertilizer1 from '../assets/PhoneScreen/FertilizerTry.jpg'
 function FertilizerForm () {
 
 
@@ -347,7 +348,8 @@ function FertilizerForm () {
           <h1>Agrivibes...Vibes of Modern Agriculture</h1>
           <h2>You Grow, We Sell</h2>
           </div>
-    <Link to={" "}><img className='fertilizer' src={fertilizer} alt="tractor machine"/></Link>
+    <Link to={" "}><img className='tractor' src={fertilizer} alt="tractor machine"/></Link>
+    <Link to={" "}><img className='tractor1' src={fertilizer1} alt="tractor machine"/></Link>
     </div>
 
     <div className="bannerTitle"><h1>Sell Organic Fertilizer</h1></div>
@@ -361,13 +363,13 @@ function FertilizerForm () {
                      name="FertilizerName"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='MachineName'
                        {...field}
                        error={!!errors.FertilizerName}
               helperText={errors. FertilizerName?.message}
               label="Fertilizer Name *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.FertilizerName ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -377,9 +379,7 @@ function FertilizerForm () {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
@@ -388,13 +388,13 @@ function FertilizerForm () {
                      name="WeightinKg"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='BrandName'
                        {...field}
                        error={!!errors. WeightinKg}
               helperText={errors. WeightinKg?.message}
               label="Weight in Kg*"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.WeightinKg? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -404,10 +404,7 @@ function FertilizerForm () {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
    marginLeft:"0px"
-    },
-    height: '50px',
-    width:"500px"
-    
+    }
     }} />
   )}
   />
@@ -420,7 +417,7 @@ function FertilizerForm () {
       render={({ field, fieldState }) => {
         console.log("Field State:", fieldState);  // Debugging field state for errors
         return (
-          <DatePicker
+          <DatePicker className='DatePicker'
             {...field}
             label="Efficient period *"
             inputFormat="MM/dd/yyyy"
@@ -432,7 +429,7 @@ function FertilizerForm () {
     field.onChange(formattedDate); // Update field value with formatted date
   }}
             renderInput={(params) => (
-              <TextField
+              <TextField className='DatePicker'
                 {...params}
                 error={!!fieldState.error} // Set error state to true if there's an error
                 helperText={fieldState.error?.message} // Show error message if there's an error
@@ -461,7 +458,7 @@ function FertilizerForm () {
   defaultValue=""
   render={({ field }) => (
     <Box sx={{ position: "relative", width: "500px" }}>
-      <TextField
+      <TextField className='Description'
         {...field}
         error={!!errors.Description}
         helperText={errors.Description?.message}
@@ -471,7 +468,6 @@ function FertilizerForm () {
         multiline
         rows={6}
         sx={{
-          width: "100%",
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
               borderColor: errors.Description? 'red' : '#66bb6a',
@@ -490,12 +486,9 @@ function FertilizerForm () {
       />
       
       {/* Word Counter */}
-      <Typography
+      <Typography className='WordCount'
         variant="caption"
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
           color: wordCount1 > 2000 ? "red" : "gray",
         }}
       >
@@ -503,13 +496,8 @@ function FertilizerForm () {
       </Typography>
 
       {/* Instruction Line at Bottom */}
-      <Typography
+      <Typography className='DescripText'
         variant="body2"
-        sx={{
-          marginTop: "0px",
-          marginLeft:"10px", // Spacing between the text field and instruction line
-          color: "gray",
-        }}
       >
       Include condition, features and reason for selling
       </Typography>
@@ -523,13 +511,13 @@ function FertilizerForm () {
                      name="setPrice"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Price'
                        {...field}
                        error={!!errors.setPrice}
               helperText={errors.setPrice?.message}
               label="₹ Price *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{ "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.setPrice ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -539,35 +527,24 @@ function FertilizerForm () {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:'0px'
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
 
   <br/><br/><br/>
-  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+  <Typography variant="h6" className='UploadImages'>
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0}>
+<Grid container spacing={0} rowGap={2} columnGap={0} className='UploadGrid'>
   {Array.from({ length: 5 }).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box
-            sx={{
-              position: "relative",
-              width: "200px",
-              height: "100%", 
-              overflow: "hidden", 
-              gap:"2px",
-          margin: "0px", 
-              
-            }}
+          <Box className= 'UploadBox'
           >
             <input
               accept="image/*"
@@ -620,11 +597,9 @@ function FertilizerForm () {
 )}
 
 <br/><br/><br/>
-<FormControl
-  fullWidth
+<FormControl className='State'
   error={!!errors.State} // Dynamically apply error styles
   sx={{
-    width:"500px",
     "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.State ? 'red' : '#66bb6a', // Red for errors, green for valid
@@ -667,7 +642,7 @@ function FertilizerForm () {
         name="District"
         control={control}
         render={({ field }) => (
-          <Autocomplete
+          <Autocomplete className='District'
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
@@ -677,7 +652,7 @@ function FertilizerForm () {
             }}
             onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
             renderInput={(params) => (
-              <TextField
+              <TextField className='District'
                 {...params}
                 label="Enter your town or city *"
                 variant="outlined"
@@ -685,10 +660,6 @@ function FertilizerForm () {
                 helperText={errors.District?.message}
                 disabled={isSubmitting}
                 sx={{
-                  position:"relative",
-                  width: "500px",
-                  marginLeft: "15px",
-                  right:"10px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: errors.District ? "red" : "#66bb6a",
@@ -711,25 +682,20 @@ function FertilizerForm () {
                      name="Address"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Address'
                        {...field}
                        error={!!errors.Address}
               helperText={errors.Address?.message}
               label="Address *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{display:"relative","& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.Address ? 'red' : '#66bb6a', // Green for correct validation
       }
     },
     "& .MuiFormLabel-root.Mui-focused": {
-      color: errors.Address ? 'red' : '#66bb6a', // Green for label color
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-   marginLeft:"0px",
-    },
-    height: '50px',
-    width:'500px'
+      color: errors.Address ? 'red' : '#66bb6a', 
+    }
     }} />
   )}
   />
@@ -741,32 +707,26 @@ function FertilizerForm () {
                      name="PinCode"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='PinCode'
                        {...field}
                        error={!!errors.PinCode}
               helperText={errors.PinCode?.message}
               label="PinCode *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{display:"relative","& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.PinCode ? 'red' : '#66bb6a', // Green for correct validation
       }
     },
     "& .MuiFormLabel-root.Mui-focused": {
       color: errors.PinCode ? 'red' : '#66bb6a', // Green for label color
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-   marginLeft:"0px"
-    },
-    height: '50px',
-    width:'500px',
-    marginRight:"5px"
+    }
     }} />
   )}
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme1}>
-{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit">
+{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit" className='SubmitButt'>
             Post AD
           </Button>)}
           </ThemeProvider>

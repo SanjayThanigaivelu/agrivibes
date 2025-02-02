@@ -29,7 +29,7 @@ import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import FingerprintOutlinedIcon from '@mui/icons-material/FingerprintOutlined';
 import Skeleton from '@mui/material/Skeleton';
 
-import logo from '../assets/AgriVibesFinal.jpg'
+import logo from '../assets/SmallOnly.png'
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';

@@ -20,7 +20,7 @@ import finished from '../assets/Banner/finishedProduct-banner-1.jpg'
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
-
+import fruits from '../assets/PhoneScreen/Fruits&Veg.jpg'
 function FinishedProductForm() {
 
   const[CircularProgress1,setCircularProgress]=useState(false);
@@ -378,6 +378,7 @@ Images: yup
           <h2>You Grow, We Sell</h2>
           </div>
     <Link to={" "}><img className='tractor' src={finished} alt="tractor machine"/></Link>
+    <Link to={" "}><img className='tractor1' src={fruits} alt="tractor machine"/></Link>
     </div>
 <div className="bannerTitle"><h1>Sell Agriculture FinishedProduct</h1></div>
         <div className='heading'><h1>Post Your AD</h1></div>
@@ -390,13 +391,13 @@ Images: yup
                      name="NameOfProduct"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='MachineName'
                        {...field}
                        error={!!errors.NameOfProduct}
               helperText={errors. NameOfProduct?.message}
               label="Product Name *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.NameOfProduct ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -406,9 +407,7 @@ Images: yup
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
@@ -417,13 +416,13 @@ Images: yup
                      name="WeightinKg"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='BrandName'
                        {...field}
                        error={!!errors. WeightinKg}
               helperText={errors. WeightinKg?.message}
               label="Weight in Kg*"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.WeightinKg? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -433,10 +432,7 @@ Images: yup
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:"500px"
-    
+    }
     }} />
   )}
   />
@@ -447,7 +443,7 @@ Images: yup
       name="PackedOn"
       control={control}
       render={({ field, fieldState }) => (
-        <DatePicker
+        <DatePicker className='DatePicker'
           {...field}
           label="Packed On *"
           disableFuture
@@ -459,7 +455,7 @@ Images: yup
     field.onChange(formattedDate); // Update field value with formatted date
   }}
           renderInput={(params) => (
-            <TextField
+            <TextField className='DatePicker'
               {...params}
               error={fieldState?.isTouched && !!fieldState?.error} // Error only if touched and invalid
               helperText={fieldState?.isTouched && fieldState?.error?.message} // Helper text only if touched
@@ -485,9 +481,7 @@ Images: yup
                 "& .MuiFormHelperText-root": {
                   marginTop: "4px",
                   marginLeft:"0px"
-                },
-                height: "50px",
-                width: "500px",
+                }
               }}
             />
           )}
@@ -503,7 +497,7 @@ Images: yup
       name="ExpiryDate"
       control={control}
       render={({ field, fieldState }) => (
-        <DatePicker
+        <DatePicker className='DatePicker'
           {...field}
           label="Expires On *"
           inputFormat="MM/dd/yyyy"
@@ -515,7 +509,7 @@ Images: yup
     field.onChange(formattedDate); // Update field value with formatted date
   }}
           renderInput={(params) => (
-            <TextField
+            <TextField className='DatePicker'
               {...params}
               error={fieldState?.isTouched && !!fieldState?.error} // Error only if touched and invalid
               helperText={fieldState?.isTouched && fieldState?.error?.message} // Helper text only if touched
@@ -541,9 +535,7 @@ Images: yup
                 "& .MuiFormHelperText-root": {
                   marginTop: "4px",
                   marginLeft:"0px",
-                },
-                height: "50px",
-                width: "500px",
+                }
               }}
             />
           )}
@@ -560,7 +552,7 @@ Images: yup
   defaultValue=""
   render={({ field }) => (
     <Box sx={{ position: "relative", width: "500px" }}>
-      <TextField
+      <TextField className='Description'
         {...field}
         error={!!errors.Description}
         helperText={errors.Description?.message}
@@ -570,7 +562,6 @@ Images: yup
         multiline
         rows={6}
         sx={{
-          width: "100%",
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
               borderColor: errors.Description? 'red' : '#66bb6a',
@@ -589,24 +580,18 @@ Images: yup
       />
       
       {/* Word Counter */}
-      <Typography
+      <Typography className='WordCount'
         variant="caption"
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
           color: wordCount1 > 2000 ? "red" : "gray",
         }}
       >
         {wordCount1} / 2000 words
       </Typography>
 
-      {/* Instruction Line at Bottom */}
-      <Typography
+      <Typography className='DescripText'
         variant="body2"
         sx={{
-          marginTop: "0px",
-          marginLeft:"10px", // Spacing between the text field and instruction line
           color: "gray",
         }}
       >
@@ -622,13 +607,13 @@ Images: yup
                      name="setPrice"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Price'
                        {...field}
                        error={!!errors.setPrice}
               helperText={errors.setPrice?.message}
               label="₹ Price *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.setPrice ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -638,36 +623,24 @@ Images: yup
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px",
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
 
   <br/><br/><br/>
-  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+  <Typography variant="h6" className='UploadImages'>
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0}>
+<Grid container spacing={0} rowGap={2} columnGap={0} className='UploadGrid'>
   {Array.from({ length: 5 }).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box
-            sx={{
-              position: "relative",
-              width: "200px",
-              height: "100%", 
-              overflow: "hidden", 
-              gap:"2px",
-          margin: "0px", 
-              
-            }}
-          >
+          <Box className= 'UploadBox'>
             <input
               accept="image/*"
               type="file"
@@ -718,19 +691,18 @@ Images: yup
   </Typography>
 )}
 <br/><br/><br/>
-      <FormControl fullWidth error={!!errors.State} sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+      <FormControl  className='State'
+    error={!!errors.State}
+     sx={{ "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.State? 'red' : '#66bb6a', // Green for correct validation
       }
     },
     "& .MuiFormLabel-root.Mui-focused": {
-      color: errors.State ? 'red' : '#66bb6a', // Green for label color
+      color: errors.State ? 'red' : '#66bb6a', 
     }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
+      marginTop: '4px', 
     },
-    height: '50px',
-    width:"500px"
-    
     }}>
       <InputLabel id="state-label">State</InputLabel>
       <Controller
@@ -764,7 +736,7 @@ Images: yup
         name="District"
         control={control}
         render={({ field }) => (
-          <Autocomplete
+          <Autocomplete className='District'
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
@@ -774,7 +746,7 @@ Images: yup
             }}
             onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
             renderInput={(params) => (
-              <TextField
+              <TextField className='District'
                 {...params}
                 label="Enter your town or city *"
                 variant="outlined"
@@ -782,10 +754,6 @@ Images: yup
                 helperText={errors.District?.message}
                 disabled={isSubmitting}
                 sx={{
-                  position:"relative",
-                  width: "500px",
-                  marginLeft: "15px",
-                  right:"10px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: errors.District ? "red" : "#66bb6a",
@@ -808,13 +776,13 @@ Images: yup
                      name="Address"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Address'
                        {...field}
                        error={!!errors.Address}
               helperText={errors.Address?.message}
               label="Address *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.Address ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -824,9 +792,7 @@ Images: yup
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
    marginLeft:"0px",
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
@@ -838,13 +804,13 @@ Images: yup
                      name="PinCode"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='PinCode'
                        {...field}
                        error={!!errors.PinCode}
               helperText={errors.PinCode?.message}
               label="PinCode *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.PinCode ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -854,16 +820,13 @@ Images: yup
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
    marginLeft:"0px",
-    },
-    height: '50px',
-    width:'500px',
-    marginRight:"5px"
+    }
     }} />
   )}
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme1}>
-{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit">
+{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit" className='SubmitButt'>
             Post AD
           </Button>)}
           </ThemeProvider>

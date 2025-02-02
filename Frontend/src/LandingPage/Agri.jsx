@@ -272,6 +272,7 @@ navigate("/buy", { state: { searchValue, inputValue } });
     <div className="writtings">
       <h1>AgriVibes...Vibes of Modern Agriculture</h1>
       <h2>You Grow, We Sell</h2> 
+      <br/>
       <Button variant="contained" component={Link} className='BannerButton'
   to="/buy" onClick={handleNavigate} startIcon={<ShoppingCartIcon/>}>BUY...</Button>
     </div>
@@ -329,7 +330,7 @@ const Icon1=()=>(
   <table className="container">
     <thead>
     <tr className="row1">
-        <td><Link to ="/"><img className="logo"  src={restImages['AgriVibesFinal.jpg']} alt="AgriVibes Logo" /></Link></td>
+        <td><Link to ="/"><img className="logo"  src={restImages['SmallOnly.png']} alt="AgriVibes Logo" /></Link></td>
 
         <td className='WholeLocationContainer'> 
   <LoadScript
@@ -826,12 +827,27 @@ className='Developer-pic'
 >
   Help
 </Link><br/><Link to='' className="footLink legal">Legal & Privacy Information</Link></td>
-          <td className="foot follow">Follow Us<br/><Link to='#' className="footLink insta"><FontAwesomeIcon icon={faInstagram} /></Link>  <Link to='#' className="footLink linkdin"><FontAwesomeIcon icon={faLinkedin} />  </Link><Link to='#' className="footLink git"><FontAwesomeIcon icon={faGithub}/></Link></td>
+          <td className="foot follow">Follow Us<br/><Link to='https://www.instagram.com/sanjay_thanigaivelu/' className="footLink insta"><FontAwesomeIcon icon={faInstagram} /></Link>  <Link to='https://linkedin.com/in/sanjay-thanigaive07' className="footLink linkdin"><FontAwesomeIcon icon={faLinkedin} />  </Link><Link to='https://github.com/SanjayThanigaivelu' className="footLink git"><FontAwesomeIcon icon={faGithub}/></Link></td>
           <td className="foot Copyright">&#169;2024 AgriVibes. All rights are reserved</td>
           </tr>
           </tbody>
           </table>
         </div>
+
+<div className='Footer1'>
+  
+ <div className='logo1'>
+ <Link to ="/" className="footLink1"><img className="logoimg"  src={restImages['SmallOnly.png']} alt="AgriVibes Logo" /></Link>
+    </div>
+<div className='Name'>
+  <h3>AgriVibes Public Ltd.</h3>
+  <h4>You Grow, we Sell... | Est:2025</h4>
+  <p className='CopyRight'>Copyright © 2025 - All right reserved</p>
+  <span className='social-media'><Link to='https://www.instagram.com/sanjay_thanigaivelu/' className="footLink insta"><FontAwesomeIcon icon={faInstagram} /></Link>  <Link to='https://linkedin.com/in/sanjay-thanigaive07' className="footLink linkdin"><FontAwesomeIcon icon={faLinkedin} />  </Link><Link to='https://github.com/SanjayThanigaivelu' className="footLink git"><FontAwesomeIcon icon={faGithub}/></Link></span>
+</div>
+
+
+    </div>
     </div>
   )
 }

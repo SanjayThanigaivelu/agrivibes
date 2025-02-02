@@ -17,7 +17,7 @@ import tractor from '../assets/Banner/AgriMachine-banner-1.jpg'
 import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
-
+import tractor1 from '../assets/PhoneScreen/Tractor-5.jpg'
 function ToolsForm() {
     
   const[CircularProgress1,setCircularProgress]=useState(false);
@@ -321,6 +321,7 @@ function ToolsForm() {
           <h2>You Grow, We Sell</h2>
           </div>
     <Link to={" "}><img className='tractor' src={tractor} alt="tractor machine"/></Link>
+    <Link to={" "}><img className='tractor1' src={tractor1} alt="tractor machine"/></Link>
     </div>
 
     <div className="bannerTitle"><h1>Sell Agriculture Equipment</h1></div>
@@ -334,13 +335,13 @@ function ToolsForm() {
                      name="EquipmentName"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='MachineName'
                        {...field}
                        error={!!errors.EquipmentName}
               helperText={errors.EquipmentName?.message}
               label="Equipment Name *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.EquipmentName ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -350,9 +351,7 @@ function ToolsForm() {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px',// Adjust space between the input and helper text
       marginLeft:'0px', 
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
@@ -361,13 +360,13 @@ function ToolsForm() {
                      name="BrandName"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='BrandName'
                        {...field}
                        error={!!errors.BrandName}
               helperText={errors.BrandName?.message}
               label="Brand *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.BrandName ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -378,9 +377,6 @@ function ToolsForm() {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px",
     },
-    height: '50px',
-    width:"500px"
-    
     }} />
   )}
   />
@@ -389,13 +385,13 @@ function ToolsForm() {
                      name="years"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Year'
                        {...field}
                        error={!!errors.years}
               helperText={errors.years?.message}
               label="Year of Purchased *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{ "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.years ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -405,16 +401,14 @@ function ToolsForm() {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:"500px",
+    }
     }} />
   )}
   />
   <br/><br/><br/>
   <Typography 
     variant="h6" 
-    sx={{ marginBottom: "8px", marginLeft: "10px" }} // Adds spacing and aligns with the group
+    className='HeadingOwner' 
   >
     No. of Owners *
   </Typography>
@@ -424,7 +418,7 @@ function ToolsForm() {
           defaultValue=""
           disabled={isSubmitting}
           render={({ field }) => (
-            <ToggleButtonGroup
+            <ToggleButtonGroup className='Owner'
               {...field}
               exclusive
               onChange={(e, value) => field.onChange(value)} // Ensures proper integration with react-hook-form
@@ -441,11 +435,11 @@ function ToolsForm() {
     },
               }}
             >
-              <ToggleButton value="1" aria-label="1st" sx={{ width: '60px' }}>1st</ToggleButton>
-              <ToggleButton value="2" aria-label="2nd" sx={{ width: '60px' }}>2nd</ToggleButton>
-              <ToggleButton value="3" aria-label="3rd" sx={{ width: '60px' }}>3rd</ToggleButton>
-              <ToggleButton value="4" aria-label="4th" sx={{ width: '60px' }}>4th</ToggleButton>
-              <ToggleButton value="4+" aria-label="4+" sx={{ width: '60px' }}>4+</ToggleButton>
+            <ToggleButton value="1" aria-label="1st" className="owner-btn">1st</ToggleButton>
+              <ToggleButton value="2" aria-label="2nd" className="owner-btn">2nd</ToggleButton>
+              <ToggleButton value="3" aria-label="3rd" className="owner-btn">3rd</ToggleButton>
+              <ToggleButton value="4" aria-label="4th" className="owner-btn">4th</ToggleButton>
+              <ToggleButton value="4+" aria-label="4+" className="owner-btn">4+</ToggleButton>
             </ToggleButtonGroup>
           )}
         />
@@ -461,7 +455,7 @@ function ToolsForm() {
   defaultValue=""
   render={({ field }) => (
     <Box sx={{ position: "relative", width: "500px" }}>
-      <TextField
+      <TextField className='Features'
         {...field}
         error={!!errors.Features}
         helperText={errors.Features?.message}
@@ -471,7 +465,6 @@ function ToolsForm() {
         multiline
         rows={6}
         sx={{
-          width: "100%",
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
               borderColor: errors.Features ? 'red' : '#66bb6a',
@@ -490,12 +483,9 @@ function ToolsForm() {
       />
       
       {/* Word Counter */}
-      <Typography
+      <Typography className='WordCount'
         variant="caption"
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
           color: wordCount > 1500 ? "red" : "gray",
         }}
       >
@@ -503,14 +493,8 @@ function ToolsForm() {
       </Typography>
 
       {/* Instruction Line at Bottom */}
-      <Typography
-        variant="body2"
-        sx={{
-          marginTop: "0px",
-          marginLeft:"10px", // Spacing between the text field and instruction line
-          color: "gray",
-        }}
-      >
+      <Typography className='FeatureError'
+        variant="body2" >
       key features of your Machine(e.g. brand, model, age, type)
       </Typography>
     </Box>
@@ -523,7 +507,7 @@ function ToolsForm() {
   defaultValue=""
   render={({ field }) => (
     <Box sx={{ position: "relative", width: "500px" }}>
-      <TextField
+      <TextField className='Description'
         {...field}
         error={!!errors.Description}
         helperText={errors.Description?.message}
@@ -533,7 +517,6 @@ function ToolsForm() {
         multiline
         rows={6}
         sx={{
-          width: "100%",
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
               borderColor: errors.Description? 'red' : '#66bb6a',
@@ -547,17 +530,14 @@ function ToolsForm() {
             marginLeft: "0px", // Remove left margin for alignment
             paddingLeft: "0px", // Remove padding
             textAlign: "left", // Ensure left-aligned text for helper text
-          },
+          }
         }}
       />
       
       {/* Word Counter */}
-      <Typography
+      <Typography className='WordCount'
         variant="caption"
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
           color: wordCount1 > 2000 ? "red" : "gray",
         }}
       >
@@ -565,14 +545,8 @@ function ToolsForm() {
       </Typography>
 
       {/* Instruction Line at Bottom */}
-      <Typography
-        variant="body2"
-        sx={{
-          marginTop: "0px",
-          marginLeft:"10px", // Spacing between the text field and instruction line
-          color: "gray",
-        }}
-      >
+      <Typography className='DescripText'
+        variant="body2">
       Include condition, features and reason for selling
       </Typography>
     </Box>
@@ -585,13 +559,13 @@ function ToolsForm() {
                      name="setPrice"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Price'
                        {...field}
                        error={!!errors.setPrice}
               helperText={errors.setPrice?.message}
               label="₹ Price *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.setPrice ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -601,26 +575,24 @@ function ToolsForm() {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
 
   <br/><br/><br/>
-  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+  <Typography variant="h6" className='UploadImages'>
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0}>
+<Grid container spacing={0} rowGap={2} columnGap={0} className="UploadGrid">
   {Array.from({ length: 5 }).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box
+          <Box 
             sx={{
               position: "relative",
               width: "200px",
@@ -681,7 +653,9 @@ function ToolsForm() {
   </Typography>
 )}
 <br/><br/><br/>
-      <FormControl fullWidth error={!!errors.State} sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+      <FormControl className='State' 
+      error={!!errors.State} 
+      sx={{ "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.State? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -690,10 +664,7 @@ function ToolsForm() {
       color: errors.State ? 'red' : '#66bb6a', // Green for label color
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
-    },
-    height: '50px',
-    width:"500px"
-    
+    }
     }}>
       <InputLabel id="state-label">State</InputLabel>
       <Controller
@@ -727,7 +698,7 @@ function ToolsForm() {
         name="District"
         control={control}
         render={({ field }) => (
-          <Autocomplete
+          <Autocomplete className='District'
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
@@ -737,7 +708,7 @@ function ToolsForm() {
             }}
             onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
             renderInput={(params) => (
-              <TextField
+              <TextField className='District'
                 {...params}
                 label="Enter your town or city *"
                 variant="outlined"
@@ -745,10 +716,6 @@ function ToolsForm() {
                 helperText={errors.District?.message}
                 disabled={isSubmitting}
                 sx={{
-                  position:"relative",
-                  width: "500px",
-                  marginLeft: "15px",
-                  right:"10px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: errors.District ? "red" : "#66bb6a",
@@ -771,13 +738,13 @@ function ToolsForm() {
                      name="Address"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Address'
                        {...field}
                        error={!!errors.Address}
               helperText={errors.Address?.message}
               label="Address *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.Address ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -787,9 +754,7 @@ function ToolsForm() {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:'500px'
+    }
     }} />
   )}
   />
@@ -801,13 +766,13 @@ function ToolsForm() {
                      name="PinCode"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='PinCode'
                        {...field}
                        error={!!errors.PinCode}
               helperText={errors.PinCode?.message}
               label="PinCode *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.PinCode ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -817,16 +782,13 @@ function ToolsForm() {
     }, "& .MuiFormHelperText-root": {
       marginTop: '4px', // Adjust space between the input and helper text
     marginLeft:"0px"
-    },
-    height: '50px',
-    width:'500px',
-    marginRight:"5px"
+    }
     }} />
   )}
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme1}>
-{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit">
+{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit" className='SubmitButt'>
             Post AD
           </Button>)}
           </ThemeProvider>

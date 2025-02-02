@@ -19,6 +19,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import tractor from '../assets/Banner/AgriMachine-banner-1.jpg'
 import { relative } from 'path-browserify';
 import { ToastContainer, toast } from 'react-toastify';
+import Tractor1 from '../assets/PhoneScreen/Tractor-5.jpg'
 
 
 function AgricultureMachineForm() {
@@ -319,14 +320,18 @@ function AgricultureMachineForm() {
 
 
   return (
-    <div className='machine-full'>
+    <div className= 'machine-full'>
 
-    <div className="bannerImage">
-    <div className="content">
+    <div className= 'bannerImage'>
+    <div className= 'content'>
           <h1>Agrivibes...Vibes of Modern Agriculture</h1>
           <h2>You Grow, We Sell</h2>
           </div>
     <Link to={" "}><img className='tractor' src={tractor} alt="tractor machine"/></Link>
+    
+    
+<Link to= {" "}><img className='tractor1' src={Tractor1} alt='tractor1'/></Link>
+
     </div>
 
     <div className="bannerTitle"><h1>Sell Agriculture Machine</h1></div>
@@ -340,13 +345,13 @@ function AgricultureMachineForm() {
                      name="MachineName"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='MachineName'
                        {...field}
                        error={!!errors. MachineName}
               helperText={errors. MachineName?.message}
               label="Machine Name *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.MachineName ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -357,23 +362,22 @@ function AgricultureMachineForm() {
       marginTop: '4px', // Adjust space between the input and helper text
       marginLeft:"0px" 
     },
-    height: '50px',
-    width:'500px'
     }} />
   )}
   />
+
 <br/><br/><br/>
 <Controller
                      name="BrandName"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='BrandName'
                        {...field}
                        error={!!errors.BrandName}
               helperText={errors.BrandName?.message}
               label="Brand *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.BrandName ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -384,9 +388,6 @@ function AgricultureMachineForm() {
       marginTop: '4px', // Adjust space between the input and helper text
       marginLeft:"0px" 
     },
-    height: '50px',
-    width:"500px"
-    
     }} />
   )}
   />
@@ -395,13 +396,13 @@ function AgricultureMachineForm() {
                      name="years"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Year'
                        {...field}
                        error={!!errors.years}
               helperText={errors.years?.message}
               label="Year of Purchased *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.years ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -412,15 +413,13 @@ function AgricultureMachineForm() {
       marginTop: '5px',
       marginLeft:"0px" ,
     },
-    height: '50px',
-    width:"500px",
     }} />
   )}
   />
   <br/><br/><br/>
   <Typography 
     variant="h6" 
-    sx={{ marginBottom: "8px", marginLeft: "10px" }} // Adds spacing and aligns with the group
+    className='HeadingOwner' 
   >
     No. of Owners *
   </Typography>
@@ -430,7 +429,7 @@ function AgricultureMachineForm() {
           defaultValue=""
           disabled={isSubmitting}
           render={({ field }) => (
-            <ToggleButtonGroup
+            <ToggleButtonGroup className='Owner'
               {...field}
               exclusive
               onChange={(e, value) => field.onChange(value)} // Ensures proper integration with react-hook-form
@@ -444,14 +443,15 @@ function AgricultureMachineForm() {
         "& .MuiToggleButtonGroup-grouped": {
       border: "1px solid rgba(0, 0, 0, 0.23)", 
       borderRadius:"8px",
+     
     },
               }}
             >
-              <ToggleButton value="1" aria-label="1st" sx={{ width: '60px' }}>1st</ToggleButton>
-              <ToggleButton value="2" aria-label="2nd" sx={{ width: '60px' }}>2nd</ToggleButton>
-              <ToggleButton value="3" aria-label="3rd" sx={{ width: '60px' }}>3rd</ToggleButton>
-              <ToggleButton value="4" aria-label="4th" sx={{ width: '60px' }}>4th</ToggleButton>
-              <ToggleButton value="4+" aria-label="4+" sx={{ width: '60px' }}>4+</ToggleButton>
+   <ToggleButton value="1" aria-label="1st" className="owner-btn">1st</ToggleButton>
+  <ToggleButton value="2" aria-label="2nd" className="owner-btn">2nd</ToggleButton>
+  <ToggleButton value="3" aria-label="3rd" className="owner-btn">3rd</ToggleButton>
+  <ToggleButton value="4" aria-label="4th" className="owner-btn">4th</ToggleButton>
+  <ToggleButton value="4+" aria-label="4+" className="owner-btn">4+</ToggleButton>
             </ToggleButtonGroup>
           )}
         />
@@ -467,7 +467,7 @@ function AgricultureMachineForm() {
   defaultValue=""
   render={({ field }) => (
     <Box sx={{ position: "relative", width: "500px" }}>
-      <TextField
+      <TextField className='Features'
         {...field}
         error={!!errors.Features}
         helperText={errors.Features?.message}
@@ -477,7 +477,6 @@ function AgricultureMachineForm() {
         multiline
         rows={6}
         sx={{
-          width: "100%",
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
               borderColor: errors.Features ? 'red' : '#66bb6a',
@@ -496,12 +495,9 @@ function AgricultureMachineForm() {
       />
       
       {/* Word Counter */}
-      <Typography
+      <Typography className='WordCount'
         variant="caption"
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
           color: wordCount > 1500 ? "red" : "gray",
         }}
       >
@@ -509,13 +505,8 @@ function AgricultureMachineForm() {
       </Typography>
 
       {/* Instruction Line at Bottom */}
-      <Typography
+      <Typography className='FeatureError'
         variant="body2"
-        sx={{
-          marginTop: "0px",
-          marginLeft:"10px", // Spacing between the text field and instruction line
-          color: "gray",
-        }}
       >
       key features of your Machine(e.g. brand, model, age, type)
       </Typography>
@@ -529,7 +520,7 @@ function AgricultureMachineForm() {
   defaultValue=""
   render={({ field }) => (
     <Box sx={{ position: "relative", width: "500px" }}>
-      <TextField
+      <TextField className='Description'
         {...field}
         error={!!errors.Description}
         helperText={errors.Description?.message}
@@ -539,7 +530,6 @@ function AgricultureMachineForm() {
         multiline
         rows={6}
         sx={{
-          width: "100%",
           "& .MuiOutlinedInput-root": {
             "&.Mui-focused fieldset": {
               borderColor: errors.Description? 'red' : '#66bb6a',
@@ -558,12 +548,9 @@ function AgricultureMachineForm() {
       />
       
       {/* Word Counter */}
-      <Typography
+      <Typography className='WordCount'
         variant="caption"
         sx={{
-          position: "absolute",
-          bottom: "0px",
-          right: "0px",
           color: wordCount1 > 2000 ? "red" : "gray",
         }}
       >
@@ -571,13 +558,8 @@ function AgricultureMachineForm() {
       </Typography>
 
       {/* Instruction Line at Bottom */}
-      <Typography
+      <Typography className='DescripText'
         variant="body2"
-        sx={{
-          marginTop: "0px",
-          marginLeft:"10px", // Spacing between the text field and instruction line
-          color: "gray",
-        }}
       >
       Include condition, features and reason for selling
       </Typography>
@@ -591,13 +573,13 @@ function AgricultureMachineForm() {
                      name="setPrice"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Price'
                        {...field}
                        error={!!errors.setPrice}
               helperText={errors.setPrice?.message}
               label="₹ Price *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',"& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{"& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.setPrice ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -608,35 +590,25 @@ function AgricultureMachineForm() {
       marginTop: '4px', // Adjust space between the input and helper text
       marginLeft:"0px" 
     },
-    height: '50px',
-    width:'500px'
+
     }} />
   )}
   />
 
   <br/><br/><br/>
   
-  <Typography variant="h6" sx={{ marginBottom: 2 }}>
+  <Typography variant="h6" className='UploadImages'>
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0}>
+<Grid container spacing={0} rowGap={2} columnGap={0} className="UploadGrid">
   {Array.from({ length: 5}).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box
-            sx={{
-              position: "relative",
-              width: "200px",
-              height: "100%", 
-              overflow: "hidden", 
-              gap:"2px",
-          margin: "0px", 
-              
-            }}
+          <Box className= 'UploadBox'
           >
             <input
               accept="image/*"
@@ -690,11 +662,9 @@ function AgricultureMachineForm() {
 
 
 <br/><br/><br/>
-     <FormControl
-       fullWidth
+     <FormControl className='State'
        error={!!errors.State} // Dynamically apply error styles
        sx={{
-         width:"500px",
          "& .MuiOutlinedInput-root": {
            "&.Mui-focused fieldset": {
              borderColor: errors.State ? 'red' : '#66bb6a', // Red for errors, green for valid
@@ -737,7 +707,7 @@ function AgricultureMachineForm() {
             name="District"
             control={control}
             render={({ field }) => (
-              <Autocomplete
+              <Autocomplete className='District'
                 {...field}
                 options={placeOptions} // Dynamically fetched options
                 getOptionLabel={(option) => option.label || ""}
@@ -747,7 +717,7 @@ function AgricultureMachineForm() {
                 }}
                 onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
                 renderInput={(params) => (
-                  <TextField
+                  <TextField className='District'
                     {...params}
                     label="Enter your town or city *"
                     variant="outlined"
@@ -755,10 +725,6 @@ function AgricultureMachineForm() {
                     disabled={isSubmitting}
                     helperText={errors.District?.message}
                     sx={{
-                      position:"relative",
-                      width: "500px",
-                      marginLeft: "15px",
-                      right:"10px",
                       "& .MuiOutlinedInput-root": {
                         "&.Mui-focused fieldset": {
                           borderColor: errors.District ? "red" : "#66bb6a",
@@ -780,13 +746,13 @@ function AgricultureMachineForm() {
                      name="Address"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='Address'
                        {...field}
                        error={!!errors.Address}
               helperText={errors.Address?.message}
               label="Address *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{display:"relative","& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.Address ? 'red' : '#66bb6a', // Green for correct validation
       }
@@ -794,11 +760,8 @@ function AgricultureMachineForm() {
     "& .MuiFormLabel-root.Mui-focused": {
       color: errors.Address ? 'red' : '#66bb6a', // Green for label color
     }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-      marginLeft:"0px" 
-    },
-    height: '50px',
-    width:'500px'
+    
+    }
     }} />
   )}
   />
@@ -810,32 +773,26 @@ function AgricultureMachineForm() {
                      name="PinCode"
                      control={control}
                      render={({ field }) => (
-                       <TextField
+                       <TextField className='PinCode'
                        {...field}
                        error={!!errors.PinCode}
               helperText={errors.PinCode?.message}
               label="PinCode *"
               disabled={isSubmitting}
-              variant="outlined" sx={{ width: '40ch',display:"relative",right:"8px","& .MuiOutlinedInput-root": {
+              variant="outlined" sx={{ display:"relative","& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: errors.PinCode ? 'red' : '#66bb6a', // Green for correct validation
       }
     },
     "& .MuiFormLabel-root.Mui-focused": {
       color: errors.PinCode ? 'red' : '#66bb6a', // Green for label color
-    }, "& .MuiFormHelperText-root": {
-      marginTop: '4px', // Adjust space between the input and helper text
-      marginLeft:"0px" 
-    },
-    height: '50px',
-    width:'500px',
-    marginRight:"5px"
+    }
     }} />
   )}
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme1}>
-{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit">
+{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit" className='SubmitButt'>
             Post AD
           </Button>)}
           </ThemeProvider>

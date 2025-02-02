@@ -21,7 +21,8 @@ margin: 5%;
 margin-left: 18%;
 justify-content:center;
 align-items: center;
-border: 1px solid black;
+border: 2px solid black;
+border-radius: 30px;
 width: 65%;
 height: 78vh;
 box-sizing:border-box;
@@ -41,6 +42,7 @@ box-sizing: border-box;
 #loginButton{
     position: relative;
     bottom: 30px;
+    border-radius: 30px;
 }
 .ForgetPassword {
   position: relative;
@@ -57,6 +59,7 @@ box-sizing: border-box;
 
 .background {
     background-color: #77DD77;
+    border-radius: 28px;
     width: 100%;
  height: 100%;
  display: flex;
@@ -68,6 +71,16 @@ box-sizing: border-box;
   .large{
     width: 60%; /* Adjust size as needed */
     filter: drop-shadow(0px 45px 10px rgba(0, 0, 0, 0.4));
+  }
+
+  .logomain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 10px;
+    left: 200px;
   }
   .logo2{
     width: 18%;
@@ -99,4 +112,493 @@ box-sizing: border-box;
   filter: blur(35px);
   pointer-events:none;
   transition: filter 0.3s ease;
+}
+
+/*-------------------------------------------------CONVERTING INLINE TO EXTERNAL CSS------------------------------------------------------------------------------*/
+
+.box1 .MuiTextField-root {
+  margin: 1rem;
+}
+
+.LoginEmail1 {
+  width: 40ch;
+  height: 50px;
+}
+
+/* Ensure normal border style */
+.LoginEmail1 .MuiOutlinedInput-root {
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Override default blue focus border */
+.LoginEmail1 .MuiOutlinedInput-root.Mui-focused {
+  border-color: #66bb6a !important;
+}
+
+/* Apply red border if there's an error */
+.LoginEmail1.error .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: red !important;
+}
+
+/* Default green label when focused */
+.LoginEmail1 .MuiInputLabel-root.Mui-focused {
+  color: #66bb6a !important;
+}
+
+/* Red label when there's an error */
+.LoginEmail1.error .MuiInputLabel-root.Mui-focused {
+  color: red !important;
+}
+
+/* Override the default box shadow (which causes the blue effect) */
+.LoginEmail1 .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.3) !important;
+}
+
+/* Remove the default blue outline */
+.LoginEmail1 .MuiOutlinedInput-root.Mui-focused fieldset {
+  outline: none !important;
+}
+
+/* Helper text spacing */
+.LoginEmail1 .MuiFormHelperText-root {
+  margin-top: 4px;
+}
+
+
+/*------------------------------------------------------LOGINPASSWORD---------------------------------------------------------------------------------------------------------------------------------*/
+
+
+.LoginPassword1 {
+  width: 40ch;
+  height: 80px;
+  /* Ensure normal border style */
+}
+
+.LoginPassword1 .MuiOutlinedInput-root {
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Override default blue focus border */
+.LoginPassword1 .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #66bb6a !important; /* Green when focused */
+}
+
+/* Apply red border if there's an error */
+.LoginPassword1.error .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: red !important; /* Red when error exists */
+}
+
+/* Default green label when focused */
+.LoginPassword1 .MuiFormLabel-root.Mui-focused {
+  color: #66bb6a !important;
+}
+
+/* Red label when there's an error */
+.LoginPassword1.error .MuiFormLabel-root.Mui-focused {
+  color: red !important;
+}
+
+/* Override the default box shadow (which causes the blue effect) */
+.LoginPassword1 .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.3) !important;
+}
+
+/* Remove the default blue outline */
+.LoginPassword1 .MuiOutlinedInput-root.Mui-focused fieldset {
+  outline: none !important;
+}
+
+/* Helper text spacing */
+.LoginPassword1 .MuiFormHelperText-root {
+  margin-top: 4px;
+}
+/*------------------------------------------------BUTTONS---------------------------------*/
+
+.ForgetPasswordButton ,.LoginButton{
+  border-radius: 35px;
+}
+.ForgetPasswordButton{
+  position: relative;
+  right: 250px;
+  top: 5px;
+}
+/*------------------------------------------------BOX MODEL 2,3,4,5,6,7------------------------------*/
+.Box2{
+  width: 400px;
+  height: auto;
+  margin: auto;
+  background-color: white;
+  padding: 16px; /* Equivalent to `padding: 3` (3 * 4px = 12px, so 16px is more typical) */
+  border-radius: 8px; /* Equivalent to `borderRadius: 2` (converted from 2 * 4px) */
+  box-shadow: 24px; /* Apply box shadow with the specified depth */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Box3, .Box4{
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: stretch;
+  min-height: 100px;
+}
+
+.Box5 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px; 
+  margin-left: 20px; 
+  margin-right: 20px; 
+  gap: 4px; 
+}
+.Box6{
+  width: 400px;
+  height: auto;
+  margin: auto;
+  background-color: white;
+  padding: 3px;
+  border-radius: 2px;
+  box-shadow: 24px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Box7{
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: stretch;
+  min-height: 200px;
+  width: 400px; 
+}
+.password1 {
+  width: 90%;
+ position: relative;
+ left: 20px; 
+}
+
+.RePassword{
+  width: 90%;
+  position: relative;
+  left:20px;
+}
+.Box8{
+  display: flex;
+  justify-content: center;
+  gap: 2;
+  margin-top: 1px;
+}
+
+
+/*-----------------------------------------RESPONSIVE------------------------------------------------------------------------------------------------------------------------------------------------------*/ 
+
+
+@media only screen and (max-width: 760px){
+    
+  .login{
+width: 98%;
+position: relative;
+right: 17%;
+    }
+    
+    .content{
+width: 90%;
+     }
+
+  
+  .logomain{
+    width: 80%;
+    height: 70%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-right: 20px;
+  }
+
+.logo2{
+  width: 40%;
+  height: 20%;
+  display: flex;
+ position: relative;
+}
+
+.LoginEmail01{
+position: relative;
+left: 18%;
+
+}
+
+.LoginPassword01{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 18%;
+  
+}
+
+.ForgetPasswordButton1{
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  color: #66bb6a; 
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: none;
+  display: inline-flex;  
+  
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+ right: 40%;
+}
+.LoginButton{
+  border-radius: 30px;
+position: relative;
+left: 19%;
+}
+
+.register{
+  font-size: 14px;
+ position: relative;
+ left: 5%;
+}
+
+.Box2{
+  width: 300px;
+  height: auto;
+  margin: auto;
+  background-color: white;
+  padding: 8px; /* Equivalent to `padding: 3` (3 * 4px = 12px, so 16px is more typical) */
+  border-radius: 8px; /* Equivalent to `borderRadius: 2` (converted from 2 * 4px) */
+  box-shadow: 14px; /* Apply box shadow with the specified depth */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ForgetPassEmail02{
+  position: relative;
+  top: 15px;
+}
+
+.Box6{
+  width: 300px;
+  height: auto;
+  margin: auto;
+  background-color: white;
+  padding: 3px;
+  border-radius: 10px;
+  box-shadow: 14px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Box7{
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: stretch;
+  min-height: 200px;
+  position: relative;
+  width: 300px; 
+}
+
+
+.LoginEmail1 ,.LoginPassword1,.background ,.ForgetPasswordButton,.ForgetPassEmail2,.emailOTP{
+  display: none !important;
+}
+}
+
+@media only screen and (min-width:401px) and (max-width:460px){
+
+
+  .LoginEmail01{
+    position: relative;
+    left: 16%;
+    
+    }
+    
+    .LoginPassword01{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 16%;
+      
+    }
+    
+    .ForgetPasswordButton1{
+      background: none;
+      border: none;
+      padding: 6px 12px;
+      color: #66bb6a; 
+      cursor: pointer;
+      font-size: 14px;
+      text-transform: none;
+      display: inline-flex;  
+      
+    }
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+     right: 48%;
+    }
+    .LoginButton{
+      border-radius: 30px;
+    position: relative;
+    left: 15%;
+    }
+    
+    .register{
+      font-size: 14px;
+     position: relative;
+     left: -5%;
+    }
+    
+
+
+  .LoginEmail1 ,.LoginPassword1,.background ,.ForgetPasswordButton,.ForgetPassEmail2,.emailOTP{
+    display: none !important;
+  }
+}
+
+
+@media only screen and (min-width:461px) and (max-width:760px){
+
+          
+    
+    .LoginEmail01{
+    position: relative;
+    left: 14%;
+    
+    }
+    
+    .LoginPassword01{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      left: 14%;
+      
+    }
+    
+    .ForgetPasswordButton1{
+      background: none;
+      border: none;
+      padding: 6px 12px;
+      color: #66bb6a; 
+      cursor: pointer;
+      font-size: 16px;
+      text-transform: none;
+      display: inline-flex;  
+      
+    }
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+     right: 55%;
+    }
+    .LoginButton{
+      border-radius: 30px;
+    position: relative;
+    left: 13%;
+    }
+    
+    .register{
+      font-size: 14px;
+     position: relative;
+left: -10%;
+    }
+    
+    .Box2{
+      width: 300px;
+      height: auto;
+      margin: auto;
+      background-color: white;
+      padding: 8px; /* Equivalent to `padding: 3` (3 * 4px = 12px, so 16px is more typical) */
+      border-radius: 8px; /* Equivalent to `borderRadius: 2` (converted from 2 * 4px) */
+      box-shadow: 14px; /* Apply box shadow with the specified depth */
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .ForgetPassEmail02{
+      position: relative;
+      top: 15px;
+    }
+    
+    .Box6{
+      width: 300px;
+      height: auto;
+      margin: auto;
+      background-color: white;
+      padding: 3px;
+      border-radius: 10px;
+      box-shadow: 14px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .Box7{
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      align-items: stretch;
+      min-height: 200px;
+      position: relative;
+      width: 300px; 
+    }
+    
+    
+
+
+
+  .LoginEmail1 ,.LoginPassword1,.background ,.ForgetPasswordButton,.ForgetPassEmail02 ,.emailOTP2{
+    display: none !important;
+
+}
+
+}
+
+@media only screen and (max-width:1024px) and (min-width:761px){
+
+  .LoginEmail01 ,.LoginPassword01 ,.container ,.ForgetPassEmail02,.emailOTP2,.background{
+    display: none !important;
+  }
+ 
+}
+
+@media only screen and (min-width:1025px){
+  .LoginEmail01 ,.LoginPassword01,.container, .ForgetPassEmail02 ,.emailOTP2{
+    display: none !important;
+  }
+
 }

@@ -154,7 +154,7 @@ bottom: 15px;
   padding-right: 35px;
 }
 
-/*--------------------------------------------------------MOVING SLIDER IMAGES-------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------MOVING SLIDER IMAGES-------------------------*/
 
 .Banner-image1 {
   display: flex;
@@ -187,11 +187,11 @@ bottom: 15px;
 
 .slide-image1 img {
   width: 100vw; /* Force image to fit the viewport width */
-  height: 400px;
+ min-height: 400px;
   object-fit: cover; /* Ensure no empty space */
   display: block;
 }
-/*---------------------------------------------------WRITTINGS-------------------------------------------------------------------*/
+/*---------------------------------------------------WRITTINGS-----------------------------*/
 .writtings {
   position: absolute;
   top: 50%;
@@ -248,7 +248,7 @@ height: 30px !important;
   width: 30px !important;
 height: 30px !important;
 }
-/*---------------------------------------------------CATEGORY IMAGES---------------------------------------------------------------------------*/
+/*---------------------------------------------------CATEGORY IMAGES--------------------------------*/
 .Category-image {
   margin-top: 20px;
   margin-left: 0; /* Adjust margin for mobile */
@@ -293,8 +293,90 @@ text-decoration: none;
 color: black;
 }
 
+/*----------------------------------------------------NAMALVAR--------------------*/
+
+.Namalvar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding: 5px;
+    margin-top: 30px;   
+    margin: 30px auto;
+}
+.Quotes{
+  font-size: 11.5px;
+}
+.namalvarPara{
+  font-size: small;
+  box-sizing: content-box;
+  padding:30px;
+}
+/*----------------------------------MEET THE CREATOR---------------------------------------------*/
+
+.Job-asking{
+ padding: 50px;
+}
+
+/*----------------------------------------------------FOOTER1------------------------------------*/
+.Footer1{
+  width: 100%;
+  background-color: #232f3e;
+  color: white;
+  text-decoration: none;
+  display: flex;
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+    top:50px;
+    bottom: 0px;
+    padding-top:0px;
+    padding-bottom: 60px;
+    height: 35vh;
+}
+.logo1{
+  position: relative;
+  left: 110px;
+  bottom: 60px;
+}
+.logoimg{
+  border-radius: 50px;
+}
+.Name{
+  position: relative;
+  top: 50px;
+}
+.Name h4{
+  position: relative;
+  right: 35px;
+}
+.Name h3{
+  position: relative;
+  right: 15px;
+}
+.social-media {
+  display: flex;            
+  gap: 10px;                
+  align-items: center;
+  position: relative;
+  left: 15px;      
+}
+
+.CopyRight{
+  padding-left: 5px;
+}
+.footLink{
+  font-size: 24px;
+  width: 30px !important;
+height: 30px !important;
+display: flex;
+  justify-content: center;  
+  align-items: center; 
+}
+
 /*-----------------------------------------------------HIDING CONTAINERS-------------------------------------------------------------*/
-.dropdown, .Organic, .Account , .buyy ,.SearchContainerForm ,.Banner-image{
+.dropdown, .Organic, .Account , .buyy ,.SearchContainerForm ,.Banner-image,.Footer{
   display: none;
 }
 
@@ -302,7 +384,7 @@ color: black;
 
 @media only screen and (max-width: 480px) {
 
-.dropdown, .Organic, .Account , .buyy ,.SearchContainerForm ,.Banner-image{
+.dropdown, .Organic, .Account , .buyy ,.SearchContainerForm ,.Banner-image ,.Footer{
     display: none;
 }
 
@@ -338,7 +420,7 @@ color: black;
 
 
   
-  /*-----------------------------------------Tablet Styles (greater than 768px but smaller than 1024px)------------------------------------------- */
+  /*-----------------------------------------Tablet Styles (greater than 768px but smaller than 1024px)---------------------------------------- */
 
   @media only screen and (max-width: 1024px) and (min-width: 769px) {
 
@@ -407,7 +489,7 @@ color: black;
       cursor: pointer;
       margin: 10px auto;
       position: relative;
-    bottom: 5px;
+    top: 8px;
     right: 10px;
     }
   
@@ -514,8 +596,224 @@ color: black;
     padding-right: 35px;
   }
 
-  .dropdown, .Organic, .Account , .buyy,.SearchContainerForm,.Banner-image{
+  .dropdown, .Organic, .Account , .buyy,.SearchContainerForm,.Banner-image ,.Footer{
     display: none;
+}
+
+/*--------------------------------------------------------MOVING SLIDER IMAGES-----------------------------*/
+
+.Banner-image1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 0;
+  width: 100vw; /* Make sure it takes full viewport width */
+  height: 400px;
+  position: relative;
+  overflow: hidden; /* Hide any overflowing content */
+  box-sizing: border-box;
+  bottom: 10px;
+}
+
+.slide-wrapper1 {
+  display: flex;
+  position: relative;
+  width: 100vw; /* Each slide should fit within the viewport */
+  height: 400px;
+  flex-wrap: nowrap;
+  overflow: hidden; /* Prevent any overflow */
+}
+
+.slide-image1 {
+  flex: 0 0 100vw; /* Each image takes the full viewport width */
+  height: 400px;
+  position: relative;
+}
+
+.slide-image1 img {
+  width: 100vw; /* Force image to fit the viewport width */
+  height: 400px;
+  object-fit: cover; /* Ensure no empty space */
+  display: block;
+}
+/*---------------------------------------------------WRITTINGS-------------------------------*/
+.writtings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 100; /* Ensure it's above all other elements */
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  pointer-events:all; /* Avoid blocking interactions with slides */
+  line-height: 8px;
+  width: 400px;
+  font-size:8px;
+}
+
+.writtings h1,
+.writtings h4 {
+  margin: 0;
+}
+
+.BannerButton{
+  width: 100px !important;
+  padding: 8px 16px;
+border-radius: 35px !important;
+height: 35px !important;
+background-color: transparent !important;  /* Makes it transparent */
+  border: 2px solid #66bb6a !important;
+}
+
+.social-icon{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 5px;
+  position: absolute;
+  bottom: 23px;
+  left: 85%;
+  transform: translate(-50%);
+}
+
+.icon-link{
+width: 30px !important;
+height: 30px !important;
+}
+
+.whatsapp a{
+  width: 30px !important;
+height: 30px !important;
+}
+.whatsapp{
+  position: absolute;
+  left: 40px;
+  width: 30px !important;
+height: 30px !important;
+}
+/*---------------------------------------------------CATEGORY IMAGES----------------------------*/
+.Category-image {
+ 
+margin-top: 20px;
+margin-left: 100px;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+row-gap: 45px;
+}
+
+.Agri {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 300px; /* Adjust width as needed */
+  height: 300px;
+  display: flex;
+  justify-content: center; /* Center content inside */
+  align-items: center; /* Center content inside */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  transform-origin: center;
+  overflow: hidden;
+  margin-bottom: 20px; /* Add space between items */
+}
+
+.Agri img{
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  padding-top: 5px;
+  box-sizing: content-box;
+  border-radius: 30px;
+}
+
+.Agri h3{
+  display: flex;
+  justify-content: center;
+position: relative;
+bottom: 5px;
+text-decoration: none;
+color: black;
+}
+
+/*----------------------------------------------------NAMALVAR--------------------*/
+
+.Namalvar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  padding: 50px;
+  margin-top: 30px;   
+  margin: 30px auto;
+}
+.Quotes{
+font-size: large;
+}
+.namalvarPara{
+font-size: medium;
+box-sizing: content-box;
+padding:30px;
+}
+/*----------------------------------MEET THE CREATOR---------------------------------------------*/
+
+.Job-asking{
+padding: 50px;
+}
+
+/*----------------------------------------------------FOOTER1------------------------------------*/
+.Footer1{
+width: 100%;
+background-color: #232f3e;
+color: white;
+text-decoration: none;
+display: flex;
+  justify-content: center; 
+  align-items: center; 
+  position: relative; 
+  top:50px;
+  bottom: 0px;
+  padding-top:0px;
+  padding-bottom: 60px;
+  height: 35vh;
+}
+.logo1{
+position: relative;
+left: 110px;
+bottom: 60px;
+}
+.logoimg{
+border-radius: 50px;
+}
+.Name{
+position: relative;
+top: 50px;
+}
+.Name h4{
+position: relative;
+right: 35px;
+}
+.Name h3{
+position: relative;
+right: 15px;
+}
+.social-media {
+display: flex;            
+gap: 10px;                
+align-items: center;
+position: relative;
+left: 15px;      
+}
+.footLink{
+font-size: 24px;
+width: 30px !important;
+height: 30px !important;
+display: flex;
+justify-content: center;  
+align-items: center; 
 }
 
   }
@@ -528,6 +826,10 @@ color: black;
     }
   
     .Banner-image1{
+      display: none;
+    }
+
+    .Footer1{
       display: none;
     }
   

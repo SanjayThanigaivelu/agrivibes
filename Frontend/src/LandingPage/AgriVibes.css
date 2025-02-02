@@ -6,6 +6,9 @@ body{
     line-height: 1.6;
     margin: 0;  
    overflow-y: scroll; 
+   background-color: #faf7f5
+
+   
 }
 .Full{
     height: 100vh;
@@ -22,7 +25,7 @@ body{
     border-radius: 60px;
     justify-content:center;
     align-items: center;
-background-color:#F5F5F5;
+background-color:#e7e2df;
 overflow: visible;
 }
 
@@ -712,4 +715,9 @@ justify-content: space-evenly;
     position:relative;
     top: 15px;
 }
+.CopyRight{
+  position: relative;
+  right: 65px;
+}
+
 
