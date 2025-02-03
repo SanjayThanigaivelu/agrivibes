@@ -34,7 +34,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
-
+const libraries = ["places"];
 
 const importAll = (requireContext) => {
   const images = {};
@@ -181,7 +181,6 @@ const theme = createTheme({
     setIsOpen(false)
   };
   //---------------------------------------------------LOCATION-----------------------------------------------------------------
-  const libraries = ["places"];
   const [options, setOptions] = useState([]);
   const [isApiLoaded, setIsApiLoaded] = useState(false);
   
@@ -499,7 +498,9 @@ const Icon1=()=>(
 </table>
 
  {/* Entire Box Component (visible only when menuActive is true) */}
+<div className='wrapper'>
  {menuActive && (
+  
         <Box className="menu-container1">
           <div className="MaterialSearch1">
             <Box className="MaterialBox1">
@@ -550,7 +551,10 @@ const Icon1=()=>(
                     <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Logout
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={() => {
+    navigate('/profilee'); 
+    handleClose(); 
+  }}>
                     <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Profile
                   </MenuItem>
@@ -571,9 +575,8 @@ const Icon1=()=>(
           </div>
         </Box>
       )}
-
     </div>
-   
+    </div>
 
     <div className="Banner-image">
     <div className="slide-wrapper">

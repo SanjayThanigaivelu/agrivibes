@@ -31,6 +31,9 @@ import AgricultureIcon from '@mui/icons-material/Agriculture';
 import WorkIcon from '@mui/icons-material/Work';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+
+const libraries = ["places"];
+
 function Sell({ isAuthenticated, setIsAuthenticated }) {
   const { category } = useParams();
   const theme = createTheme({
@@ -130,7 +133,6 @@ function Sell({ isAuthenticated, setIsAuthenticated }) {
         }
       }
 //----------------------------------------------LOCATION CONTAINER----------------------------------------------------------------
-const libraries = ["places"];
 const [options, setOptions] = useState([]);
 const [isApiLoaded, setIsApiLoaded] = useState(false);
     
@@ -397,6 +399,7 @@ const [menuActive, setMenuActive] = useState(false);
 </table>
 
  {/* Entire Box Component (visible only when menuActive is true) */}
+ <div className="wrapper">
  {menuActive && (
         <Box className="menu-container1">
           <div className="MaterialSearch1">
@@ -448,7 +451,10 @@ const [menuActive, setMenuActive] = useState(false);
                     <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Logout
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={() => {
+    navigate('/profilee'); 
+    handleClose(); 
+  }}>
                     <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Profile
                   </MenuItem>
@@ -469,7 +475,7 @@ const [menuActive, setMenuActive] = useState(false);
           </div>
         </Box>
       )}
-
+</div>
     </div>
    
 

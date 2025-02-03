@@ -21,6 +21,10 @@ import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
 import fertilizer1 from '../assets/PhoneScreen/FertilizerTry.jpg'
+import { format, parse, isValid } from "date-fns";
+import { enGB } from "date-fns/locale"; 
+
+const libraries = ["places"];
 function FertilizerForm () {
 
 
@@ -205,7 +209,7 @@ function FertilizerForm () {
               });
               
 //----------------------------YUP VALIDATION SCHEMA-----------------------------------------------------------------------------
-              const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue } = useForm({
+              const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue,trigger } = useForm({
                   resolver: yupResolver(schema),
                   defaultValues: {
                  FertilizerName: '', // Initialize with an empty string or default value
@@ -225,14 +229,17 @@ function FertilizerForm () {
                 const [isSubmitting, setIsSubmitting] = useState(false); 
                 const imagesRef = useRef([]);
 
-                  const handleFileChange = (index, file) => {
-                    const updatedImages = [...images];
-                    updatedImages[index] = file || null; 
-                    setImages(updatedImages); // Update the state
-                    setValue(`Images[${index}]`, file || null); // Inform react-hook-form about the change
-                  };
-    
-    
+                const handleFileChange = (index, file) => {
+                  const updatedImages = [...images];
+                  updatedImages[index] = file || null; // Set to null if no file is selected
+                  setImages(updatedImages); // Update the state
+                
+                  // Inform react-hook-form about the change
+                  setValue(`Images[${index}]`, file || null);
+                
+                  // Manually trigger validation
+                  trigger("Images");
+                };
 //----------------------------------------------------------------------------------------------------------------------------
         
                 const featuresValue = watch("Features", "");
@@ -320,26 +327,25 @@ function FertilizerForm () {
                 }
  //-------------------------------------------------FETCH PLACE---------------------------------------------------------------
               
-               const [placeOptions, setPlaceOptions] = useState([]);
-               const fetchPlaceSuggestions = (input) => {
-                  const service = new window.google.maps.places.AutocompleteService();
-              
-                  service.getPlacePredictions(
-                    { input, types: ["(cities)"] },
-                    (predictions, status) => {
-                      if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
-                        const formattedOptions = predictions.map((prediction) => ({
-                          label: prediction.description, // Display this in the dropdown
-                          value: prediction.place_id,   // Store place ID
-                        }));
-                        setPlaceOptions(formattedOptions); // Update state
-                      } else {
-                        console.error("Failed to fetch place suggestions:", status);
-                      }
-                    }
-                  );
-                };
-        
+        const [placeOptions, setPlaceOptions] = useState([]); // State to store place options
+          
+  const fetchPlaceSuggestions = (input) => {
+    const service = new window.google.maps.places.AutocompleteService();
+    service.getPlacePredictions(
+      { input, types: ["(cities)"] },
+      (predictions, status) => {
+        if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
+          const formattedOptions = predictions.map((prediction) => ({
+            label: prediction.description, // Display this in the dropdown
+            value: prediction.place_id,   // Store place ID
+          }));
+          setPlaceOptions(formattedOptions); // Update state with new options
+        } else {
+          console.error("Failed to fetch place suggestions:", status);
+        }
+      }
+    );
+  };
     
   return (
     <div className='fertilizer-full'>
@@ -409,35 +415,46 @@ function FertilizerForm () {
   )}
   />
 <br/><br/><br/>  
+
 <ThemeProvider theme={theme}>
-  <LocalizationProvider dateAdapter={AdapterDateFns}>
+  <LocalizationProvider dateAdapter={AdapterDateFns} locale={enGB}> 
     <Controller
       name="EfficieantPeriod"
       control={control}
       render={({ field, fieldState }) => {
-        console.log("Field State:", fieldState);  // Debugging field state for errors
         return (
-          <DatePicker className='DatePicker'
+          <DatePicker
+            className="DatePicker"
             {...field}
             label="Efficient period *"
-            inputFormat="MM/dd/yyyy"
-            minDate={new Date()} // Set the minimum date to today
-            maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 3))} // Set maxDate to 3 years in the future
-            value={field.value || null} // Ensure value is a Date object or null
+            inputFormat="dd/MM/yyyy" 
+            mask="__/__/____"
+            minDate={new Date()} 
+            maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 3))}
+            value={
+              field.value && isValid(parse(field.value, "dd/MM/yyyy", new Date())) 
+                ? parse(field.value, "dd/MM/yyyy", new Date()) 
+                : null
+            }
             onChange={(value) => {
-    const formattedDate = value ? value.toISOString().split('T')[0] : null; // Format date as yyyy-MM-dd
-    field.onChange(formattedDate); // Update field value with formatted date
-  }}
+              if (!value || isNaN(value.getTime())) { // Ensure value is valid
+                field.onChange(null);
+                return;
+              }
+              const formattedDate = format(value, "dd/MM/yyyy"); 
+              field.onChange(formattedDate);
+            }}
             renderInput={(params) => (
-              <TextField className='DatePicker'
+              <TextField
+                className="DatePicker"
                 {...params}
-                error={!!fieldState.error} // Set error state to true if there's an error
-                helperText={fieldState.error?.message} // Show error message if there's an error
+                error={!!fieldState.error} 
+                helperText={fieldState.error?.message} 
                 variant="outlined"
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: fieldState.error ? "red" : "black", // Apply red border when there's an error
+                      borderColor: fieldState.error ? "red" : "black",
                     },
                   },
                 }}
@@ -449,8 +466,6 @@ function FertilizerForm () {
     />
   </LocalizationProvider>
 </ThemeProvider>
-
-
         <br/><br/><br/>
 <Controller 
   name="Description"
@@ -537,8 +552,8 @@ function FertilizerForm () {
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0} className='UploadGrid'>
-  {Array.from({ length: 5 }).map((_, index) => (
+<Grid container spacing={0} rowGap={2} columnGap={0} className="UploadGrid">
+  {Array.from({ length: 5}).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
@@ -635,44 +650,45 @@ function FertilizerForm () {
 </FormControl>
 
     <br/><br/><br/>
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={["places"]}>
-      
-      {/* Autocomplete for District */}
-      <Controller
-        name="District"
-        control={control}
-        render={({ field }) => (
-          <Autocomplete className='District'
-            {...field}
-            options={placeOptions} // Dynamically fetched options
-            getOptionLabel={(option) => option.label || ""}
-            value={placeOptions.find((option) => option.label === field.value) || null} // Bind the selected value
-            onInputChange={(event, value) => {
-              if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
-            }}
-            onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
-            renderInput={(params) => (
-              <TextField className='District'
-                {...params}
-                label="Enter your town or city *"
-                variant="outlined"
-                error={!!errors.District}
-                helperText={errors.District?.message}
-                disabled={isSubmitting}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: errors.District ? "red" : "#66bb6a",
-                    },
-                  },
-                  "& .MuiFormLabel-root.Mui-focused": {
-                    color: errors.District ? "red" : "#66bb6a",
-                  },
-                }}
-              />
-            )}
-          />
-        )}
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
+             
+             {/* Autocomplete for District */}
+             <Controller
+               name="District"
+               control={control}
+               render={({ field }) => (
+                 <Autocomplete className='District'
+                   {...field}
+                   options={placeOptions} // Dynamically fetched options
+                   getOptionLabel={(option) => option.label || ""}
+                   value={placeOptions.find((option) => option.label === field.value) || null}
+                   onInputChange={(event, value) => {
+                     if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
+                   }}
+                   onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
+                   renderInput={(params) => (
+                     <TextField className='District'
+                       {...params}
+                       label="Enter your town or city *"
+                       variant="outlined"
+                       error={!!errors.District}
+                       helperText={errors.District?.message}
+                       disabled={isSubmitting}
+                       sx={{
+                         "& .MuiOutlinedInput-root": {
+                           "&.Mui-focused fieldset": {
+                             borderColor: errors.District ? "red" : "#66bb6a",
+                           },
+                         },
+                         "& .MuiFormLabel-root.Mui-focused": {
+                           color: errors.District ? "red" : "#66bb6a",
+                         },
+                       }}
+                     />
+                   )}
+                 />
+               )}
+             
 
       /> 
   </LoadScript>

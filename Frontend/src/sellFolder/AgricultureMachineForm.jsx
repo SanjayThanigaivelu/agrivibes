@@ -21,7 +21,7 @@ import { relative } from 'path-browserify';
 import { ToastContainer, toast } from 'react-toastify';
 import Tractor1 from '../assets/PhoneScreen/Tractor-5.jpg'
 
-
+const libraries = ["places"];
 function AgricultureMachineForm() {
 
  
@@ -31,10 +31,11 @@ function AgricultureMachineForm() {
          const imagesRef = useRef([]);
   const [placeOptions, setPlaceOptions] = useState([]);
   
-  // Define fetchPlaceSuggestions
+ 
+  
+  // Step 2: Function to fetch place suggestions
   const fetchPlaceSuggestions = (input) => {
     const service = new window.google.maps.places.AutocompleteService();
-
     service.getPlacePredictions(
       { input, types: ["(cities)"] },
       (predictions, status) => {
@@ -43,7 +44,7 @@ function AgricultureMachineForm() {
             label: prediction.description, // Display this in the dropdown
             value: prediction.place_id,   // Store place ID
           }));
-          setPlaceOptions(formattedOptions); // Update state
+          setPlaceOptions(formattedOptions); // Update state with new options
         } else {
           console.error("Failed to fetch place suggestions:", status);
         }
@@ -200,7 +201,7 @@ function AgricultureMachineForm() {
         },
       });
 
-      const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue } = useForm({
+      const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue,trigger } = useForm({
           resolver: yupResolver(schema),
           defaultValues: {
          MachineName: '', // Initialize with an empty string or default value
@@ -219,15 +220,20 @@ function AgricultureMachineForm() {
         mode: 'onChange' 
         });
 
-  // Handle file change for each input
-  const handleFileChange = (index, file) => {
-    const updatedImages = [...images];
-    updatedImages[index] = file || null; 
-    setImages(updatedImages); // Update the state
-    setValue(`Images[${index}]`, file || null); // Inform react-hook-form about the change
-  };
+  //---------------------------------------------------------IMAGE HANDLING------------------------------------------------------------------
 
-
+  
+    const handleFileChange = (index, file) => {
+      const updatedImages = [...images];
+      updatedImages[index] = file || null; // Set to null if no file is selected
+      setImages(updatedImages); // Update the state
+    
+      // Inform react-hook-form about the change
+      setValue(`Images[${index}]`, file || null);
+    
+      // Manually trigger validation
+      trigger("Images");
+    };
 
         const featuresValue = watch("Features", "");
 
@@ -238,7 +244,7 @@ function AgricultureMachineForm() {
         const wordCount1=featuresValue1.trim().split(/\s+/).filter(Boolean).length;
         const { category } = useParams();
 
-
+//---------------------------------------------DATABASE STORING-----------------------------------------------------------------------------------------------------------------
 
         function AllData(formData) {
           setIsSubmitting(true);
@@ -700,47 +706,46 @@ function AgricultureMachineForm() {
      </FormControl>
      
     <br/><br/><br/>
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={["places"]}>
-      
-          {/* Autocomplete for District */}
-          <Controller
-            name="District"
-            control={control}
-            render={({ field }) => (
-              <Autocomplete className='District'
-                {...field}
-                options={placeOptions} // Dynamically fetched options
-                getOptionLabel={(option) => option.label || ""}
-                value={placeOptions.find((option) => option.label === field.value) || null} // Bind the selected value
-                onInputChange={(event, value) => {
-                  if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
-                }}
-                onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
-                renderInput={(params) => (
-                  <TextField className='District'
-                    {...params}
-                    label="Enter your town or city *"
-                    variant="outlined"
-                    error={!!errors.District}
-                    disabled={isSubmitting}
-                    helperText={errors.District?.message}
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "&.Mui-focused fieldset": {
-                          borderColor: errors.District ? "red" : "#66bb6a",
-                        },
-                      },
-                      "& .MuiFormLabel-root.Mui-focused": {
-                        color: errors.District ? "red" : "#66bb6a",
-                      },
-                    }}
-                  />
-                )}
-              />
-            )}
-  
-          /> 
-      </LoadScript>
+   <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
+         
+         {/* Autocomplete for District */}
+         <Controller
+           name="District"
+           control={control}
+           render={({ field }) => (
+             <Autocomplete className='District'
+               {...field}
+               options={placeOptions} // Dynamically fetched options
+               getOptionLabel={(option) => option.label || ""}
+               value={placeOptions.find((option) => option.label === field.value) || null}
+               onInputChange={(event, value) => {
+                 if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
+               }}
+               onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
+               renderInput={(params) => (
+                 <TextField className='District'
+                   {...params}
+                   label="Enter your town or city *"
+                   variant="outlined"
+                   error={!!errors.District}
+                   helperText={errors.District?.message}
+                   disabled={isSubmitting}
+                   sx={{
+                     "& .MuiOutlinedInput-root": {
+                       "&.Mui-focused fieldset": {
+                         borderColor: errors.District ? "red" : "#66bb6a",
+                       },
+                     },
+                     "& .MuiFormLabel-root.Mui-focused": {
+                       color: errors.District ? "red" : "#66bb6a",
+                     },
+                   }}
+                 />
+               )}
+             />
+           )}
+         />
+       </LoadScript>
       <br/><br/>
     <Controller
                      name="Address"

@@ -7,6 +7,12 @@ body{
     margin: 0;  
    overflow-y: scroll; 
 }
+.conditionRendering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
 
 .gridContainer{
     display:grid;
@@ -22,17 +28,21 @@ body{
 padding: 10px;
 height: 400px;
 cursor: pointer;
+border-radius: 30px;
 }
 .imageOnly{
     width: 100%;
     height: 250px;
     object-fit: cover;
+    border-radius: 30px;
 
 }
 .Pagination{
     margin-top: 20px;
     text-align: center;
 }
+
+
 .pagebutt{
     margin: 5px;
     padding: 10px,15px;
@@ -49,7 +59,7 @@ cursor: pointer;
 
 
 
-/*-----------------------------------------------------------SECOND DETAILED PAGE-------------------------------------------------------------------*/
+/*----------------------------------------------------------- DETAILED PAGE STARTS-------------------------------------------------------------------*/
 .DetailedBying{
     padding: 50px;
     padding-top: 50px;
@@ -177,4 +187,525 @@ h1, h2,h3,h4, p {
     width: 100px;
     height: 100px;
     cursor: pointer;
+}
+
+/*----------------------------------------------------MEDIA QUERY-------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width:500px){
+
+    .conditionRendering{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+.NoResultImage ,h4{
+   font-size: 9.5px !important;
+}
+
+.gridContainer{
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    gap:10px;
+    margin-top: 10%;
+    padding: 15px;
+}
+
+    .imageContainer{
+        border:1px solid black;
+    padding: 10px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 30px;
+    }
+
+    .imageOnly{
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 30px;
+    
+    }
+    /*----------------------------------------------------DETAILED BUYING PAGE MEDIA QUERY----------------------------------------------------------------------------------------*/
+
+    .DetailedBying{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        padding-top: 25px;
+        position: relative;
+    }
+    .imageInsideContainer{
+        display: flex;
+        align-items:center;
+    justify-content: center;
+        border: 1px solid black;
+        width: 50%;
+        height: 25%;
+        gap: 10px;
+       
+
+    }
+
+    .detailImage{
+        width: 350px;
+        height:300px;
+        object-fit: cover;
+        margin: 0px,20px;
+        position: relative;
+        left: 10px;   
+    }
+
+    .prevbutt{
+        position: relative;
+        left: 1000px;
+    }
+    .nextbutt{
+        position: relative;
+        left: 100px;   
+    }
+
+    .mainWritting{
+        border: 1px solid black;
+        border-radius: 15px;
+        width: 50%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 2px;
+        margin-top: 10%;
+        background-color: whitesmoke;
+        padding: 5px;
+        top: 50px;
+    }
+    .mainWritting h1{
+        font-size: 12px;
+    }
+    .mainWritting h2{
+font-size: 10px;
+    }
+    .mainWritting p{
+        font-size: 8px;
+    }
+
+    .contact{
+        border: 1px solid black;
+        border-radius: 15px;
+        width: 50%;
+        height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color:whitesmoke;
+    padding: 5px;
+    left: 2px;
+    top: 80px;
+
+    }
+    .contact h4{
+      font-size:13px;
+    }
+
+    .address{
+        border: 1px solid black;
+        border-radius: 15px;
+        width: 50%;
+        height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color:whitesmoke;
+    padding: 5px;
+    left: 2px;
+    top: 100px;
+    }
+
+    .previwContianer{
+        display: grid;
+        grid-template-columns: repeat(5,minmax(50px, 1fr));
+        gap: 3px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        position: relative;
+     bottom: 350px;
+    margin-right: 9%;
+    }
+    .previwImage{
+        width: 60px;
+        height: 50px;
+        cursor: pointer;
+    }
+    
+    .fullInfo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      padding: 15px;
+    position: relative;
+    top: 50px;
+       
+    }
+    .extraInfor{
+     border: 1px solid black;
+     border-radius: 15px;
+     width: 55%;
+     height: auto;
+     background-color: whitesmoke;
+     box-sizing: content-box;
+    padding: 20px;
+    }
+
+}
+
+
+
+
+@media only screen and (min-width:501px) and (max-width:784px){
+
+    .conditionRendering{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+.NoResultImage ,h4{
+   font-size: 12px !important;
+}
+
+.gridContainer{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:10px;
+    margin-top: 10%;
+    padding: 15px;
+}
+
+.imageContainer{
+    border:1px solid black;
+padding: 10px;
+height: 350px;
+cursor: pointer;
+border-radius: 30px;
+}
+
+.imageOnly{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 30px;
+
+}
+/*------------------------------------------------DETAILED PAGE STARTS---------------------------------------------------------------------------------------------------------------------*/
+
+.DetailedBying{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    padding-top: 35px;
+    position: relative;
+}
+.imageInsideContainer{
+    display: flex;
+    align-items:center;
+justify-content: center;
+    border: 1px solid black;
+    width: 70%;
+    height: 45%;
+    gap: 10px;
+   
+
+}
+
+.detailImage{
+    width: 480px;
+    height:400px;
+    object-fit: cover;
+    margin: 0px,20px;
+    position: relative;
+    left: 10px;   
+}
+
+
+.mainWritting{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 2px;
+    margin-top: 10%;
+    background-color: whitesmoke;
+    padding: 5px;
+    top: 80px;
+}
+.mainWritting h1{
+    font-size: 15px;
+}
+.mainWritting h2{
+font-size: 13px;
+}
+.mainWritting p{
+    font-size: 11px;
+}
+
+.contact{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 60%;
+    height: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+background-color:whitesmoke;
+padding: 5px;
+left: 2px;
+top: 100px;
+
+}
+.contact h4{
+  font-size:15px;
+}
+
+.address{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 60%;
+    height: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+background-color:whitesmoke;
+padding: 5px;
+left: 2px;
+top: 120px;
+}
+
+.previwContianer{
+    display: grid;
+    grid-template-columns: repeat(5,minmax(60px, 1fr));
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    position: relative;
+ bottom: 350px;
+margin-right: 9%;
+}
+.previwImage{
+    width: 80px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.fullInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  padding: 15px;
+position: relative;
+top: 70px;
+   
+}
+.extraInfor{
+ border: 1px solid black;
+ border-radius: 15px;
+ width: 75%;
+ height: auto;
+ background-color: whitesmoke;
+ box-sizing: content-box;
+padding: 20px;
+}
+
+
+
+
+
+
+}
+
+@media only screen and (min-width:785px) and (max-width:1024px){
+
+ .conditionRendering{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+.NoResultImage ,h4{
+   font-size: 15px !important;
+}
+
+.gridContainer{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:10px;
+    margin-top: 10%;
+    padding: 15px;
+}
+
+.imageContainer{
+    border:1px solid black;
+padding: 10px;
+height: 350px;
+cursor: pointer;
+border-radius: 30px;
+}
+
+.imageOnly{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 30px;
+
+}
+
+/*-------------------------------------------------------DETAILED IMAGE0-------------------------------------------------------------------------------------------*/
+
+.DetailedBying{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    padding-top: 35px;
+    position: relative;
+}
+.imageInsideContainer{
+    display: flex;
+    align-items:center;
+justify-content: center;
+    border: 1px solid black;
+    width: 90%;
+    height: 65%;
+    gap: 10px;
+   
+
+}
+
+.detailImage{
+    width: 680px;
+    height:500px;
+    object-fit: cover;
+    margin: 0px,20px;
+    position: relative;
+    left: 10px;   
+}
+
+
+.mainWritting{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 2px;
+    margin-top: 10%;
+    background-color: whitesmoke;
+    padding: 5px;
+    top: 120px;
+}
+.mainWritting h1{
+    font-size: 16px;
+}
+.mainWritting h2{
+font-size: 15px;
+}
+.mainWritting p{
+    font-size: 14px;
+}
+
+.contact{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 70%;
+    height: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+background-color:whitesmoke;
+padding: 5px;
+left: 2px;
+top: 140px;
+
+}
+.contact h4{
+  font-size:17px;
+}
+
+.address{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 70%;
+    height: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+background-color:whitesmoke;
+padding: 5px;
+left: 2px;
+top: 160px;
+}
+
+.previwContianer{
+    display: grid;
+    grid-template-columns: repeat(5,minmax(70px, 1fr));
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    position: relative;
+ bottom: 350px;
+margin-right: 9%;
+}
+.previwImage{
+    width: 110px;
+    height: 90px;
+    cursor: pointer;
+}
+
+.fullInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  padding: 15px;
+position: relative;
+top: 80px;
+   
+}
+.extraInfor{
+ border: 1px solid black;
+ border-radius: 15px;
+ width: 95%;
+ height: auto;
+ background-color: whitesmoke;
+ box-sizing: content-box;
+padding: 20px;
+}
+.empty, .empty1 {
+   display: none;
+}
 }

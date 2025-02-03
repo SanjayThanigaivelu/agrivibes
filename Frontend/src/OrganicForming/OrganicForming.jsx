@@ -36,7 +36,7 @@ import TheFormer from '../assets/former image.jpg'
 import { ToastContainer, toast } from 'react-toastify';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-
+const libraries = ["places"];
 function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     const theme = createTheme({
         typography: {
@@ -167,7 +167,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
         setIsOpen(false)
       };
       //---------------------------------------------------LOCATION-----------------------------------------------------------------
-      const libraries = ["places"];
+      
       const [options, setOptions] = useState([]);
       const [isApiLoaded, setIsApiLoaded] = useState(false);
       
@@ -487,6 +487,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
 </table>
 
  {/* Entire Box Component (visible only when menuActive is true) */}
+ <div className='wrapper'>
  {menuActive && (
         <Box className="menu-container1">
           <div className="MaterialSearch1">
@@ -538,7 +539,10 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
                     <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Logout
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={() => {
+    navigate('/profilee'); 
+    handleClose(); 
+  }}>
                     <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Profile
                   </MenuItem>
@@ -559,7 +563,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
           </div>
         </Box>
       )}
-
+</div>
     </div>
    
 

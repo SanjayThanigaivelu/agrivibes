@@ -548,7 +548,7 @@ right: 22%;
 
 .UploadGrid{
   position: relative;
-  right: 18%;
+  right: 18% !important;
 }
 
 

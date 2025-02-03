@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 @media only screen and (max-width: 768px) {
-  
+  .body{
+    font-family: 'Lora', serif;
+    line-height: 1.6;
+    margin: 0;  
+   overflow-y: scroll; 
+   background-color: #faf7f5
+  }
   .Ribbon {
     display: flex;
     flex-direction: column; 
@@ -11,7 +18,7 @@
     margin: 4vh auto; 
     border: 2px solid whitesmoke;
     border-radius: 60px;
-    background-color: #F5F5F5;
+    background-color:#e7e2df;
     font-size: medium;
     height: 8vh;
   }
@@ -48,7 +55,7 @@
     cursor: pointer;
     margin: 10px auto;
     position: relative;
-  bottom: 5px;
+top: 4px;
   right: 10px;
   }
 
@@ -56,6 +63,11 @@
     font-size: 36px;
   }
 
+  .wrapper{
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
 
 .menu-container1 {
   display: flex;
@@ -70,7 +82,6 @@
     max-width: 500px;
     z-index: 1;
     position: absolute; /* Positioned relative to its nearest parent */
-    top: 80px; /* Appears below the hamburger icon */
 }
 
 .MaterialBox1{
@@ -331,6 +342,7 @@ color: black;
     position: relative; 
     top:50px;
     bottom: 0px;
+    left: 5px;
     padding-top:0px;
     padding-bottom: 60px;
     height: 35vh;
@@ -350,6 +362,7 @@ color: black;
 .Name h4{
   position: relative;
   right: 35px;
+  font-size:17px !important;
 }
 .Name h3{
   position: relative;
@@ -364,7 +377,9 @@ color: black;
 }
 
 .CopyRight{
-  padding-left: 5px;
+  padding-left: 16px;
+
+  font-size: 14px !important;
 }
 .footLink{
   font-size: 24px;
@@ -436,7 +451,7 @@ display: flex;
     margin: 4vh auto; /* Centered with vertical margin */
     border: 2px solid whitesmoke;
     border-radius: 60px;
-    background-color: #F5F5F5;
+    background-color: #e7e2df;
     font-size: medium;
     height: 8vh;
   }
@@ -467,17 +482,7 @@ display: flex;
 
 /*----------------------------------------------------HAMBURGER---------------*/
    
-   .hamburger-icon {
-    display: block; /* Show hamburger icon only on mobile */
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    margin: 10px auto;
-    position: relative;
-  bottom: 5px;
-  right: 10px;
-  }
-
+   
   .hamburger-icon svg {
     font-size: 36px;
   }
@@ -489,14 +494,18 @@ display: flex;
       cursor: pointer;
       margin: 10px auto;
       position: relative;
-    top: 8px;
+    top: 13px;
     right: 10px;
     }
   
     .hamburger-icon svg {
       font-size: 36px;
     }
-
+.wrapper{
+  position: relative;
+  width: 100%;
+  height: auto;
+}
 
 
   .menu-container1 {
@@ -512,7 +521,7 @@ display: flex;
       max-width: 500px;
       z-index: 1;
       position: absolute; /* Positioned relative to its nearest parent */
-      top: 80px; /* Appears below the hamburger icon */
+      left: 20%;
   }
   
   .MaterialBox1{
@@ -821,10 +830,10 @@ align-items: center;
   /* Desktop Styles (1024px and above) */
   @media only screen and (min-width: 1025px) {
     /* Hide hamburger icon on desktop */
-    .hamburger-icon {
+    .hamburger-icon ,.wrapper{
       display: none;
     }
-  
+ 
     .Banner-image1{
       display: none;
     }

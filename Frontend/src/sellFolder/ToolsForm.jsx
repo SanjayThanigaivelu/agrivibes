@@ -18,6 +18,10 @@ import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
 import tractor1 from '../assets/PhoneScreen/Tractor-5.jpg'
+
+const libraries = ["places"];
+
+
 function ToolsForm() {
     
   const[CircularProgress1,setCircularProgress]=useState(false);
@@ -170,7 +174,7 @@ function ToolsForm() {
             },
           });
     //----------------------------------------------YUP RESOLVER-------------------------------------------------------------------------
-          const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue } = useForm({
+          const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue,trigger } = useForm({
               resolver: yupResolver(schema),
               defaultValues: {
              MachineName: '', // Initialize with an empty string or default value
@@ -192,12 +196,18 @@ function ToolsForm() {
             const [images, setImages] = useState(Array(5).fill(null));
             const [isSubmitting, setIsSubmitting] = useState(false); 
             const imagesRef = useRef([]);
-              const handleFileChange = (index, file) => {
-                const updatedImages = [...images];
-                updatedImages[index] = file || null; // Set to null if no file is selected
-                setImages(updatedImages); // Update the state
-                setValue(`Images[${index}]`, file || null); // Inform react-hook-form about the change
-              };
+
+            const handleFileChange = (index, file) => {
+              const updatedImages = [...images];
+              updatedImages[index] = file || null; // Set to null if no file is selected
+              setImages(updatedImages); // Update the state
+            
+              // Inform react-hook-form about the change
+              setValue(`Images[${index}]`, file || null);
+            
+              // Manually trigger validation
+              trigger("Images");
+            };
  //---------------------------------------------------------------------------------------------------------------------------------------
     
     
@@ -290,26 +300,26 @@ function ToolsForm() {
             }
             //-------------------------------------------AUTOCOMPLETE OF DISTRICT AND STATE------------------------------------------------------   
                            
-                                                    const [placeOptions, setPlaceOptions] = useState([]);
-                                                    const fetchPlaceSuggestions = (input) => {
-                                                       const service = new window.google.maps.places.AutocompleteService();
-                                                   
-                                                       service.getPlacePredictions(
-                                                         { input, types: ["(cities)"] },
-                                                         (predictions, status) => {
-                                                           if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
-                                                             const formattedOptions = predictions.map((prediction) => ({
-                                                               label: prediction.description, // Display this in the dropdown
-                                                               value: prediction.place_id,   // Store place ID
-                                                             }));
-                                                             setPlaceOptions(formattedOptions); // Update state
-                                                           } else {
-                                                             console.error("Failed to fetch place suggestions:", status);
-                                                           }
-                                                         }
-                                                       );
-                                                     };
-                                             
+                                                   const [placeOptions, setPlaceOptions] = useState([]); // State to store place options
+                                                                                     
+                                                                                     // Step 2: Function to fetch place suggestions
+                                                                                     const fetchPlaceSuggestions = (input) => {
+                                                                                       const service = new window.google.maps.places.AutocompleteService();
+                                                                                       service.getPlacePredictions(
+                                                                                         { input, types: ["(cities)"] },
+                                                                                         (predictions, status) => {
+                                                                                           if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
+                                                                                             const formattedOptions = predictions.map((prediction) => ({
+                                                                                               label: prediction.description, // Display this in the dropdown
+                                                                                               value: prediction.place_id,   // Store place ID
+                                                                                             }));
+                                                                                             setPlaceOptions(formattedOptions); // Update state with new options
+                                                                                           } else {
+                                                                                             console.error("Failed to fetch place suggestions:", status);
+                                                                                           }
+                                                                                         }
+                                                                                       );
+                                                                                     };
     
     
   return (
@@ -581,7 +591,7 @@ function ToolsForm() {
   />
 
   <br/><br/><br/>
-  <Typography variant="h6" className='UploadImages'>
+  <Typography variant="h6" className="UploadImages">
   Upload 5 Images
 </Typography>
 
@@ -592,23 +602,13 @@ function ToolsForm() {
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box 
-            sx={{
-              position: "relative",
-              width: "200px",
-              height: "100%", 
-              overflow: "hidden", 
-              gap:"2px",
-          margin: "0px", 
-              
-            }}
-          >
+          <Box className="UploadBox">
             <input
               accept="image/*"
               type="file"
               style={{ display: "none" }}
               id={`file-input-${index}`}
-              ref={(el) => (imagesRef.current[index] = el)} 
+              ref={(el) => (imagesRef.current[index] = el)}
               onChange={(e) => handleFileChange(index, e.target.files[0])}
               disabled={isSubmitting}
             />
@@ -618,7 +618,7 @@ function ToolsForm() {
                 component="span"
                 sx={{
                   width: "100%",
-                  height: "100%", // Button should take the full height
+                  height: "100%",
                   padding: 0,
                   textAlign: "center",
                   display: "flex",
@@ -626,9 +626,8 @@ function ToolsForm() {
                   alignItems: "center",
                   border: "1px solid black",
                   borderRadius: 0,
-                  backgroundColor: "white", // Maintain background color consistency
+                  backgroundColor: "white",
                   overflow: "hidden",
-                  
                 }}
               >
                 {images[index] ? (
@@ -647,7 +646,7 @@ function ToolsForm() {
   ))}
 </Grid>
 
-{errors.Images && (
+{errors.Images && !isSubmitting && (
   <Typography color="error" sx={{ marginTop: 2 }}>
     {errors.Images.message || "Please upload valid images."}
   </Typography>
@@ -691,7 +690,7 @@ function ToolsForm() {
     </FormControl>
 
     <br/><br/><br/>
-<LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={["places"]}>
+<LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
       
       {/* Autocomplete for District */}
       <Controller
@@ -702,7 +701,7 @@ function ToolsForm() {
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
-            value={placeOptions.find((option) => option.label === field.value) || null} // Bind the selected value
+            value={placeOptions.find((option) => option.label === field.value) || null}
             onInputChange={(event, value) => {
               if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
             }}
@@ -729,9 +728,8 @@ function ToolsForm() {
             )}
           />
         )}
-
-      /> 
-  </LoadScript>
+      />
+    </LoadScript>
   <br/><br/>
 
     <Controller

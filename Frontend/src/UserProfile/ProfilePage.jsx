@@ -44,6 +44,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Noresult from '../assets/No-result.jpeg'
 import { ToastContainer, toast } from 'react-toastify';
 
+import MenuIcon from '@mui/icons-material/Menu'; 
+import AgricultureIcon from '@mui/icons-material/Agriculture';
+import WorkIcon from '@mui/icons-material/Work';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
+
+const libraries = ["places"];
+
 function Profile({ isAuthenticated, setIsAuthenticated }) {
  
   const[userData1,setUserData]=useState(null);
@@ -228,7 +238,7 @@ async function Logout1(navigate) {
 
 
 //----------------------------------------------LOCATION CONTAINER----------------------------------------------------------------
-const libraries = ["places"];
+
 
 
 const { inputValue, setInputValue, isInputValid, setIsInputValid,searchValue,setSearchValue } = useContext(LocationContext); //Usage of Context API
@@ -644,19 +654,25 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
    })
  : "N/A";
 
+
+ const [menuActive, setMenuActive] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuActive(!menuActive);
+  };
+
+
     return (
     <div className='Full'>
 
 <div className="Ribbon">
-    <table className="container">
-      <thead>
-      <tr className="row1">
-         
-      <td><Link to ="/"><img className="logo"  src={logo} alt="AgriVibes Logo" /></Link></td>
-          <td style={{    
-       width: "500px",
-      padding: "15px"}}> 
-         <LoadScript
+  <table className="container">
+    <thead>
+    <tr className="row1">
+        <td><Link to ="/"><img className="logo"  src={logo} alt="AgriVibes Logo" /></Link></td>
+
+        <td className='WholeLocationContainer'> 
+  <LoadScript
   googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
   libraries={libraries}
   onLoad={() => setIsApiLoaded(true)}
@@ -692,45 +708,20 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
     }}
     renderInput={(params) => (
       <TextField
-        {...params}
-        label="Enter Location"
-        variant="outlined"
-        sx={{
-          "& .MuiOutlinedInput-root": {
-            height: "50px", // Adjust height of input
-            borderRadius:"25px",
-            "& fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Red border if invalid
-              borderWidth: isInputValid ? "2px" : "3px", // Thicker border if invalid
-            },
-            "&:hover fieldset": {
-              borderColor: "#6B8E23",
-              borderWidth: "1.5px",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Keep red if focused and invalid
-              borderWidth: "3px",
-            },
-          },
-          "& .MuiInputBase-input": {
-            padding: "8px",
-          },
-          "& .MuiInputLabel-root": {
-            color: isInputValid ? "#000" : "red", // Red label if invalid
-            "&.Mui-focused": {
-              color: isInputValid ? "#6B8E23" : "red", // Green or red when focused
-            },
-          },
-        }}
-      />
+  {...params}
+  label="Enter Location"
+  variant="outlined"
+  className={`LocationText ${isInputValid ? 'valid' : 'invalid'}`}
+/>
     )}
   />
 </LoadScript>
 
-      </td>
-       
-  
-      <td className="MaterialSearch">
+    </td>
+
+    
+     
+    <td className="MaterialSearch">
   <Box className="MaterialBox">
     {/* Input field */}
     <form className="SearchContainerForm" onSubmit={handleSearchSubmit}>
@@ -754,14 +745,13 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
 
         <td className='Organic'><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
         <td className= 'Account'>
-        <Box  
-     className='AccountBox'>
+        <Box className='AccountBox'>
       {/* Account Link */}
     
 
       <ThemeProvider theme={theme}>
       
-      <Button
+      <Button 
         onClick={handleClick}
         variant="text"
     className='button-type1'
@@ -812,7 +802,7 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
         </MenuItem>
         <MenuItem
   onClick={() => {
-    navigate('/profilee'); // Navigate to the profile page
+    navigate('/profilee'); 
     handleClose(); // Close the dropdown
   }}
 >
@@ -830,14 +820,104 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
       </Menu>
       </ThemeProvider>
     </Box>
-   </td>
+    </td>
 
+        <td className='buyy'><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
+   
+    {/* Mobile Menu */}
+    <td className="hamburger-icon">
+  <IconButton
+    className="hamburger-button"
+    onClick={handleMenuToggle} // Toggle the mobile menu visibility
+  >
+    <MenuIcon />
+  </IconButton>
+</td>
+    </tr>
+    </thead>
+</table>
+
+ {/* Entire Box Component (visible only when menuActive is true) */}
+<div className='wrapper'>
+ {menuActive && (
   
-          <td><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
-      </tr>
-      </thead>
-  </table>
-      </div>
+        <Box className="menu-container1">
+          <div className="MaterialSearch1">
+            <Box className="MaterialBox1">
+              <form className="SearchContainerForm1" onSubmit={handleSearchSubmit}>
+                <TextField
+                  className="MaterialText1"
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  label="Find Tractor and more..."
+                  variant="outlined"
+                />
+                <IconButton type="submit" className="search-icon-button1">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Box>
+          </div>
+
+          <div className="Organic1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/organicForming' className='button-type2' startIcon={<AgricultureIcon/>}>Organic</Button>
+          </ThemeProvider>
+          </div>
+
+          <div className="Account1">
+            <Box className="AccountBox1">
+              <ThemeProvider theme={theme}>
+                <Button onClick={handleClick} variant="text" className="button-type2" startIcon={<AccountCircleIcon/>}>
+                  Account
+                </Button>
+                </ThemeProvider>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                  transformOrigin={{ vertical: "top", horizontal: "left" }}
+                  PaperProps={{
+                    style: { marginTop: "15px", width: "300px" },
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      console.log("MenuItem clicked");
+                      handleClose();
+                    }}
+                  >
+                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Logout
+                  </MenuItem>
+                  <MenuItem onClick={() => {
+    navigate('/profilee'); 
+    handleClose(); 
+  }}>
+                    <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <HelpOutlineIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Help
+                  </MenuItem>
+                </Menu>
+             
+            </Box>
+          </div>
+
+          <div className="buyy1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/buy' onClick={handleNavigate} startIcon={<ShoppingCartIcon />} // Material-UI icon
+      className="sell-button1">Buy</Button>
+      </ThemeProvider>
+          </div>
+        </Box>
+      )}
+    </div>
+    </div>
+
 
       <div className={style.profileFullLogic}>
       {loading ? (
@@ -859,13 +939,14 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
     <h4>User verified with</h4>
     <MailIcon fontSize="small" style={{ color: 'black' }} className={style.mailIcon} />
     <br /><br />
-    <div style={{ display: "flex", gap: "16px", marginTop: "16px" }}>
+    <div  className={style.ButtGroup}>
     <ThemeProvider theme={theme1}>
       <Button 
         variant="contained" 
         color="primary" 
         onClick={editProfile} 
         startIcon={<EditIcon />}
+        className='EditButt'
       >
         Edit Profile
       </Button>
@@ -873,10 +954,12 @@ axios.post('http://localhost:5000/profile/ProductDelete',{
 
     <ThemeProvider theme={theme1}>
 <Button 
+className='DeleteButt'
 variant='contained'
 color="error"
 onClick={OpenDeleteBox}
 startIcon={<ReportProblemIcon/>}
+
 >
   Delete Profile
 </Button>
@@ -927,7 +1010,7 @@ startIcon={<ReportProblemIcon/>}
         return (
           <Grid item xs={12} sm={6} md={3} key={item._id}>
             <Card>
-              <CardMedia
+              <CardMedia className='Image'
                 component="img"
                 height="250"
                 image={imageUrl} // Use sanitized URL
@@ -974,25 +1057,18 @@ startIcon={<ReportProblemIcon/>}
       <Modal open={open1} onClose={editProfileClose} BackdropProps={{
           onClick: (e) => e.stopPropagation() // Override the default close behavior for clicks on the backdrop
         }}>
-        <Box
+        <Box className={style.Box1}
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
             bgcolor: 'background.paper',
-            boxShadow: 24,
             p: 4,
-            borderRadius: 2,
           }}
         >
           <Typography variant="h6" component="h2"  sx={{ 
     display: 'flex', 
-    justifyContent: 'center',  // Center horizontally
-    alignItems: 'center',      // Center vertically (if needed)
-    textAlign: 'center',       // Center the text itself
-    mt: 2                      // Optional: Top margin
+    justifyContent: 'center',  
+    alignItems: 'center',      
+    textAlign: 'center',       
+    mt: 2                      
   }}>
             Edit Profile
           </Typography>
@@ -1002,14 +1078,14 @@ startIcon={<ReportProblemIcon/>}
               name="NewName"
               control={control}
               render={({ field }) => (
-                <TextField
+                <TextField 
                   {...field}
                   fullWidth
                   label="New Name"
                   error={Boolean(errors.NewName)}
                   helperText={errors.NewName?.message}
                    variant="standard"
-                   sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+                   sx={{height:'120px',"& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.NewName ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -1035,14 +1111,14 @@ startIcon={<ReportProblemIcon/>}
               name="NewPhoneNumber"
               control={control}
               render={({ field }) => (
-                <TextField
+                <TextField 
                   {...field}
                   fullWidth
                   label="New Phone Number"
                   error={Boolean(errors.NewPhoneNumber)}
                   helperText={errors.NewPhoneNumber?.message}
                   variant="standard"
-                   sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+                   sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.NewPhoneNumber ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -1069,14 +1145,14 @@ startIcon={<ReportProblemIcon/>}
               name="NewEmail"
               control={control}
               render={({ field }) => (
-                <TextField
+                <TextField 
                   {...field}
                   fullWidth
                   label="New Email"
                   error={Boolean(errors.NewEmail)}
                   helperText={errors.NewEmail?.message}
                   variant='standard'
-                  sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+                  sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors.NewEmail ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -1119,17 +1195,10 @@ startIcon={<ReportProblemIcon/>}
       <Modal open={open2} onClose={closeProfile2} BackdropProps={{
           onClick: (e) => e.stopPropagation() // Override the default close behavior for clicks on the backdrop
         }}>
-        <Box
+        <Box className= {style.Box2}
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
             bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
+            p: 4, 
           }}
         >
           <Typography variant="h6" component="h2" sx={{ 
@@ -1149,14 +1218,14 @@ startIcon={<ReportProblemIcon/>}
               control={control1}
               rules={{ required: true }}
               render={({ field }) => (
-                <TextField
+                <TextField className='EnterOTP'
                   {...field}
                   fullWidth
                   label="Enter OTP"
                   error={Boolean(errors1.OTP)}
                   helperText={errors1.OTP?.message}
                   variant="standard"
-                   sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+                   sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors1.OTP ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -1192,10 +1261,10 @@ startIcon={<ReportProblemIcon/>}
 <ThemeProvider theme={theme2}>
   <Box 
     sx={{ 
-      display: 'flex',       // Use flexbox
-      justifyContent: 'space-between', // Add spacing between buttons
-      gap: '16px',           // Space between buttons (adjust as needed)
-      mt: 2                  // Optional: Add margin-top for spacing from other elements
+      display: 'flex',      
+      justifyContent: 'space-between', 
+      gap: '16px',          
+      mt: 2                  
     }}
   >
      {otpLoading ? (<CircularProgress/>): (<Button
@@ -1205,6 +1274,7 @@ startIcon={<ReportProblemIcon/>}
       onClick={GenerateOTP}
       disabled={otpbutt}
       startIcon={<KeyIcon />}
+      size='small'
     >
       Generate OTP
     </Button>)}
@@ -1215,6 +1285,7 @@ startIcon={<ReportProblemIcon/>}
       color="primary"
       fullWidth
       startIcon={<FingerprintOutlinedIcon/>}
+      size='small'
     >
       Confirm OTP
     </Button>
@@ -1235,17 +1306,10 @@ startIcon={<ReportProblemIcon/>}
 <Modal open={open3} onClose={closeDeleteBox} BackdropProps={{
           onClick: (e) => e.stopPropagation() // Override the default close behavior for clicks on the backdrop
         }}>
-        <Box
+        <Box className={style.Box3}
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
             bgcolor: 'background.paper',
-            boxShadow: 24,
             p: 4,
-            borderRadius: 2,
           }}
         >
           <Typography variant="h6" component="h2" sx={{ 
@@ -1265,14 +1329,14 @@ startIcon={<ReportProblemIcon/>}
                       name="EmailDelete"
                       control={control2}
                       render={({ field }) => (
-                        <TextField
+                        <TextField className='DeleteEmail'
                           {...field} 
                           error={!!errors2.EmailDelete}
                           helperText={errors2.EmailDelete?.message}
                           label="Email"
                           variant="standard"
-                          
-                          sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+                          fullWidth
+                          sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
                 color: errors2.EmailDelete ?'#FF0000':'#66bb6a',
               },
               '& .MuiInput-underline:after': {
@@ -1293,18 +1357,21 @@ startIcon={<ReportProblemIcon/>}
                       )}  
                     />
 
+                    <br/>
+
 <Controller
           name="Password"
           control={control2}
           render={({ field }) => (
-            <TextField
+            <TextField className='Password'
               {...field} 
               error={!!errors2.Password}
               helperText={errors2.Password?.message}
               label="Password"
               type={showPass ? 'text' : 'password'}
               variant="standard"
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors2.Password?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -1338,20 +1405,21 @@ startIcon={<ReportProblemIcon/>}
             />
           )}
         />
-
+<br/>
           {/* Confirm Password Field */}
           <Controller
           name="RePassword"
           control={control2}
           render={({ field }) => (
-            <TextField
+            <TextField className='Repassword'
               {...field} 
               error={!!errors2.RePassword}
               helperText={errors2.RePassword?.message}
               label="Confirm Password"
               type={showPassword ? 'text' : 'password'} // Toggle the type based on visibility state
               variant="standard"
-              sx={{ width: '40ch', height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              fullWidth
+              sx={{ height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
     color: errors2.RePassword?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -1444,6 +1512,20 @@ startIcon={<ReportProblemIcon/>}
           </table>
         </div>
 
+
+<div className='Footer1'>
+ <div className='logo1'>
+ <Link to ="/" className="footLink1"><img className="logoimg"  src={logo} alt="AgriVibes Logo" /></Link>
+    </div>
+<div className='Name'>
+  <h3>AgriVibes Public Ltd.</h3>
+  <h4>You Grow, we Sell... | Est:2025</h4>
+  <p className='CopyRight'>Copyright © 2025 - All right reserved</p>
+  <span className='social-media'><Link to='https://www.instagram.com/sanjay_thanigaivelu/' className="footLink insta"><FontAwesomeIcon icon={faInstagram} /></Link>  <Link to='https://linkedin.com/in/sanjay-thanigaive07' className="footLink linkdin"><FontAwesomeIcon icon={faLinkedin} />  </Link><Link to='https://github.com/SanjayThanigaivelu' className="footLink git"><FontAwesomeIcon icon={faGithub}/></Link></span>
+</div>
+
+
+    </div>
     </div>
   )
 }

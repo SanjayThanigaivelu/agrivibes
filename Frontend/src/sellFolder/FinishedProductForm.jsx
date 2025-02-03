@@ -21,6 +21,11 @@ import { LoadScript } from "@react-google-maps/api";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
 import fruits from '../assets/PhoneScreen/Fruits&Veg.jpg'
+import { format, parse, isValid } from "date-fns";
+import { enGB } from "date-fns/locale"; 
+
+const libraries = ["places"];
+
 function FinishedProductForm() {
 
   const[CircularProgress1,setCircularProgress]=useState(false);
@@ -84,39 +89,35 @@ function FinishedProductForm() {
 PackedOn: yup
   .date()
   .required("PackedOn date is required.")
-  .typeError("PackedOn must be a valid date.") // Ensures a valid date format
+  .typeError("PackedOn must be a valid date.") 
   .test(
     "withinLast3Years",
-    "PackedOn date must be within the last 3 years but not today or a future date.",
+    "PackedOn date must be within the last 3 years but not a future date.",
     (value) => {
-      if (!value) return false; // If no value, fail the test
-
+      if (!value) return false;
       const threeYearsAgo = new Date();
-      threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3); // Date 3 years ago
+      threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
       const today = new Date();
-      today.setHours(0, 0, 0, 0); // Normalize to midnight to avoid time-based comparisons
-
-      // Check if the date is within the past 3 years and is before today
-      return value > threeYearsAgo && value < today;
+      today.setHours(0, 0, 0, 0);
+      return value >= threeYearsAgo && value <= today; // ✅ Fix: Allow today
     }
   ),
 
-  ExpiryDate: yup
-  .date()
-  .required("Expiry date is required.")
-  .typeError("Expiry date must be a valid date.") // Ensures the input is a valid date
-  .test(
-    "validRange",
-    "Expiry date must be between today and the next 3 years.",
-    (value) => {
-      if (!value) return false; // Fail if no value is provided
-      const today = new Date();
-      const threeYearsFromNow = new Date();
-      threeYearsFromNow.setFullYear(today.getFullYear() + 3);
-      return value >= today && value <= threeYearsFromNow; // Ensure the date is within range
-    }
-  ),
-
+ ExpiryDate:yup
+                .date()
+                .required("Expiry Date  is required.")  // Ensure the field is required
+                .typeError("Expiry Date must be a valid date.")  // Ensure the field is a valid date
+                .test(
+                  "validRange",
+                  "Expiry Date must be between today and the next 3 years.",
+                  (value) => {
+                    if (!value) return false;  // Fail if no value is provided
+                    const today = new Date();
+                    const threeYearsFromNow = new Date();
+                    threeYearsFromNow.setFullYear(today.getFullYear() + 3);
+                    return value >= today && value <= threeYearsFromNow;  // Ensure the date is within range
+                  }
+                ),
     Description:yup
     .string()
     .required("Description is required")
@@ -228,7 +229,7 @@ Images: yup
       });
       
 //--------------------------------------------------YUP SCHEMA--------------------------------------------------------------------------------
-      const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue } = useForm({
+      const { handleSubmit,watch, control, formState: { errors },getValues,reset,setValue,trigger } = useForm({
           resolver: yupResolver(schema),
           defaultValues: {
         NameOfProduct: '', // Initialize with an empty string or default value
@@ -252,12 +253,17 @@ Images: yup
   const [isSubmitting, setIsSubmitting] = useState(false); 
   const imagesRef = useRef([]);
 
-          const handleFileChange = (index, file) => {
-            const updatedImages = [...images];
-            updatedImages[index] = file || null; // Set to null if no file is selected
-            setImages(updatedImages); // Update the state
-            setValue(`Images[${index}]`, file || null); // Inform react-hook-form about the change
-          };
+  const handleFileChange = (index, file) => {
+    const updatedImages = [...images];
+    updatedImages[index] = file || null; // Set to null if no file is selected
+    setImages(updatedImages); // Update the state
+  
+    // Inform react-hook-form about the change
+    setValue(`Images[${index}]`, file || null);
+  
+    // Manually trigger validation
+    trigger("Images");
+  };
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -272,38 +278,39 @@ Images: yup
 
 //-----------------------------------------------------DATABASE STORING---------------------------------------------------------------------
 
-        function AllData(formData) {
-          setIsSubmitting(true);
-          setCircularProgress(true);
-          const formDataToSend = new FormData();
-        
-          // Append each form data, including images
-          for (const key in formData) {
-            if (key === "Images") {
-              // Append files from the Images array
-              formData.Images.forEach((file, index) => {
-                formDataToSend.append("Images", file);
-              });
-            } else {
-              formDataToSend.append(key, formData[key]);
-            }
-          }
-        
-          formDataToSend.append("category", category); // Add category separately if needed
-        
-        
-          // Send the FormData using Axios
-          axios.post("http://localhost:5000/sell/upload-product", formDataToSend, {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "multipart/form-data", // Important for file upload
-            },
-          })
-          .then((response) => {
-            console.log("Product uploaded successfully:", response.data);
-            toast("Product uploaded successfully!");
-            setCircularProgress(false);
-            setIsSubmitting(false)
+function AllData(formData) {
+  console.log("Reached the Function :", formData)
+  setIsSubmitting(true);
+  setCircularProgress(true);
+  const formDataToSend = new FormData();
+
+  // Append each form data, including images
+  for (const key in formData) {
+    if (key === "Images") {
+      // Append files from the Images array
+      formData.Images.forEach((file, index) => {
+        formDataToSend.append("Images", file);
+      });
+    } else {
+      formDataToSend.append(key, formData[key]);
+    }
+  }
+
+  formDataToSend.append("category", category); // Add category separately if needed
+
+
+  // Send the FormData using Axios
+  axios.post("http://localhost:5000/sell/upload-product", formDataToSend, {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "multipart/form-data", // Important for file upload
+    },
+  })
+  .then((response) => {
+    console.log("Product uploaded successfully:", response.data);
+    toast("Product uploaded successfully!");
+    setCircularProgress(false);
+    setIsSubmitting(false)
             reset({
              NameOfProduct: '', // Initialize with an empty string or default value
         WeightinKg: '',
@@ -320,11 +327,14 @@ Images: yup
             imagesRef.current.forEach((input) => {
               input.value = ""; // Manually clear each image input field
             });
-            setImages(Array(5).fill(null));
-          })
-          .catch((error) => {
-            console.error("Error uploading product:", error.response?.data || error.message);
-            toast("Error uploading product. Please try again.");
+          imagesRef.current.forEach((input) => {
+                       input.value = ""; // Manually clear each image input field
+                     });
+                     setImages(Array(5).fill(null));
+                   })
+                   .catch((error) => {
+                     console.error("Error uploading product:", error.response?.data || error.message);
+                     toast("Error uploading product. Please try again.");
             reset({
               NameOfProduct: '', // Initialize with an empty string or default value
             WeightinKg: '',
@@ -346,29 +356,31 @@ Images: yup
             setImages(Array(5).fill(null));
           });
         }
+
+
+      
 //-------------------------------------------------FETCH PLACE-----------------------------------------------------------------
                         
-                         const [placeOptions, setPlaceOptions] = useState([]);
-                         const fetchPlaceSuggestions = (input) => {
-                            const service = new window.google.maps.places.AutocompleteService();
-                        
-                            service.getPlacePredictions(
-                              { input, types: ["(cities)"] },
-                              (predictions, status) => {
-                                if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
-                                  const formattedOptions = predictions.map((prediction) => ({
-                                    label: prediction.description, // Display this in the dropdown
-                                    value: prediction.place_id,   // Store place ID
-                                  }));
-                                  setPlaceOptions(formattedOptions); // Update state
-                                } else {
-                                  console.error("Failed to fetch place suggestions:", status);
-                                }
-                              }
-                            );
-                          };
-                  
-              
+const [placeOptions, setPlaceOptions] = useState([]); // State to store place options
+
+// Step 2: Function to fetch place suggestions
+const fetchPlaceSuggestions = (input) => {
+  const service = new window.google.maps.places.AutocompleteService();
+  service.getPlacePredictions(
+    { input, types: ["(cities)"] },
+    (predictions, status) => {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
+        const formattedOptions = predictions.map((prediction) => ({
+          label: prediction.description, // Display this in the dropdown
+          value: prediction.place_id,   // Store place ID
+        }));
+        setPlaceOptions(formattedOptions); // Update state with new options
+      } else {
+        console.error("Failed to fetch place suggestions:", status);
+      }
+    }
+  );
+};
         
   return (
     <div className='FinishedProcut'>
@@ -438,111 +450,96 @@ Images: yup
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme}>
-  <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <Controller
-      name="PackedOn"
-      control={control}
-      render={({ field, fieldState }) => (
-        <DatePicker className='DatePicker'
-          {...field}
-          label="Packed On *"
-          disableFuture
-          inputFormat="MM/dd/yyyy"
-          minDate={new Date(new Date().setFullYear(new Date().getFullYear() - 3))}
-          value={field.value || null} // Ensure value is a Date object or null
-          onChange={(value) => {
-    const formattedDate = value ? value.toISOString().split('T')[0] : null; // Format date as yyyy-MM-dd
-    field.onChange(formattedDate); // Update field value with formatted date
-  }}
-          renderInput={(params) => (
-            <TextField className='DatePicker'
-              {...params}
-              error={fieldState?.isTouched && !!fieldState?.error} // Error only if touched and invalid
-              helperText={fieldState?.isTouched && fieldState?.error?.message} // Helper text only if touched
-              disabled={isSubmitting}
-              variant="outlined"
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: fieldState?.isTouched && fieldState?.error ? "red" : "black", // Default border
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: fieldState?.error ? "red" : "black", // Hover state, red on error
-                  },
-                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: fieldState?.isTouched && fieldState?.error ? "red" : "#66bb6a", // Green if valid, red if invalid
-                  },
-                },
-                "& .MuiFormLabel-root": {
-                  "&.Mui-focused": {
-                    color: fieldState?.isTouched && fieldState?.error ? "red" : "#66bb6a", // Red if error
-                  },
-                },
-                "& .MuiFormHelperText-root": {
-                  marginTop: "4px",
-                  marginLeft:"0px"
-                }
-              }}
-            />
-          )}
+  <LocalizationProvider dateAdapter={AdapterDateFns} locale={enGB}>
+  <Controller
+  name="PackedOn"
+  control={control}
+  render={({ field, fieldState }) => (
+    <DatePicker
+      className="DatePicker"
+      {...field}
+      label="Packed On *"
+      disableFuture
+      inputFormat="dd/MM/yyyy"
+      mask="__/__/____"
+      minDate={new Date(new Date().setFullYear(new Date().getFullYear() - 3))}
+      value={
+        field.value && isValid(new Date(field.value)) 
+          ? new Date(field.value) 
+          : null
+      }
+      onChange={(value) => {
+        if (!value || isNaN(value.getTime())) {
+          field.onChange(null);
+          return;
+        }
+        field.onChange(value); 
+      }}
+      renderInput={(params) => (
+        <TextField
+          className="DatePicker"
+          {...params}
+          error={fieldState?.isTouched && !!fieldState?.error}
+          helperText={fieldState?.isTouched && fieldState?.error?.message}
+          disabled={isSubmitting}
+          variant="outlined"
         />
       )}
     />
+  )}
+/>
   </LocalizationProvider>
 </ThemeProvider>
   <br/><br/><br/>
-  <ThemeProvider theme={theme}>
-  <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <Controller
-      name="ExpiryDate"
-      control={control}
-      render={({ field, fieldState }) => (
-        <DatePicker className='DatePicker'
-          {...field}
-          label="Expires On *"
-          inputFormat="MM/dd/yyyy"
-          minDate={new Date()} // Set the minimum date to today
-          maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 3))} // Set maxDate to 3 years in the future
-          value={field.value || null} // Ensure value is a Date object or null
-          onChange={(value) => {
-    const formattedDate = value ? value.toISOString().split('T')[0] : null; // Format date as yyyy-MM-dd
-    field.onChange(formattedDate); // Update field value with formatted date
-  }}
-          renderInput={(params) => (
-            <TextField className='DatePicker'
-              {...params}
-              error={fieldState?.isTouched && !!fieldState?.error} // Error only if touched and invalid
-              helperText={fieldState?.isTouched && fieldState?.error?.message} // Helper text only if touched
-              disabled={isSubmitting}
-              variant="outlined"
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: fieldState?.isTouched && fieldState?.error ? "red" : "black", // Default border
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: fieldState?.error ? "red" : "black", // Hover state, red on error
-                  },
-                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: fieldState?.isTouched && fieldState?.error ? "red" : "#66bb6a", // Green if valid, red if invalid
-                  },
-                },
-                "& .MuiFormLabel-root": {
-                  "&.Mui-focused": {
-                    color: fieldState?.isTouched && fieldState?.error ? "red" : "#66bb6a", // Red if error
-                  },
-                },
-                "& .MuiFormHelperText-root": {
-                  marginTop: "4px",
-                  marginLeft:"0px",
-                }
-              }}
-            />
-          )}
-        />
-      )}
-    />
-  </LocalizationProvider>
+ <ThemeProvider theme={theme}>
+   <LocalizationProvider dateAdapter={AdapterDateFns} locale={enGB}> 
+     <Controller
+       name="ExpiryDate"
+       control={control}
+       render={({ field, fieldState }) => {
+         return (
+           <DatePicker
+             className="DatePicker"
+             {...field}
+             label="Expiry Date*"
+             inputFormat="dd/MM/yyyy" 
+             mask="__/__/____"
+             minDate={new Date()} 
+             maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 3))}
+             value={
+               field.value && isValid(parse(field.value, "dd/MM/yyyy", new Date())) 
+                 ? parse(field.value, "dd/MM/yyyy", new Date()) 
+                 : null
+             }
+             onChange={(value) => {
+               if (!value || isNaN(value.getTime())) { // Ensure value is valid
+                 field.onChange(null);
+                 return;
+               }
+               const formattedDate = format(value, "dd/MM/yyyy"); 
+               field.onChange(formattedDate);
+             }}
+             renderInput={(params) => (
+               <TextField
+                 className="DatePicker"
+                 {...params}
+                 error={!!fieldState.error} 
+                 helperText={fieldState.error?.message} 
+                 variant="outlined"
+                 sx={{
+                   "& .MuiOutlinedInput-root": {
+                     "& .MuiOutlinedInput-notchedOutline": {
+                       borderColor: fieldState.error ? "red" : "black",
+                     },
+                   },
+                 }}
+               />
+             )}
+           />
+         );
+       }}
+     />
+   </LocalizationProvider>
 </ThemeProvider>
         <br/><br/><br/>
 
@@ -629,24 +626,24 @@ Images: yup
   />
 
   <br/><br/><br/>
-  <Typography variant="h6" className='UploadImages'>
+  <Typography variant="h6" className="UploadImages">
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0} className='UploadGrid'>
+<Grid container spacing={0} rowGap={2} columnGap={0} className="UploadGrid">
   {Array.from({ length: 5 }).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box className= 'UploadBox'>
+          <Box className="UploadBox">
             <input
               accept="image/*"
               type="file"
               style={{ display: "none" }}
               id={`file-input-${index}`}
-              ref={(el) => (imagesRef.current[index] = el)} 
+              ref={(el) => (imagesRef.current[index] = el)}
               onChange={(e) => handleFileChange(index, e.target.files[0])}
               disabled={isSubmitting}
             />
@@ -656,7 +653,7 @@ Images: yup
                 component="span"
                 sx={{
                   width: "100%",
-                  height: "100%", // Button should take the full height
+                  height: "100%",
                   padding: 0,
                   textAlign: "center",
                   display: "flex",
@@ -664,9 +661,8 @@ Images: yup
                   alignItems: "center",
                   border: "1px solid black",
                   borderRadius: 0,
-                  backgroundColor: "white", // Maintain background color consistency
+                  backgroundColor: "white",
                   overflow: "hidden",
-                  
                 }}
               >
                 {images[index] ? (
@@ -685,7 +681,7 @@ Images: yup
   ))}
 </Grid>
 
-{errors.Images && (
+{errors.Images && !isSubmitting && (
   <Typography color="error" sx={{ marginTop: 2 }}>
     {errors.Images.message || "Please upload valid images."}
   </Typography>
@@ -729,7 +725,7 @@ Images: yup
     </FormControl>
 
     <br/><br/><br/>
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={["places"]}>
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
       
       {/* Autocomplete for District */}
       <Controller
@@ -740,7 +736,7 @@ Images: yup
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
-            value={placeOptions.find((option) => option.label === field.value) || null} // Bind the selected value
+            value={placeOptions.find((option) => option.label === field.value) || null}
             onInputChange={(event, value) => {
               if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
             }}
@@ -767,9 +763,8 @@ Images: yup
             )}
           />
         )}
-
-      /> 
-  </LoadScript>
+      />
+    </LoadScript>
   <br/><br/>
 
     <Controller

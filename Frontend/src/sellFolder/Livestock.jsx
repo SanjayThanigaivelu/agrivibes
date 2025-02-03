@@ -18,7 +18,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
 import cow1 from '../assets/PhoneScreen/MobileRes-cow1.jpg'
 
-
+const libraries = ["places"];
 function Livestock() {
   const[CircularProgress1,setCircularProgress]=useState(false);
     
@@ -66,7 +66,7 @@ function Livestock() {
               .string()
               .required("Please Enter the Cattle Type")
               .matches(
-                  /^[a-zA-Z]+$/,
+                  /^[a-zA-Z ]+$/,
                   "Cattle Type can only contain alphabets, and spaces."
                 )
                 .max(35, "Cattle Type must be at most 35 characters."),
@@ -177,7 +177,7 @@ function Livestock() {
                },
              });
        
-             const { handleSubmit,watch, control, formState: { errors},getValues,reset,setValue } = useForm({
+             const { handleSubmit,watch, control, formState: { errors},getValues,reset,setValue,trigger } = useForm({
                  resolver: yupResolver(schema),
                  defaultValues: {
                     CattleType: '', // Initialize with an empty string or default value
@@ -202,12 +202,17 @@ function Livestock() {
       const [isSubmitting, setIsSubmitting] = useState(false);
       const imagesRef = useRef([]);
                
-          const handleFileChange = (index, file) => {
-            const updatedImages = [...images];
-            updatedImages[index] = file || null; // Set to null if no file is selected
-            setImages(updatedImages); // Update the state
-            setValue(`Images[${index}]`, file || null); // Inform react-hook-form about the change
-          };
+      const handleFileChange = (index, file) => {
+        const updatedImages = [...images];
+        updatedImages[index] = file || null; // Set to null if no file is selected
+        setImages(updatedImages); // Update the state
+      
+        // Inform react-hook-form about the change
+        setValue(`Images[${index}]`, file || null);
+      
+        // Manually trigger validation
+        trigger("Images");
+      };
       //-------------------------------------------------------------------------------------------------------------------
       const [Vacinatedd,setVacinated]=useState(true); 
       const vaccinatedValue = watch('Vaccinated');
@@ -303,27 +308,27 @@ function Livestock() {
         }
  //-------------------------------------------AUTOCOMPLETE OF DISTRICT AND STATE------------------------------------------------------   
        
-                                const [placeOptions, setPlaceOptions] = useState([]);
-                                const fetchPlaceSuggestions = (input) => {
-                                   const service = new window.google.maps.places.AutocompleteService();
-                               
-                                   service.getPlacePredictions(
-                                     { input, types: ["(cities)"] },
-                                     (predictions, status) => {
-                                       if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
-                                         const formattedOptions = predictions.map((prediction) => ({
-                                           label: prediction.description, // Display this in the dropdown
-                                           value: prediction.place_id,   // Store place ID
-                                         }));
-                                         setPlaceOptions(formattedOptions); // Update state
-                                       } else {
-                                         console.error("Failed to fetch place suggestions:", status);
-                                       }
-                                     }
-                                   );
-                                 };
-                         
-                     
+                                    const [placeOptions, setPlaceOptions] = useState([]); // State to store place options
+                                                                 
+                                                                 // Step 2: Function to fetch place suggestions
+                                                                 const fetchPlaceSuggestions = (input) => {
+                                                                   const service = new window.google.maps.places.AutocompleteService();
+                                                                   service.getPlacePredictions(
+                                                                     { input, types: ["(cities)"] },
+                                                                     (predictions, status) => {
+                                                                       if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
+                                                                         const formattedOptions = predictions.map((prediction) => ({
+                                                                           label: prediction.description, // Display this in the dropdown
+                                                                           value: prediction.place_id,   // Store place ID
+                                                                         }));
+                                                                         setPlaceOptions(formattedOptions); // Update state with new options
+                                                                       } else {
+                                                                         console.error("Failed to fetch place suggestions:", status);
+                                                                       }
+                                                                     }
+                                                                   );
+                                                                 };
+                                                              
 
   return (
     <div className='liveStack-full'>
@@ -424,7 +429,7 @@ function Livestock() {
         Health Condition of LiveStock *
       </Typography>
        <Controller
-              name="HealthCondition1"
+              name="HealthCondition"
               control={control}
               defaultValue=""
               disabled={isSubmitting}
@@ -445,7 +450,7 @@ function Livestock() {
                 >
                   <ToggleButton value="Very Good" aria-label="Very Good" className="owner-btn1">Very Good</ToggleButton>
                   <ToggleButton value="Good" aria-label="Good" className="owner-btn1">Good</ToggleButton>
-                  <ToggleButton value="Average" aria-label="Average" className="owner-btn1">Avg</ToggleButton>
+                  <ToggleButton value="Avg" aria-label="Average" className="owner-btn1">Avg</ToggleButton>
                   <ToggleButton value="Bad" aria-label="Bad" className="owner-btn1">Bad</ToggleButton>
                 </ToggleButtonGroup>
               )}
@@ -646,25 +651,24 @@ function Livestock() {
                 )}
                 />
                 <br/><br/><br/>
-  <Typography variant="h6" className='UploadImages'>
+                <Typography variant="h6" className="UploadImages">
   Upload 5 Images
 </Typography>
 
-<Grid container spacing={0} rowGap={2} columnGap={0} className='UploadGrid"'>
+<Grid container spacing={0} rowGap={2} columnGap={0} className="UploadGrid">
   {Array.from({ length: 5 }).map((_, index) => (
     <Grid item xs={12} sm={6} md={4} lg={2.5} key={index} sx={{ height: "100px", overflow: "hidden" }}>
       <Controller
         name={`Images[${index}]`}
         control={control}
         render={({ field }) => (
-          <Box className= 'UploadBox'
-          >
+          <Box className="UploadBox">
             <input
               accept="image/*"
               type="file"
               style={{ display: "none" }}
               id={`file-input-${index}`}
-              ref={(el) => (imagesRef.current[index] = el)} 
+              ref={(el) => (imagesRef.current[index] = el)}
               onChange={(e) => handleFileChange(index, e.target.files[0])}
               disabled={isSubmitting}
             />
@@ -674,7 +678,7 @@ function Livestock() {
                 component="span"
                 sx={{
                   width: "100%",
-                  height: "100%", // Button should take the full height
+                  height: "100%",
                   padding: 0,
                   textAlign: "center",
                   display: "flex",
@@ -682,9 +686,8 @@ function Livestock() {
                   alignItems: "center",
                   border: "1px solid black",
                   borderRadius: 0,
-                  backgroundColor: "white", // Maintain background color consistency
+                  backgroundColor: "white",
                   overflow: "hidden",
-                  
                 }}
               >
                 {images[index] ? (
@@ -703,11 +706,12 @@ function Livestock() {
   ))}
 </Grid>
 
-{errors.Images && (
+{errors.Images && !isSubmitting && (
   <Typography color="error" sx={{ marginTop: 2 }}>
     {errors.Images.message || "Please upload valid images."}
   </Typography>
 )}
+
 <br/><br/><br/>
      <FormControl className='State'
        error={!!errors.State} // Dynamically apply error styles
@@ -748,24 +752,24 @@ function Livestock() {
      
     <br/><br/><br/>
 
-<LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={["places"]}>
+<LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY} libraries={libraries}>
       
       {/* Autocomplete for District */}
       <Controller
-        name="District1"
+        name="District"
         control={control}
         render={({ field }) => (
-          <Autocomplete className='District1'
+          <Autocomplete className='District'
             {...field}
             options={placeOptions} // Dynamically fetched options
             getOptionLabel={(option) => option.label || ""}
-            value={placeOptions.find((option) => option.label === field.value) || null} 
+            value={placeOptions.find((option) => option.label === field.value) || null}
             onInputChange={(event, value) => {
-              if (value) fetchPlaceSuggestions(value); 
+              if (value) fetchPlaceSuggestions(value); // Fetch suggestions when user types
             }}
             onChange={(_, value) => field.onChange(value?.label || "")} // Update the field value with the label
             renderInput={(params) => (
-              <TextField className='District1'
+              <TextField className='District'
                 {...params}
                 label="Enter your town or city *"
                 variant="outlined"
@@ -773,7 +777,6 @@ function Livestock() {
                 helperText={errors.District?.message}
                 disabled={isSubmitting}
                 sx={{
-                  position:"relative",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: errors.District ? "red" : "#66bb6a",
@@ -787,9 +790,8 @@ function Livestock() {
             )}
           />
         )}
-
-      /> 
-  </LoadScript>
+      />
+    </LoadScript>
   <br/><br/>
     <Controller
                      name="Address"

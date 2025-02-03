@@ -28,8 +28,14 @@ import style from './buyingStyle.module.css'
 import { error } from 'ajv/dist/vocabularies/applicator/dependencies.js';
 import { ToastContainer, toast } from 'react-toastify';
 
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AgricultureIcon from '@mui/icons-material/Agriculture';
+import WorkIcon from '@mui/icons-material/Work';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+const libraries = ["places"];
 function InitialBuy({ isAuthenticated, setIsAuthenticated }) {
 
     const navigate = useNavigate();
@@ -109,119 +115,112 @@ function InitialBuy({ isAuthenticated, setIsAuthenticated }) {
 
 
 const [anchorEl, setAnchorEl] = useState(null);
-            
-              // Open menu on click
-              const handleClick = (event) => {
-                setAnchorEl(event.currentTarget);
-              };
-            
-              // Close menu
-              const handleClose = () => {
-                setAnchorEl(null);
-              };
-            
-              const open = Boolean(anchorEl);
-          
-              const [anchorEl1, setAnchorEl1] = useState(null);
-            const [language, setLanguage] = useState('');
-            const [isOpen, setIsOpen] = useState(false);
-          
-          
-            const handleClick1 = (event) => {
-              setAnchorEl1(event.currentTarget);
-              setIsOpen((prevState) => !prevState);
-            };
-          
-            const handleClose1 = (lang) => {
-              setLanguage(lang);
-              setAnchorEl1(null);
-              setIsOpen(false)
-            };
-          
-      
-          async function Logout() {
-            try {
-              const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
-              console.log("Logout response:", response.data);
-          
-              setIsAuthenticated(false);
-              console.log("IsAuthenticated set to:", false);
-          
-              //navigate("/"); // Redirect to the login pagep
-            } catch (error) {
-              console.error("Logout failed:", error);
-            }
-          }
+        
+// Open menu on click
+const handleClick = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+
+// Close menu
+const handleClose = () => {
+  setAnchorEl(null);
+};
+
+const open = Boolean(anchorEl);
+
+const [anchorEl1, setAnchorEl1] = useState(null);
+const [language, setLanguage] = useState('');
+const [isOpen, setIsOpen] = useState(false);
+
+
+const handleClick1 = (event) => {
+setAnchorEl1(event.currentTarget);
+setIsOpen((prevState) => !prevState);
+};
+
+const handleClose1 = (lang) => {
+setLanguage(lang);
+setAnchorEl1(null);
+setIsOpen(false)
+};
+
+
+async function Logout() {
+try {
+const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+console.log("Logout response:", response.data);
+
+setIsAuthenticated(false);
+console.log("IsAuthenticated set to:", false);
+
+//navigate("/"); // Redirect to the login pagep
+} catch (error) {
+console.error("Logout failed:", error);
+}
+}
 //----------------------------------------------LOCATION CONTAINER----------------------------------------------------------------
-const libraries = ["places"];
- const [options, setOptions] = useState([]);
-  const [isApiLoaded, setIsApiLoaded] = useState(false);
-        
-          const { inputValue, setInputValue, isInputValid, setIsInputValid,searchValue,setSearchValue } = useContext(LocationContext); //Usage of Context API
-        
-          const fetchPlaceSuggestions = (input) => {
-            if (window.google && window.google.maps) {
-              const service = new window.google.maps.places.AutocompleteService();
-        
-              service.getPlacePredictions(
-                {
-                  input,
-                  componentRestrictions: { country: "in" },
-                  types: ["(cities)"],
-                },
-                (predictions, status) => {
-                  if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-                    setOptions(
-                      predictions.map((prediction) => ({
-                        label: prediction.description,
-                        place_id: prediction.place_id,
-                      }))
-                    );
-                  } else {
-                    setOptions([]);
-                  }
-                }
-              );
-            } else {
-              console.error("Google Maps API is not loaded yet");
-            }
-          };
-     
-          const handleNavigate = (event) => {
-            if (!inputValue.trim()) {
-              event.preventDefault(); // Prevent navigation
-              setIsInputValid(false); // Set input as invalid
-              toast("Please enter a location before proceeding!");
-            } else {
-              setIsInputValid(true); // Reset validation state if input is valid
-              // Store the current inputValue in the context
-            }
-          };
-//------------------------------------------------------SEARCH CONTAINER--------------------------------------------------------
+const [options, setOptions] = useState([]);
+const [isApiLoaded, setIsApiLoaded] = useState(false);
+
+const { inputValue, setInputValue, isInputValid, setIsInputValid,searchValue,setSearchValue } = useContext(LocationContext); //Usage of Context API
+
+const fetchPlaceSuggestions = (input) => {
+if (window.google && window.google.maps) {
+const service = new window.google.maps.places.AutocompleteService();
+
+service.getPlacePredictions(
+  {
+    input,
+    componentRestrictions: { country: "in" },
+    types: ["(cities)"],
+  },
+  (predictions, status) => {
+    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      setOptions(
+        predictions.map((prediction) => ({
+          label: prediction.description,
+          place_id: prediction.place_id,
+        }))
+      );
+    } else {
+      setOptions([]);
+    }
+  }
+);
+} else {
+console.error("Google Maps API is not loaded yet");
+}
+};
+//------------------------------------------------------BUY BUTTON-----------------------------------------------------------------------------------------------------
+const handleNavigate = (event) => {
+if (!inputValue.trim()) {
+event.preventDefault(); // Prevent navigation
+setIsInputValid(false); // Set input as invalid
+toast("Please enter a location before proceeding!");
+} else {
+setIsInputValid(true); // Reset validation state if input is valid
+// Store the current inputValue in the context
+}
+};
+      
+//------------------------------------------------------SEARCH CONTAINER------------------------------------------------------------------------------------------------
 const handleSearchChange = (e) => {
-  const input = e.target.value;
-  setSearchValue(input);
+const input = e.target.value;
+setSearchValue(input);
 };
 
 const handleSearchSubmit = (e) => {
-  
-  if (!searchValue.trim() || !inputValue.trim()) {
-    
-    if(!searchValue.trim()){
-    e.preventDefault(); 
-    toast("Please enter something to search");
-    return;
-    }
-    else if(!inputValue.trim()){
-      e.preventDefault();
-      toast("Please enter a location before proceeding!");
-      return;
-    }
-  }
+e.preventDefault(); 
 
-navigate("/buy", { state: { searchValue, inputValue } });
-  console.log("Searching for:", searchValue);
+if (!searchValue.trim()) {
+toast("Please enter something to search");
+return;
+}
+
+console.log("Searching for:", searchValue);
 };
+
+
 //-------------------------------------------------API CALLING START 'S-----------------------------------------------------------
 const [products, setProducts] = useState([]);
 const [currentPage, setCurrentPage] = useState(1);
@@ -278,19 +277,22 @@ axios.post("http://localhost:5000/sell/retriveAll",{
 }
 
 
+  const [menuActive, setMenuActive] = useState(false);
+  
+    const handleMenuToggle = () => {
+      setMenuActive(!menuActive);
+    };
+
   return (
     <div className='Full'>
-
 <div className="Ribbon">
-    <table className="container">
-      <thead>
-      <tr className="row1">
-         
-      <td><Link to ="/"><img className="logo"  src={logo} alt="AgriVibes Logo" /></Link></td>
-          <td style={{    
-       width: "500px",
-      padding: "15px"}}> 
-         <LoadScript
+  <table className="container">
+    <thead>
+    <tr className="row1">
+        <td><Link to ="/"><img className="logo"  src={logo} alt="AgriVibes Logo" /></Link></td>
+
+        <td className='WholeLocationContainer'> 
+  <LoadScript
   googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
   libraries={libraries}
   onLoad={() => setIsApiLoaded(true)}
@@ -326,45 +328,20 @@ axios.post("http://localhost:5000/sell/retriveAll",{
     }}
     renderInput={(params) => (
       <TextField
-        {...params}
-        label="Enter Location"
-        variant="outlined"
-        sx={{
-          "& .MuiOutlinedInput-root": {
-            height: "50px", // Adjust height of input
-            borderRadius:"25px",
-            "& fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Red border if invalid
-              borderWidth: isInputValid ? "2px" : "3px", // Thicker border if invalid
-            },
-            "&:hover fieldset": {
-              borderColor: "#6B8E23",
-              borderWidth: "1.5px",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: isInputValid ? "#6B8E23" : "red", // Keep red if focused and invalid
-              borderWidth: "3px",
-            },
-          },
-          "& .MuiInputBase-input": {
-            padding: "8px",
-          },
-          "& .MuiInputLabel-root": {
-            color: isInputValid ? "#000" : "red", // Red label if invalid
-            "&.Mui-focused": {
-              color: isInputValid ? "#6B8E23" : "red", // Green or red when focused
-            },
-          },
-        }}
-      />
+  {...params}
+  label="Enter Location"
+  variant="outlined"
+  className={`LocationText ${isInputValid ? 'valid' : 'invalid'}`}
+/>
     )}
   />
 </LoadScript>
 
-      </td>
-       
-  
-      <td className="MaterialSearch">
+    </td>
+
+    
+     
+    <td className="MaterialSearch">
   <Box className="MaterialBox">
     {/* Input field */}
     <form className="SearchContainerForm" onSubmit={handleSearchSubmit}>
@@ -388,14 +365,13 @@ axios.post("http://localhost:5000/sell/retriveAll",{
 
         <td className='Organic'><Link to="/organicForming" className="button-type">Organic Farming</Link></td>
         <td className= 'Account'>
-        <Box  
-     className='AccountBox'>
+        <Box className='AccountBox'>
       {/* Account Link */}
     
 
       <ThemeProvider theme={theme}>
       
-      <Button
+      <Button 
         onClick={handleClick}
         variant="text"
     className='button-type1'
@@ -464,29 +440,108 @@ axios.post("http://localhost:5000/sell/retriveAll",{
       </Menu>
       </ThemeProvider>
     </Box>
-   </td>
+    </td>
 
-     
-  
-          <td><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
-      </tr>
-      </thead>
-  </table>
-      </div>
+        <td className='buyy'><Link to="/buy" className="sell-button" onClick={handleNavigate}><i className="fas fa-plus"></i>BUY...</Link></td>
+   
+    {/* Mobile Menu */}
+    <td className="hamburger-icon">
+  <IconButton
+    className="hamburger-button"
+    onClick={handleMenuToggle} // Toggle the mobile menu visibility
+  >
+   <MenuIcon />
+  </IconButton>
+</td>
+    </tr>
+    </thead>
+</table>
+
+ {/* Entire Box Component (visible only when menuActive is true) */}
+ <div className='wrapper'>
+ {menuActive && (
+        <Box className="menu-container1">
+          <div className="MaterialSearch1">
+            <Box className="MaterialBox1">
+              <form className="SearchContainerForm1" onSubmit={handleSearchSubmit}>
+                <TextField
+                  className="MaterialText1"
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  label="Find Tractor and more..."
+                  variant="outlined"
+                />
+                <IconButton type="submit" className="search-icon-button1">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Box>
+          </div>
+
+          <div className="Organic1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/organicForming' className='button-type2' startIcon={<AgricultureIcon/>}>Organic</Button>
+          </ThemeProvider>
+          </div>
+
+          <div className="Account1">
+            <Box className="AccountBox1">
+              <ThemeProvider theme={theme}>
+                <Button onClick={handleClick} variant="text" className="button-type2" startIcon={<AccountCircleIcon/>}>
+                  Account
+                </Button>
+                </ThemeProvider>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                  transformOrigin={{ vertical: "top", horizontal: "left" }}
+                  PaperProps={{
+                    style: { marginTop: "15px", width: "300px" },
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      console.log("MenuItem clicked");
+                      handleClose();
+                    }}
+                  >
+                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Logout
+                  </MenuItem>
+                  <MenuItem onClick={() => {
+    navigate('/profilee'); 
+    handleClose(); 
+  }}>
+                    <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Profile
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <HelpOutlineIcon fontSize="small" style={{ marginRight: "8px" }} />
+                    Help
+                  </MenuItem>
+                </Menu>
+             
+            </Box>
+          </div>
+
+          <div className="buyy1">
+          <ThemeProvider theme={theme}>
+          <Button variant='text' component={Link} to='/buy' onClick={handleNavigate} startIcon={<ShoppingCartIcon />} // Material-UI icon
+      className="sell-button1">Buy</Button>
+      </ThemeProvider>
+          </div>
+        </Box>
+      )}
+</div>
+    </div>
 
 <div className={style.conditionRendering}>
 
 {loading ? (
   <ThemeProvider theme={theme1}>
- <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh', // Full viewport height
-        }}
-      >
-  
+ <div>
        <CircularProgress/>
        </div>     
        </ThemeProvider>  
@@ -555,6 +610,19 @@ axios.post("http://localhost:5000/sell/retriveAll",{
           </table>
         </div>
    
+    <div className='Footer1'>
+             
+            <div className='logo1'>
+            <Link to ="/" className="footLink1"><img className="logoimg"  src={logo} alt="AgriVibes Logo" /></Link>
+               </div>
+           <div className='Name'>
+             <h3>AgriVibes Public Ltd.</h3>
+             <h4>You Grow, we Sell... | Est:2025</h4>
+             <p className='CopyRight'>Copyright © 2025 - All right reserved</p>
+             <span className='social-media'><Link to='https://www.instagram.com/sanjay_thanigaivelu/' className="footLink insta"><FontAwesomeIcon icon={faInstagram} /></Link>  <Link to='https://linkedin.com/in/sanjay-thanigaive07' className="footLink linkdin"><FontAwesomeIcon icon={faLinkedin} />  </Link><Link to='https://github.com/SanjayThanigaivelu' className="footLink git"><FontAwesomeIcon icon={faGithub}/></Link></span>
+           </div>
+               </div>
+
     </div>
   )
 }
