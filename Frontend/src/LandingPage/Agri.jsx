@@ -32,7 +32,7 @@ import AgricultureIcon from '@mui/icons-material/Agriculture';
 import WorkIcon from '@mui/icons-material/Work';
 import { ToastContainer, toast } from 'react-toastify';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 const libraries = ["places"];
 
@@ -780,6 +780,45 @@ const Icon1=()=>(
 </div>
 </div>
 
+<h1 className='PoetHeading'>The Greatness of Farming!</h1>
+
+<div className='Thiruvalluvar'>
+<h4 >உழுவ துண்டு வாழ்வாரே வாழ்வார் மற்றெல்லாம்<br/>
+தொழுவதாற் பேரும் அளறு.</h4>
+<h4>Farmers alone truly live; all others live by depending on them</h4>
+<h4 className='poet1'>Thiruvalluvar – The Universal Poet of Ethics</h4>
+</div>
+
+<div className='Bharathiyar'>
+  <h4>ஒரு பொழுதுக்கு உணவில்லை என்றால் இந்த ஜகத்தினை அழித்திடுவோம்!</h4>
+  <h4>If even one person has no food to eat for a single meal, we shall destroy this entire world!</h4>
+  <h4 className='poet2'>Mahakavi Bharathiyar – The Poet of Freedom</h4>
+</div>
+
+<h1 className='FactOfFarmers'>The Forgotten Farmers</h1>
+<div className='Formers'>
+  <strong className='AboutFarmers'>The people who sell tractors are rich. Those who sell fertilizer are rich. 
+  The people who sell agricultural equipment are rich, and even those who sell seeds are rich. 
+  Yet the farmers who actually practice agriculture remain poor—and they are dying. Over 112,000 farmers have died 
+  by suicide in the past ten years. Let’s make a change and protect our farmers. We need your ideas—connect with us to make a difference.</strong>
+
+<div className='ContactButton'>
+  <Button
+  className='ContactButt1'
+  component="a"
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=sanjaymuthulakshmi@gmail.com&su=Having%20an%20Idea&body=Hi,%20I%20have%20an%20Idea%20to%20discuss%20with%20you!"
+  target="_blank"
+  sx={{borderRadius:"50px",backgroundColor:"#0f172a",width:"200px"}}
+
+  startIcon={<WorkIcon />}
+  variant="contained"
+  color="primary"
+>
+  Contact Me
+</Button>
+</div>
+</div>
+
 <h1 className='MeetCreator'>Meet the Creator</h1>
 <div className='Creator'>
 
@@ -796,12 +835,12 @@ className='Developer-pic'
 
 <div className='button'>
 <ThemeProvider theme={theme2}>
-<Button variant='contained' color='primary'  startIcon={<AccountCircleIcon/>} onClick={()=>window.open("https://myfirstportfolioweb.netlify.app/")}>About Me</Button>
+<Button  variant='contained' color='primary'  startIcon={<AccountCircleIcon/>} onClick={()=>window.open("https://myfirstportfolioweb.netlify.app/")}>About Me</Button>
 <Button
   component="a"
   href="https://mail.google.com/mail/?view=cm&fs=1&to=sanjaymuthulakshmi@gmail.com&su=Hiring%20Inquiry&body=Hi,%20I%20am%20interested%20in%20discussing%20an%20opportunity%20with%20you!"
   target="_blank"
-  startIcon={<WorkIcon />}
+  startIcon={<ContactMailIcon />}
   variant="contained"
   color="primary"
 >

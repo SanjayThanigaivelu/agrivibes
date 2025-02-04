@@ -68,6 +68,7 @@ position: relative;
 left: 70%;
 bottom:51vh;
 }
+
 /*-------------------------------------------------------------ORGANIC FARMING STARTS----------------------------------------------------------------------------------- */
 .organicHeading{
     display: flex;
@@ -104,12 +105,13 @@ bottom: 250px;
     padding-top: 55px;
 }
 
-.videoFrame{
+.videoFrame1 ,.videoFrame2{
     margin-top: 20px;
+    width: 560px;
+    height: 315px;
+   padding: 5px;
 }
-.video2{
-    padding-left: 15px;
-}
+
 .webheading{
     display: flex;
     flex-direction: column;
@@ -194,4 +196,558 @@ bottom: 250px;
     align-items: center;
     padding: 50px;
     font-size: large;
+}
+
+
+
+/*-------------------------------------------MEDIA QUERY STARTS---------------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:510px){
+
+    .heading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+    }
+
+    .Quotes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       margin-right: 6px;
+    }
+    .quotes1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: #fdba74 ;
+        border-radius: 30px;
+        width: 70%;
+        height: auto;
+        margin-right: 2%;
+        margin-top: 5%;
+        box-sizing: content-box;
+       }
+
+       .content1 ,.content2,.content3{
+    font-size: medium;
+    padding: 10px;
+    margin-top: 8%;
+
+       }
+
+       .quotes2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 30px;
+        width: 70%;
+        height: auto;
+        box-sizing: content-box;
+        background-color:#a5b4fc;
+        margin-right:69%;
+        margin-top: 80%;
+        margin-bottom: 1%;
+       }
+
+       .quotes3{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 30px;
+        width: 70%;
+        height: auto;
+        box-sizing: content-box;
+        background-color:#fda4af;
+        margin-right:137%;
+        margin-top: 80%;
+       }
+
+       .Cartoon{
+        margin-left: 15px;
+       }
+
+       .organicHeading{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       font-size: 22px;
+       }
+
+.Organic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.organicPara{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size:14px;
+    width: 60%;  
+    padding: 10px; 
+}
+
+.videoHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.videoFrame1,.videoFrame2{
+    margin-top: 20px;
+    width: 270px;
+    height: 215px;
+    position: relative;
+    left: 16%;
+}
+.webheading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+.website{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(150px,1fr));
+    padding: 30px;
+}
+
+.firstWeb,.secondWeb ,.thirdWeb,.fourthWeb{
+    border: 1px solid black;
+    border-radius: 30px;
+    padding:20px ;
+}
+.firstWeb h4,.secondWeb h4,.thirdWeb h4 ,.fourthWeb h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:medium;   
+}
+
+
+.image1,.image2,.image3,.image4{
+    width:160px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   position: relative;
+   right: 5px;
+   left: 10px;
+}
+
+.button1,.button2,.button3,.button4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 68px;
+}
+.TheFormers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:15px;
+    font-size: 14px;
+}
+.ideas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    padding: 30px;
+}
+.contactButt{
+    position: relative;
+width: 170px !important;
+height: 40px !important;
+bottom: 6%;
+}
+
+}
+@media only screen and (min-width:511px) and (max-width:780px){
+
+
+        .heading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+    
+        .Quotes{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+           margin-right: 6px;
+        }
+        .quotes1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #fdba74 ;
+            border-radius: 30px;
+            width: 70%;
+            height: auto;
+            margin-right: 2%;
+            margin-top: 5%;
+            box-sizing: content-box;
+           }
+    
+           .content1 ,.content2,.content3{
+        font-size: large;
+        padding: 10px;
+        margin-top: 8%;
+    
+           }
+    
+           .quotes2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 30px;
+            width: 70%;
+            height: auto;
+            box-sizing: content-box;
+            background-color:#a5b4fc;
+            margin-right:69%;
+            margin-top: 50%;
+            margin-bottom: 1%;
+           }
+    
+           .quotes3{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-radius: 30px;
+            width: 70%;
+            height: auto;
+            box-sizing: content-box;
+            background-color:#fda4af;
+            margin-right:137%;
+            margin-top: 50%;
+           }
+    
+           .Cartoon{
+            margin-left: 15px;
+           }
+    
+           .organicHeading{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+           font-size: 25px;
+           }
+    
+    .Organic{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    
+    }
+    
+    .organicPara{
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size:15px;
+        width: 60%;  
+        padding: 10px; 
+    }
+    
+    .videoHeading{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+    }
+    
+    .videoFrame1,.videoFrame2{
+        margin-top: 20px;
+        width: 70%;
+        height: 50%;
+        position: relative;
+        left: 14%;
+    }
+    .webheading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: large;
+    }
+    .website{
+        display: grid;
+        grid-template-columns:repeat(1,minmax(150px,1fr));
+        padding: 30px;
+    }
+    
+    .firstWeb,.secondWeb ,.thirdWeb,.fourthWeb{
+        border: 1px solid black;
+        border-radius: 30px;
+        padding:20px ;
+    }
+    .firstWeb h4,.secondWeb h4,.thirdWeb h4 ,.fourthWeb h4{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size:medium;   
+    }
+    
+    
+    .image1,.image2,.image3,.image4{
+        width:160px;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       position: relative;
+       right:5px;
+       left: 10px;
+    }
+    
+    .button1,.button2,.button3,.button4{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        right: 68px;
+    }
+    .TheFormers{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding:15px;
+        font-size: 15px;
+    }
+    .ideas{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        padding: 30px;
+    }
+    .contactButt{
+        position: relative;
+    width: 170px !important;
+    height: 40px !important;
+    bottom: 6%;
+    }
+
+}
+
+@media only screen and (min-width:781px) and (max-width:1024px){
+
+
+    .heading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+    }
+
+    .Quotes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       margin-right: 6px;
+    }
+    .quotes1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color: #fdba74 ;
+        border-radius: 30px;
+        width: 70%;
+        height: auto;
+        margin-right: 2%;
+        margin-top: 5%;
+        box-sizing: content-box;
+       }
+
+       .content1 ,.content2,.content3{
+    font-size: large;
+    padding: 10px;
+    margin-top: 8%;
+
+       }
+
+       .quotes2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 30px;
+        width: 70%;
+        height: auto;
+        box-sizing: content-box;
+        background-color:#a5b4fc;
+        margin-right:69%;
+        margin-top: 30%;
+        margin-bottom: 1%;
+       }
+
+       .quotes3{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 30px;
+        width: 70%;
+        height: auto;
+        box-sizing: content-box;
+        background-color:#fda4af;
+        margin-right:137%;
+        margin-top: 30%;
+       }
+
+       .Cartoon{
+        margin-left: 15px;
+       }
+
+       .organicHeading{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       font-size: 25px;
+       }
+
+.Organic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.organicPara{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size:15px;
+    width: 80%;  
+    padding: 10px; 
+}
+
+.videoHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.videoFrame1,.videoFrame2{
+    margin-top: 20px;
+    width: 80%;
+    height: 350px;
+    position: relative;
+    left: 14%;
+}
+.webheading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+.website{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(250px,1fr));
+    padding: 40px;
+}
+
+.firstWeb,.secondWeb ,.thirdWeb,.fourthWeb{
+    border: 1px solid black;
+    border-radius: 30px;
+    padding:20px ;
+}
+.firstWeb h4,.secondWeb h4,.thirdWeb h4 ,.fourthWeb h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:large;   
+}
+
+
+.image1,.image2,.image3,.image4{
+    width:160px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   position: relative;
+   left: 35px;
+}
+
+.button1,.button2,.button3,.button4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 50px;
+}
+.TheFormers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:15px;
+    font-size: 15px;
+}
+.ideas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    padding: 30px;
+}
+.contactButt{
+    position: relative;
+width: 170px !important;
+height: 40px !important;
+bottom: 6%;
+}
+
+}
+
+@media only screen and (min-width:1025px){
+
 }

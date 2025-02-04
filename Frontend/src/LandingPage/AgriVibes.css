@@ -614,16 +614,115 @@ border-style: solid;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 50px;
 margin-top: 40px;
 }
+/*----------------------------------------------------POETS----------------------------------------------------------------------------------*/
+
+.PoetHeading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6%;
+}
+.Thiruvalluvar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+padding: 30px;
+  border: 2px solid black;
+  border-radius: 50px;
+  background-color: #a5b4fc;
+  height: auto;
+  width: 40%;
+  left: 5%;
+  top: 9.5%;
+}
+.poet1{
+  position: relative;
+  left: 23%;
+  top:15px
+}
+.poet2{
+  position: relative;
+left: 18%;
+}
+.Bharathiyar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+padding: 15px;
+padding-bottom: 5px;
+  border: 2px solid black;
+  border-radius: 50px;
+  background-color:#fda4af;
+  height: auto;
+  width: 40%;
+  left: 53%;
+bottom: 19.5%;
+}
+
+.FactOfFarmers{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 12vh;
+}
+
+.Formers{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fdba74;
+  font-size: large;
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 60%;
+  padding: 50px;
+  position: relative;
+  left:17%;
+  top: 20vh;
+}
+.AboutFarmers{
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+left: 100px;
+bottom: 10px;
+padding: 5px;
+}
+
+.ContactButton{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  top: 100px;
+  right: 40%;
+}
+.ContactButt1{
+  border-radius: 30px;
+  background-color: #0f172a;
+}
+
+
+
 /*---------------------------------------------------------ABOUT----------------------------------------------------------------------------------------*/
 .MeetCreator{
-    margin-top: 20px;
+    margin-top: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    top: 150px;
 }
 
 .Creator{
@@ -634,7 +733,7 @@ margin-top: 40px;
     padding: 50px;
     background-color: #67c4c9;
     position: relative;
-    top: 50px;
+    top: 170px;
 font-size:large ;
 }
 .button{
@@ -666,11 +765,11 @@ font-size:large ;
     justify-content: space-evenly; /* Center content inside the footer */
     align-items: center; /* Vertically align content in the middle */
     position: relative; /* Let the footer stay within the flow of the page */
-    top:50px;
+    top:150px;
     bottom: 0px;
     padding-top:0px;
-    padding-bottom: 60px;
-    height: 20vh;
+    padding-bottom: 140px;
+    height: 10vh;
   }
 .footLink{
     text-decoration: none;

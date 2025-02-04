@@ -324,6 +324,112 @@ color: black;
   box-sizing: content-box;
   padding:30px;
 }
+/*---------------------------------------POETRY------------------------------------------------- */
+
+.PoetHeading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15%;
+  font-size: 18px;
+}
+.Thiruvalluvar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+padding: 15px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: #a5b4fc;
+  height: 150px;
+  width: 50%;
+  left: 22%;
+  top: 5%;
+
+}
+.poet1{
+  position: relative;
+  left: 3%;
+  top:2px
+}
+.poet2{
+  position: relative;
+left: 8%;
+}
+.Bharathiyar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+padding: 28px;
+padding-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color:#fda4af;
+  width: 50%;
+  height: 150px;
+top: 15%;
+left: 20%;
+font-size: 18px;
+}
+
+.FactOfFarmers{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 280px;
+  font-size: medium;
+}
+
+.Formers{
+
+  background-color: #fdba74;
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 50%;
+  padding: 5px;
+  position: relative;
+ font-size:small;
+  top: 50vh;
+  left: 25%;
+  flex-wrap: wrap;
+}
+
+.AboutFarmers{
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+width: 100%;
+left: 5px;
+bottom: 10px;
+padding: 30px;
+flex-wrap: wrap; /* allows text to wrap */
+text-align: center;
+}
+
+.ContactButton{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  top:-5px;
+ left: 1%;
+  
+}
+.ContactButt1{
+  border-radius: 30px;
+  background-color: #0f172a;
+  
+}
+
+
+
 /*----------------------------------MEET THE CREATOR---------------------------------------------*/
 
 .Job-asking{
@@ -824,6 +930,110 @@ display: flex;
 justify-content: center;  
 align-items: center; 
 }
+
+
+/*---------------------------------------POETRY------------------------------------------------- */
+
+.PoetHeading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15%;
+  
+}
+.Thiruvalluvar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+padding: 15px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color: #a5b4fc;
+  height: 150px;
+  width: 50%;
+  left: 22%;
+  top: 5%;
+  font-size: large;
+}
+.poet1{
+  position: relative;
+  left: 3%;
+  top:2px
+}
+.poet2{
+  position: relative;
+left: 8%;
+}
+.Bharathiyar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+padding: 28px;
+padding-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 50px;
+  background-color:#fda4af;
+  width: 50%;
+  height: 150px;
+top: 15%;
+left: 21%;
+}
+
+.FactOfFarmers{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 280px;
+}
+
+.Formers{
+
+  background-color: #fdba74;
+  border: 1px solid black;
+  border-radius: 50px;
+  width: 50%;
+  padding: 5px;
+  position: relative;
+  top: 50vh;
+  left: 25%;
+  flex-wrap: wrap;
+}
+
+.AboutFarmers{
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+width: 100%;
+left: 5px;
+bottom: 10px;
+padding: 30px;
+flex-wrap: wrap; /* allows text to wrap */
+text-align: center;
+}
+
+.ContactButton{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  top:-5px;
+ left: 1%;
+  
+}
+.ContactButt1{
+  border-radius: 30px;
+  background-color: #0f172a;
+  
+}
+
+
 
   }
   

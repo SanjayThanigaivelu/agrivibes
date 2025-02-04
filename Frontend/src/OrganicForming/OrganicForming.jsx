@@ -36,6 +36,8 @@ import TheFormer from '../assets/former image.jpg'
 import { ToastContainer, toast } from 'react-toastify';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+
+
 const libraries = ["places"];
 function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     const theme = createTheme({
@@ -132,7 +134,8 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
         const navigate = useNavigate();
 
         const bannerImages=importAll(require.context('../assets/Banner',false,/\.(png|jpe?g|svg)$/));
-
+        
+        const bannerImages1=importAll(require.context('../assets/PhoneScreen',false,/\.(png|jpe?g|svg)$/));
    
 
 
@@ -256,7 +259,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     //---------------------------------------------------------------------------------------------------------------------------------------
       const Writings = () => (
         <div className="writtings">
-          <h1>AgriVibes...Vibes of Modern Agriculture</h1>
+          <h1>AgriVibes...The Rhythm of Organic Living!</h1>
           <h2>You Grow, We Sell</h2> 
           <br/>
           <Button variant="contained" component={Link} className='BannerButton'
@@ -265,45 +268,41 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
       );
       
         
-        const Icon=()=>(
-          <div className='social-icon' style={{ display: "flex", justifyContent: "flex-end",alignItems:"flex-end", gap: "25px",position: "absolute",
-           bottom: "20px", left: "93%", transform: "translateX(-50%)", 
-          }}>
-          {/* Facebook */}
-          <a
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-           className="icon-link facebook-icon"
-          >
-            <FacebookIcon fontSize="large" />
-          </a>
-          {/* Instagram */}
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-           className="icon-link instagram-icon"
-            rel="noopener noreferrer"
-          >
-            <InstagramIcon fontSize="large" />
-          </a>
-        </div>
-        );
-      
-      const Icon1=()=>(
-        <div className='whatsapp'>
-          <a
-            href="https://wa.me/your-number"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{color: "#25D366", fontSize: "32px" }}
-          >
-            <WhatsAppIcon fontSize="large" />
-          </a>
-          </div>
+      const Icon=()=>(
+        <div className='social-icon'>
+        {/* Facebook */}
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+         className="icon-link facebook-icon"
+        >
+          <FacebookIcon fontSize="large" />
+        </a>
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+         className="icon-link instagram-icon"
+          rel="noopener noreferrer"
+        >
+          <InstagramIcon fontSize="large" />
+        </a>
+      </div>
       );
-      
-      
+    
+    const Icon1=()=>(
+      <div className='whatsapp'>
+        <a
+          href="https://wa.me/your-number"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{color: "#25D366", fontSize: "32px" }}
+        >
+          <WhatsAppIcon fontSize="large" />
+        </a>
+        </div>
+    );
        const [menuActive, setMenuActive] = useState(false);
       
         const handleMenuToggle = () => {
@@ -625,6 +624,65 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
 </div>
 </div>
 
+<div className="Banner-image1">
+    <div className="slide-wrapper">
+
+ 
+
+  <div className="slide-image"key= {bannerImages1["BananaRes4.jpg"]}>
+ <Writings />
+ <Icon />
+ <Icon1/>
+   <Link to="/sell/Rawproduct"><img src={bannerImages1["BananaRes4.jpg"]} alt="banana"/></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages1["For2.jpg"]} >
+ <Writings />
+ <Icon/>
+ <Icon1/>
+ <Link to="/sell/Finishedproduct"><img src={bannerImages1["For2.jpg"]} alt="goods" /></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages1["MobileRes-cow1.jpg"]} >
+ <Writings />
+ <Icon/>
+ <Icon1/>
+    <Link to="/sell/Livestock"><img src={bannerImages1["MobileRes-cow1.jpg"]} alt="cattles" /></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages1["MobRes-Grains1.jpg"]} >
+ <Writings />
+ <Icon/>
+ <Icon1/>
+   <Link to="/sell/Finishedproduct"><img src={bannerImages1["MobRes-Grains1.jpg"]} alt="FinishedProduct" /></Link>
+ </div>
+
+ <div className="slide-image"key= {bannerImages1["FertilizerTry.jpg"]}>
+ <Writings />
+ <Icon/>
+ <Icon1/>
+   <Link to="/sell/Fertilizers"><img src={bannerImages1["FertilizerTry.jpg"]} alt="Fertilizer"/></Link>
+ </div>
+ 
+ <div className="slide-image"key= {bannerImages1["MobileRes-Wheat.jpg"]}>
+ <Writings />
+ <Icon/>
+ <Icon1/>
+   <Link to="/sell/Rawproduct"><img src={bannerImages1["MobileRes-Wheat.jpg"]} alt="wheat"/></Link>
+ </div>
+
+ <div className="slide-image" key={bannerImages['Tractor-5.jpg']}>
+ <Writings />
+ <Icon/>
+ <Icon1/>
+<Link to="/sell/Machine"><img src={bannerImages1["Tractor-5.jpg"]} alt="Tractor" /></Link>
+ </div>
+
+
+</div>
+</div>
+
+
 <h1 className= {style.heading}>Nammazhvar Quotes</h1>
 <div className= {style.Quotes}>
 
@@ -661,12 +719,12 @@ This sustainable practice combines tradition, innovation, and science, with root
 
 <h2 className= {style.videoHeading}>Video Resource</h2>
 <div className ={style.videoFrame}>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TTPm6oJWe5I?si=eQx9iqeWSLpYutIF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+<iframe className={style.videoFrame1} src="https://www.youtube.com/embed/TTPm6oJWe5I?si=eQx9iqeWSLpYutIF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fRlUhUWS0Hk?si=LSofDZ4q-oF-mp0W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
-web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen className= {style.video2}>
+<iframe className={style.videoFrame2} src="https://www.youtube.com/embed/fRlUhUWS0Hk?si=LSofDZ4q-oF-mp0W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
 </div>
 
@@ -679,7 +737,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen clas
 <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2,ml:18,gap:1}}>
 <ThemeProvider theme={theme1}>
 
-<Button variant='contained' onClick={()=>window.open('https://www.india.gov.in/topics/agriculture')} startIcon={<TravelExploreIcon/>} className= {style.button1}>Visit</Button>
+<Button variant='contained' onClick={()=>window.open('https://www.india.gov.in/topics/agriculture')} startIcon={<TravelExploreIcon/>} size='small' className= {style.button1}>Visit</Button>
 </ThemeProvider>
 </Box>
 </div>
@@ -689,7 +747,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen clas
   <h4>Kissn Website</h4>
   <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2,ml:18,gap:1}}>
   <ThemeProvider theme={theme1}>
-  <Button variant='contained' onClick={()=>window.open('https://www.myscheme.gov.in/schemes/kcc')} startIcon={<TravelExploreIcon/>} className={style.button2}>Visit</Button>
+  <Button variant='contained' onClick={()=>window.open('https://www.myscheme.gov.in/schemes/kcc')} startIcon={<TravelExploreIcon/>} size='small' className={style.button2}>Visit</Button>
   </ThemeProvider>
   </Box>
 </div>
@@ -699,7 +757,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen clas
   <h4>Tamil Nadu Agriculture Department</h4>
   <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2,ml:18,gap:1}}>
   <ThemeProvider theme={theme1}>
-  <Button variant='contained' onClick={()=>window.open('https://www.tnagrisnet.tn.gov.in/home/contact/en')} startIcon={<TravelExploreIcon/>} className= {style.button3}>Visit</Button>
+  <Button variant='contained' onClick={()=>window.open('https://www.tnagrisnet.tn.gov.in/home/contact/en')} startIcon={<TravelExploreIcon/>} size='small' className= {style.button3}>Visit</Button>
   </ThemeProvider>
   </Box>
 </div>
@@ -709,7 +767,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen clas
   <h4>National Centre for Organic and Natural Farming</h4>
   <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2,ml:18,gap:1}}>
   <ThemeProvider theme={theme1}>
-  <Button variant='contained' onClick={()=>window.open('https://nconf.dac.gov.in/')} startIcon={<TravelExploreIcon/>} className= {style.button4}>Visit</Button>
+  <Button variant='contained' onClick={()=>window.open('https://nconf.dac.gov.in/')} startIcon={<TravelExploreIcon/>} size='small' className= {style.button4}>Visit</Button>
   </ThemeProvider>
   </Box>
 </div>
@@ -733,6 +791,9 @@ They truly are the unsung heroes of society.
   </p>
 </div>
 
+
+  
+
 <div className={style.NewsLetter}>
   <strong className= {style.ideas}>
   Hi, I’m Sanja Thanigaivelu—a passionate Full-Stack Developer and agriculture enthusiast dedicated to bridging the gap between Agriculture and Technology. 
@@ -741,18 +802,24 @@ They truly are the unsung heroes of society.
   </strong>
   <ThemeProvider theme={theme2}>
   <Button
+  className={style.contactButt}
   component="a"
   href="https://mail.google.com/mail/?view=cm&fs=1&to=sanjaymuthulakshmi@gmail.com&su=About%20My%20Idea&body=Hi,%20I%20am%20interested%20in%20discussing%20an%20opportunity%20with%20you!"
   target="_blank"
   variant="contained"
   color="primary"
-
+size='small'
   startIcon={<ContactMail/>}
 >
 Contact Me
 </Button>
 </ThemeProvider>
 </div>
+
+
+
+
+
 
  <div className="Footer">
           <table className="Footer inside">
@@ -777,6 +844,23 @@ Contact Me
           </tbody>
           </table>
         </div>
+
+
+<div className='Footer1'>
+ <div className='logo1'>
+ <Link to ="/" className="footLink1"><img className="logoimg"  src={logo} alt="AgriVibes Logo" /></Link>
+    </div>
+<div className='Name'>
+  <h3>AgriVibes Public Ltd.</h3>
+  <h4>You Grow, we Sell... | Est:2025</h4>
+  <p className='CopyRight'>Copyright © 2025 - All right reserved</p>
+  <span className='social-media'><Link to='https://www.instagram.com/sanjay_thanigaivelu/' className="footLink insta"><FontAwesomeIcon icon={faInstagram} /></Link>  <Link to='https://linkedin.com/in/sanjay-thanigaive07' className="footLink linkdin"><FontAwesomeIcon icon={faLinkedin} />  </Link><Link to='https://github.com/SanjayThanigaivelu' className="footLink git"><FontAwesomeIcon icon={faGithub}/></Link></span>
+</div>
+
+
+    </div>
+
+
 
     </div>
 
