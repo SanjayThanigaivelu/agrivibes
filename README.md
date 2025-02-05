@@ -8,7 +8,7 @@ AgriVibes is an advanced agriculture e-commerce platform built using the **MERN 
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-repo/agrivibes.git
+   git clone https://github.com/SanjayThanigaivelu/agrivibes/agrivibes.git
    ```
 2. **Install dependencies:**
    ```sh
