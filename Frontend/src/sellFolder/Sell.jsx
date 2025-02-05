@@ -121,7 +121,7 @@ function Sell({ isAuthenticated, setIsAuthenticated }) {
   
       async function Logout() {
         try {
-          const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+          const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
           console.log("Logout response:", response.data);
       
           setIsAuthenticated(false);

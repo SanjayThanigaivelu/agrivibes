@@ -122,7 +122,7 @@ function ByingProductDetail({ isAuthenticated, setIsAuthenticated }) {
 
   async function Logout() {
     try {
-      const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+      const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
       console.log("Logout response:", response.data);
   
       setIsAuthenticated(false);
@@ -494,7 +494,7 @@ console.log("Searching for:", searchValue);
         
         
   <img className={style.detailImage}
-    src={`http://localhost:5000/sell${sanitizedImages[currentImageIndex]}`} 
+    src={`https://agrivibess.onrender.com/sell${sanitizedImages[currentImageIndex]}`} 
     alt="Product" 
   />
 <Button variant='Text' color="primary"   onClick={() => handleImageChange("next")}  className= {style.nextbutt}> <ChevronRight style={{ fontSize: 50, color: '#FFFFFF' }} /> </Button>
@@ -520,7 +520,7 @@ console.log("Searching for:", searchValue);
   {sanitizedImages.map((img, idx) => (
     <img className={style.previwImage}
       key={idx}
-      src={`http://localhost:5000/sell${img}`} 
+      src={`https://agrivibess.onrender.com/sell${img}`} 
       alt={`Thumbnail ${idx + 1}`} 
       onClick={() => setCurrentImageIndex(idx)}
     />

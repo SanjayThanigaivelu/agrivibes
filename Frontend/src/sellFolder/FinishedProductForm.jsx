@@ -279,7 +279,7 @@ function AllData(formData) {
 
 
   // Send the FormData using Axios
-  axios.post("http://localhost:5000/sell/upload-product", formDataToSend, {
+  axios.post("https://agrivibess.onrender.com/sell/upload-product", formDataToSend, {
     withCredentials: true,
     headers: {
       "Content-Type": "multipart/form-data", // Important for file upload

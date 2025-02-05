@@ -123,7 +123,7 @@ setFormDetails(formData)
     setApiLoading(true);
 
     // Make API request
-    axios.post("http://localhost:5000/findUser", {
+    axios.post("https://agrivibess.onrender.com/findUser", {
       Email: mailCheck,
       PhoneNumber: phoneCheck,
     })
@@ -160,7 +160,7 @@ setFormDetails(formData)
   function otpGenerator(email,phone){
   
     setOtp(true);
-    axios.post('http://localhost:5000/send-email', {
+    axios.post('https://agrivibess.onrender.com/send-email', {
       to: email, 
       subject: 'AgriVibes OTP Authentication',
       text: `The OTP will be sent shortly. Please check your inbox`,
@@ -188,7 +188,7 @@ function otpValidator(otpData){
 const email=otpData.emailOtp;
 //const phone=otpData.phoneOtp;
 
-axios.post('http://localhost:5000/validation',{
+axios.post('https://agrivibess.onrender.com/validation',{
   EmailOTP: email,
  // PhoneOTP:phone
 })
@@ -253,14 +253,14 @@ OtpSendButton(false);
  
   function storing(){
      console.log(formdetails);
-     axios.post('http://localhost:5000/storage',{
+     axios.post('https://agrivibess.onrender.com/storage',{
        userInfo:formdetails
      }).then(response=>{
        if(response.status===200){
          console.log("Loged in....succesfully");
          toast("You have been loged in...")
       
-         axios.post('http://localhost:5000/deleteOtp',{
+         axios.post('https://agrivibess.onrender.com/deleteOtp',{
            Id:OTPID
          }).then(response=>{
            if(response.status===200){

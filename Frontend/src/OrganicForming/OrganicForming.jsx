@@ -245,7 +245,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     //----------------------------------------------------LOGOUT FUNCTION-------------------------------------------------------------------
       async function Logout() {
         try {
-          const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+          const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
           console.log("Logout response:", response.data);
       
           setIsAuthenticated(false);
@@ -294,7 +294,7 @@ function OrganicForming({ isAuthenticated, setIsAuthenticated }) {
     const Icon1=()=>(
       <div className='whatsapp'>
         <a
-          href="https://wa.me/your-number"
+          href={`https://wa.me/${process.env.REACT_APP_PHONE_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
           style={{color: "#25D366", fontSize: "32px" }}

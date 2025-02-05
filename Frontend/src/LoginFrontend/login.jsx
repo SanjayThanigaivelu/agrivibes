@@ -166,7 +166,7 @@ useEffect(()=>{
 //----------------------------------------------------------------------------------------------------------------------------
 function submitNow(formData) {
   try {
-    axios.post("http://localhost:5000/login/loginUser", {
+    axios.post("https://agrivibess.onrender.com/login/loginUser", {
       Email: formData.Email,
       Password: formData.Password
     },{
@@ -218,7 +218,7 @@ function emailChecker(Data) {
   setEmail(Data.EMAIL);
   try {
     axios
-      .post("http://localhost:5000/login/emailChecking", {
+      .post("https://agrivibess.onrender.com/login/emailChecking", {
         Email: Data.EMAIL,
         subject: "AgriVibes OTP For Password Reset", // Ensure "subject" is lowercase here, as expected by the backend
         text: "The OTP will be sent shortly. Please check your inbox",
@@ -295,7 +295,7 @@ function emailChecker(Data) {
 //--------------------------------------------VALIDATE OTP--------------------------------------------------------------------
 function OtpChecker(OTPData){
 setCircularProgress2(true);
-  axios.post("http://localhost:5000/login/otpValidator",{
+  axios.post("https://agrivibess.onrender.com/login/otpValidator",{
     EmailOTP:OTPData.emailOTP
   }).then((response)=>{
     if (response.status === 200){
@@ -331,7 +331,7 @@ setCircularProgress2(true);
 //-----------------------------------------------DELETE OTP----------------------------------------------------------------------------------
   function DeleteOTP(){
     try{
-      axios.post("http://localhost:5000/login/deleteOTP",{
+      axios.post("https://agrivibess.onrender.com/login/deleteOTP",{
          OTPs:OTPData
       }).then((response)=>{
 if(response.status===200){
@@ -349,7 +349,7 @@ if(response.status===200){
 function PasswordChanging(PassData){
  setCirularProgress3(true)
 try{
-  axios.post("http://localhost:5000/login/passwordChange",{
+  axios.post("https://agrivibess.onrender.com/login/passwordChange",{
     Email:getEmail,
     NewPassword:PassData.Password1,
     RePassword:PassData.RePassword

@@ -209,7 +209,7 @@ const handleClose1 = (lang) => {
 async function Logout(navigate) {
   
 try {
-  const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+  const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
   setIsAuthenticated(false);
   console.log("Logout response:", response.data);
   console.log("IsAuthenticated set to:", false);
@@ -224,7 +224,7 @@ try {
 async function Logout1(navigate) {
   
   try {
-    const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+    const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
     setIsAuthenticated(false);
     console.log("Logout response:", response.data);
     console.log("IsAuthenticated set to:", false);
@@ -317,7 +317,7 @@ ProductData();
       setLoading(true); // Set loading to true before fetching
       setError(null); // Reset any previous error
       try {
-        const response = await axios.get("http://localhost:5000/profile/userData", {
+        const response = await axios.get("https://agrivibess.onrender.com/profile/userData", {
           withCredentials: true,
         });
         console.log("Response Data:", response.data);
@@ -344,7 +344,7 @@ ProductData();
 
 
 function ProductData(){
-    axios.get("http://localhost:5000/profile/SellingUserData",{ withCredentials: true })
+    axios.get("https://agrivibess.onrender.com/profile/SellingUserData",{ withCredentials: true })
     .then((response)=>{
         setUserProduct(response.data.user)
     }).catch((error)=>{
@@ -515,7 +515,7 @@ const [otpbutt,OtpSendButton]=useState(false);
 function GenerateOTP(){
 
 const email=DataInfo.NewEmail
-    axios.post('http://localhost:5000/send-email', {
+    axios.post('https://agrivibess.onrender.com/send-email', {
       to: email, 
       subject: 'AgriVibes OTP Authentication',
       text: `The OTP will be sent shortly. Please check your inbox`,
@@ -541,7 +541,7 @@ const email=DataInfo.NewEmail
 function otpSumbmit(data1){
   const email1=data1.OTP;
 
-  axios.post('http://localhost:5000/validation',{
+  axios.post('https://agrivibess.onrender.com/validation',{
     EmailOTP: email1,
   })
     .then(response => {
@@ -571,7 +571,7 @@ OtpSendButton(false);
   async function storing(){
   console.log("Reached Storing Function...");
   try {
-    const response = await axios.post("http://localhost:5000/profile/updateUser", {
+    const response = await axios.post("https://agrivibess.onrender.com/profile/updateUser", {
       userInfoUpdate: DataInfo,
     }, {
       withCredentials: true
@@ -581,7 +581,7 @@ OtpSendButton(false);
       toast(response.data.message);
  
       try {
-        const deleteResponse = await axios.post('http://localhost:5000/deleteOtp', { Id: OTPID });
+        const deleteResponse = await axios.post('https://agrivibess.onrender.com/deleteOtp', { Id: OTPID });
         if (deleteResponse.status === 200) {
           Logout(navigate);
         }
@@ -604,7 +604,7 @@ OtpSendButton(false);
 function DeleteProfile(data){
   console.log("Reached Delete Function buddy...")
   console.log(data);
-axios.post('http://localhost:5000/profile/UserDelete',{
+axios.post('https://agrivibess.onrender.com/profile/UserDelete',{
   DeleteUser:data
 }).then((response)=>{
   if(response.data.message){
@@ -633,7 +633,7 @@ closeDeleteBox();
 function deleteItem(itemID){
 
 
-axios.post('http://localhost:5000/profile/ProductDelete',{
+axios.post('https://agrivibess.onrender.com/profile/ProductDelete',{
   ProductId:itemID
 }).then((response)=>{
   if(response.data.message){
@@ -1004,7 +1004,7 @@ startIcon={<ReportProblemIcon/>}
         // Use the sanitized image URL or fallback to a default image
         const imageUrl =
           sanitizedImages && sanitizedImages.length > 0
-            ? `http://localhost:5000/sell${sanitizedImages[0]}`
+            ? `https://agrivibess.onrender.com/sell${sanitizedImages[0]}`
             : "/default-image.jpg";
 
         return (

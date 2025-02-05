@@ -147,7 +147,7 @@ setIsOpen(false)
 
 async function Logout() {
 try {
-const response = await axios.post("http://localhost:5000/login/logout", {}, { withCredentials: true });
+const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
 console.log("Logout response:", response.data);
 
 setIsAuthenticated(false);
@@ -246,7 +246,7 @@ else{
 function two(inputValue,searchValue){
 console.log("Location :",inputValue,"SearchedValue :",searchValue);
 
-axios.post("http://localhost:5000/sell/retrive", {
+axios.post("https://agrivibess.onrender.com/sell/retrive", {
   Location: inputValue,
   SearchBox: searchValue,
 })
@@ -264,7 +264,7 @@ axios.post("http://localhost:5000/sell/retrive", {
 
 function one(inputValue){
 console.log("Location :",inputValue);
-axios.post("http://localhost:5000/sell/retriveAll",{
+axios.post("https://agrivibess.onrender.com/sell/retriveAll",{
   Location:inputValue
 }) .then((response)=>{
  
@@ -565,7 +565,7 @@ axios.post("http://localhost:5000/sell/retriveAll",{
         onClick={() => navigate(`/buy/product/${index}`, { state: product })}
       >
         <img className={style.imageOnly}
-          src={`http://localhost:5000/sell${sanitizedPath}`} 
+          src={`https://agrivibess.onrender.com/sell${sanitizedPath}`} 
           alt={product.Name} 
         />
         <h3>{product.Name}</h3>
