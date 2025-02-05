@@ -36,7 +36,7 @@ async function connectToMongoDB() {
   const client = new MongoClient(mongoUri);
   try {
     await client.connect();
-    console.log("Connected to MongoDB successfully!");
+   console.log("Connected to MongoDB successfully!");
     db = client.db("agrivibes"); // Initialize the database instance for reuse
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
