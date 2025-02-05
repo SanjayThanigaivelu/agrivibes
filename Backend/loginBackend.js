@@ -42,8 +42,8 @@ loginApi.post("/loginUser", async (req, res) => {
 
         res.cookie("email", Email, {
         	httpOnly: true,
-          secure: false,
-          sameSite: "Lax",
+         secure: process.env.NODE_ENV === "production",
+          sameSite: "none",
           maxAge: 15*24*60*60*1000,
           });    
              
@@ -58,8 +58,8 @@ loginApi.post("/loginUser", async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,  // Secure cookie, not accessible via JavaScript
         maxAge: 15 * 24 * 60 * 60 * 1000,  // 15 days in milliseconds
-        sameSite: "Lax",  // Allow cross-origin cookies
-        secure: false,  // Change to true in production (use HTTPS)
+        sameSite: 'none',  // Allow cross-origin cookies
+       secure: process.env.NODE_ENV === "production", // Change to true in production (use HTTPS)
     });
 
 
@@ -245,15 +245,15 @@ loginApi.post("/logout", async (req, res) => {
   // Clear the 'token' and 'email' cookies
   res.clearCookie('token', {
     httpOnly: true,
-    secure: false, // Match the settings used during cookie creation
-    sameSite: "Lax",
+   secure: process.env.NODE_ENV === "production",// Match the settings used during cookie creation
+    sameSite: "none",
     path: "/"
   });
 
   res.clearCookie('email', {
     httpOnly: true,
-    secure: false,
-    sameSite: "Lax",
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
     path: "/"
   });
 

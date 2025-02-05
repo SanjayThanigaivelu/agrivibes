@@ -22,7 +22,7 @@ function App() {
     const checkAuth = async () => {
       try {
         //console.log("Checking Auth: ", document.cookie);
-        const response = await axios.get("http://localhost:5000/login/protected", {
+        const response = await axios.get("https://agrivibess.onrender.com/login/protected", {
           withCredentials: true // Ensure cookies are sent
         });
         if (response.status === 200) {
