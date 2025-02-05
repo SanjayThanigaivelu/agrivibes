@@ -303,7 +303,7 @@ navigate("/buy", { state: { searchValue, inputValue } });
 const Icon1=()=>(
   <div className='whatsapp'>
     <a
-      href="https://wa.me/your-number"
+      href={`https://wa.me/${process.env.REACT_APP_PHONE_NUMBER}`}
       target="_blank"
       rel="noopener noreferrer"
       style={{color: "#25D366", fontSize: "32px" }}
@@ -558,10 +558,16 @@ const Icon1=()=>(
                     <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Profile
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <HelpOutlineIcon fontSize="small" style={{ marginRight: "8px" }} />
-                    Help
-                  </MenuItem>
+                  <MenuItem
+  onClick={handleClose}
+  component="a"
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=agrivibes07@gmail.com&su=Query%20Enquiry"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <HelpOutlineIcon fontSize="small" style={{ marginRight: "8px" }} />
+  Help
+</MenuItem>
                 </Menu>
              
             </Box>
@@ -857,7 +863,7 @@ className='Developer-pic'
           <tbody>
           <tr>
             <td className="foot logo">
-            <Link to ="/" className="footLink"><img className="logo"  src={restImages['AgriVibesFinal.jpg']} alt="AgriVibes Logo" /></Link>
+            <Link to ="/" className="footLink"><img className="logo"  src={restImages['SmallOnly.png']} alt="AgriVibes Logo" /></Link>
             </td>
             <td className="foot Home" ><Link to="/" className="footLink homecome">Home</Link></td>
             <td className="foot About"><Link to='https://myfirstportfolioweb.netlify.app/' className="footLink abouttt">About Us</Link></td>

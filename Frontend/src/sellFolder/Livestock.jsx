@@ -255,7 +255,6 @@ function Livestock() {
             },
           })
           .then((response) => {
-            console.log("Product uploaded successfully:", response.data);
             toast("Product uploaded successfully!");
             setCircularProgress(false);
             setIsSubmitting(false)
@@ -308,26 +307,26 @@ function Livestock() {
         }
  //-------------------------------------------AUTOCOMPLETE OF DISTRICT AND STATE------------------------------------------------------   
        
-                                    const [placeOptions, setPlaceOptions] = useState([]); // State to store place options
+ const [placeOptions, setPlaceOptions] = useState([]); // State to store place options
                                                                  
-                                                                 // Step 2: Function to fetch place suggestions
-                                                                 const fetchPlaceSuggestions = (input) => {
-                                                                   const service = new window.google.maps.places.AutocompleteService();
-                                                                   service.getPlacePredictions(
-                                                                     { input, types: ["(cities)"] },
-                                                                     (predictions, status) => {
-                                                                       if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
-                                                                         const formattedOptions = predictions.map((prediction) => ({
-                                                                           label: prediction.description, // Display this in the dropdown
-                                                                           value: prediction.place_id,   // Store place ID
-                                                                         }));
-                                                                         setPlaceOptions(formattedOptions); // Update state with new options
-                                                                       } else {
-                                                                         console.error("Failed to fetch place suggestions:", status);
-                                                                       }
-                                                                     }
-                                                                   );
-                                                                 };
+ // Step 2: Function to fetch place suggestions
+ const fetchPlaceSuggestions = (input) => {
+   const service = new window.google.maps.places.AutocompleteService();
+   service.getPlacePredictions(
+     { input, types: ["(cities)"] },
+     (predictions, status) => {
+       if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
+         const formattedOptions = predictions.map((prediction) => ({
+           label: prediction.description, // Display this in the dropdown
+           value: prediction.place_id,   // Store place ID
+         }));
+         setPlaceOptions(formattedOptions); // Update state with new options
+       } else {
+         console.error("Failed to fetch place suggestions:", status);
+       }
+     }
+   );
+ };
                                                               
 
   return (

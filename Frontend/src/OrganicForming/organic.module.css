@@ -87,14 +87,20 @@ bottom:51vh;
     padding: 20px;
 position: relative;
 bottom: 250px;
+
 }
 .organicPara{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   padding-left: 50px;
-   padding-right: 50px;
+   padding-left: 200px;
+   padding-right: 200px;
+   padding-top: 30px;
+   padding-bottom: 30px;
+   border: 2px solid black;
+   border-radius: 50px;
+   width: 50%;
 }
 
 .videoHeading{
@@ -187,7 +193,7 @@ bottom: 250px;
     background-color: #67c4c9;
     height: 300px;
     position: relative;
-    top: 50px;
+    top: 150px;
 }
 .ideas{
     display: flex;
@@ -299,7 +305,7 @@ bottom: 250px;
     align-items: center;
     font-size:14px;
     width: 60%;  
-    padding: 10px; 
+    padding: 40px; 
 }
 
 .videoHeading{
@@ -381,7 +387,16 @@ width: 170px !important;
 height: 40px !important;
 bottom: 6%;
 }
-
+.NewsLetter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #67c4c9;
+    height: 300px;
+    position: relative;
+    top: 55px;
+}
 }
 @media only screen and (min-width:511px) and (max-width:780px){
 
@@ -481,7 +496,7 @@ bottom: 6%;
         align-items: center;
         font-size:15px;
         width: 60%;  
-        padding: 10px; 
+        padding: 40px; 
     }
     
     .videoHeading{
@@ -564,6 +579,16 @@ bottom: 6%;
     bottom: 6%;
     }
 
+    .NewsLetter{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #67c4c9;
+        height: 300px;
+        position: relative;
+        top: 80px;
+    }
 }
 
 @media only screen and (min-width:781px) and (max-width:1024px){
@@ -664,7 +689,7 @@ bottom: 6%;
     align-items: center;
     font-size:15px;
     width: 80%;  
-    padding: 10px; 
+    padding: 40px; 
 }
 
 .videoHeading{
@@ -745,7 +770,16 @@ width: 170px !important;
 height: 40px !important;
 bottom: 6%;
 }
-
+.NewsLetter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #67c4c9;
+    height: 300px;
+    position: relative;
+    top: 80px;
+}
 }
 
 @media only screen and (min-width:1025px){

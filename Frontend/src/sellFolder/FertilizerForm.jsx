@@ -282,7 +282,6 @@ function FertilizerForm () {
                     },
                   })
                   .then((response) => {
-                    console.log("Product uploaded successfully:", response.data);
                     toast("Product uploaded successfully!");
                     setCircularProgress(false);
                     setIsSubmitting(false)

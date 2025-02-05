@@ -1,70 +1,91 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AgriVibes - Agriculture E-commerce Platform
 
-## Available Scripts
+AgriVibes is an advanced agriculture e-commerce platform built using the **MERN (MongoDB, Express.js, React.js, Node.js) stack**. The platform enables seamless buying and selling of agricultural products while ensuring a user-friendly experience.
 
-In the project directory, you can run:
+---
+## Installation & Setup
 
-### `npm start`
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-repo/agrivibes.git
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Navigate to the respective directory:**
+   ```sh
+   cd Frontend   # For frontend setup
+   cd Backend    # For backend setup
+   ```
+4. **Start the frontend and backend servers:**
+   ```sh
+   npm run start
+   ```
+   This will launch both the frontend and backend services.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+✔️ **Diverse Product Categories** – Supports six different agricultural product categories.
+✔️ **Dedicated Product Pages** – Each product has a separate, detailed page.
+✔️ **User Dashboard** – Users can edit, delete, and manage their posted products.
+✔️ **Organic Farming Insights** – Special page offering valuable farming insights.
+✔️ **Secure Authentication** – OTP-based registration and login for enhanced security.
+✔️ **Location-Based Search** – Products are displayed based on location and search criteria.
+✔️ **Responsive Design** – Works seamlessly on all electronic devices.
+✔️ **Cookie-Based Session Management** – Avoids unnecessary logins for an enhanced user experience.
+✔️ **Easy Buying & Selling Process** – Simplifies transactions and minimizes conflicts.
+✔️ **Dynamic Image Handling** – Uses `require.context` for dynamic image imports.
 
-### `npm test`
+---
+## API Documentation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Below is a summary of the APIs used in AgriVibes:
 
-### `npm run build`
+| API Endpoint | Method | Description |
+|-------------|--------|-------------|
+| `/sell/upload-product` | **POST** | Uploads product details and images |
+| `/sell/getProduct` | **GET** | Retrieves all products |
+| `/sell/retrieve` | **POST** | Retrieves products based on search and location |
+| `/sell/retrieveAll` | **POST** | Retrieves all products based on location |
+| `/images/:id` | **GET** | Fetches product images |
+| `/loginUser` | **POST** | Handles user login |
+| `/registerUser` | **POST** | Handles new user registration |
+| `/logout` | **POST** | Logs out the user |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
+## Dynamic Image Handling
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+AgriVibes dynamically loads images using `require.context` in React. This method allows for efficient and optimized image imports, reducing unnecessary bundle size while ensuring a smooth user experience.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
+## Technologies Used
 
-### `npm run eject`
+- **Frontend:** React.js, Material UI, React Hook Form
+- **Backend:** Node.js, Express.js, MongoDB
+- **Authentication:** OTP-based login with Nodemailer
+- **APIs Used:** Google Maps API for search functionality
+- **File Storage:** Multer and GridFS for handling images
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
+## Contact & Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🔗 **Portfolio:** [Visit my Portfolio](https://myfirstportfolioweb.netlify.app/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🚀 **Live Demo:** [Click Here to Try](#) *(Update with live link when available)*
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+For any inquiries or contributions, feel free to raise an issue or contact me.
 
-## Learn More
+---
+### 🛠 Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We welcome contributions! Feel free to fork the repository, submit pull requests, or report issues.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+### 📜 License
 
-### Code Splitting
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -22,7 +22,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { ToastContainer, toast } from 'react-toastify';
 import fruits from '../assets/PhoneScreen/Fruits&Veg.jpg'
 import { format, parse, isValid } from "date-fns";
-import { enGB } from "date-fns/locale"; 
+import { enGB } from "date-fns/locale";
+ 
 
 const libraries = ["places"];
 
@@ -87,37 +88,14 @@ function FinishedProductForm() {
   .max(1000, "Weight cannot exceed 1000 kg."),
 
 PackedOn: yup
-  .date()
-  .required("PackedOn date is required.")
-  .typeError("PackedOn must be a valid date.") 
-  .test(
-    "withinLast3Years",
-    "PackedOn date must be within the last 3 years but not a future date.",
-    (value) => {
-      if (!value) return false;
-      const threeYearsAgo = new Date();
-      threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return value >= threeYearsAgo && value <= today; // ✅ Fix: Allow today
-    }
-  ),
+  .string()
+  .required("Packed On date is required."),
+ 
 
- ExpiryDate:yup
-                .date()
-                .required("Expiry Date  is required.")  // Ensure the field is required
-                .typeError("Expiry Date must be a valid date.")  // Ensure the field is a valid date
-                .test(
-                  "validRange",
-                  "Expiry Date must be between today and the next 3 years.",
-                  (value) => {
-                    if (!value) return false;  // Fail if no value is provided
-                    const today = new Date();
-                    const threeYearsFromNow = new Date();
-                    threeYearsFromNow.setFullYear(today.getFullYear() + 3);
-                    return value >= today && value <= threeYearsFromNow;  // Ensure the date is within range
-                  }
-                ),
+ExpiryDate: yup
+  .string()
+  .required("Expiry Date is required."),
+  
     Description:yup
     .string()
     .required("Description is required")
@@ -234,8 +212,8 @@ Images: yup
           defaultValues: {
         NameOfProduct: '', // Initialize with an empty string or default value
         WeightinKg: '',
-          PackedOn: '',
-          ExpiryDate: '',
+          PackedOn: null,
+          ExpiryDate: null,
           Description:'',
           setPrice:'',
           Images:Array(5).fill(null),
@@ -279,7 +257,8 @@ Images: yup
 //-----------------------------------------------------DATABASE STORING---------------------------------------------------------------------
 
 function AllData(formData) {
-  console.log("Reached the Function :", formData)
+ 
+  console.log(formData);
   setIsSubmitting(true);
   setCircularProgress(true);
   const formDataToSend = new FormData();
@@ -307,15 +286,15 @@ function AllData(formData) {
     },
   })
   .then((response) => {
-    console.log("Product uploaded successfully:", response.data);
+    console.log("Response from Backend",response.data)
     toast("Product uploaded successfully!");
     setCircularProgress(false);
     setIsSubmitting(false)
             reset({
              NameOfProduct: '', // Initialize with an empty string or default value
         WeightinKg: '',
-          PackedOn: '',
-          ExpiryDate: '',
+          PackedOn: null,
+          ExpiryDate: null,
           Description:'',
           setPrice:'',
           Images:Array(5).fill(null),
@@ -338,8 +317,8 @@ function AllData(formData) {
             reset({
               NameOfProduct: '', // Initialize with an empty string or default value
             WeightinKg: '',
-          PackedOn: '',
-          ExpiryDate: '',
+          PackedOn: null,
+          ExpiryDate: null,
           Description:'',
           setPrice:'',
           Images:Array(5).fill(null),
@@ -381,7 +360,22 @@ const fetchPlaceSuggestions = (input) => {
     }
   );
 };
-        
+     
+
+const onSubmit = async () => {
+  const isValid = await trigger();
+  console.log("Form Errors:", errors); // Log all validation errors
+  //console.log(" Form Data Before Submission:", getValues()); // Log form values
+
+  if (isValid) {
+   // console.log(" Form is valid! Calling handleSubmit(AllData)");
+    handleSubmit(AllData)();
+  } else {
+    console.log("Form is invalid. Fix errors before submitting.");
+  }
+}
+
+
   return (
     <div className='FinishedProcut'>
         <div className="bannerImage">
@@ -451,96 +445,80 @@ const fetchPlaceSuggestions = (input) => {
   <br/><br/><br/>
   <ThemeProvider theme={theme}>
   <LocalizationProvider dateAdapter={AdapterDateFns} locale={enGB}>
-  <Controller
-  name="PackedOn"
-  control={control}
-  render={({ field, fieldState }) => (
-    <DatePicker
-      className="DatePicker"
-      {...field}
-      label="Packed On *"
-      disableFuture
-      inputFormat="dd/MM/yyyy"
-      mask="__/__/____"
-      minDate={new Date(new Date().setFullYear(new Date().getFullYear() - 3))}
-      value={
-        field.value && isValid(new Date(field.value)) 
-          ? new Date(field.value) 
-          : null
-      }
-      onChange={(value) => {
-        if (!value || isNaN(value.getTime())) {
-          field.onChange(null);
-          return;
-        }
-        field.onChange(value); 
-      }}
-      renderInput={(params) => (
-        <TextField
-          className="DatePicker"
-          {...params}
-          error={fieldState?.isTouched && !!fieldState?.error}
-          helperText={fieldState?.isTouched && fieldState?.error?.message}
-          disabled={isSubmitting}
-          variant="outlined"
+    <Controller
+      name="PackedOn"
+      control={control}
+      render={({ field, fieldState }) => (
+        <DatePicker
+          label="Packed On *"
+          inputFormat="yyyy-MM-dd"
+          disableFuture
+          mask="____-__-__"
+          value={field.value ? new Date(field.value) : null}
+          onChange={(date) => {
+            if (!date || isNaN(date.getTime())) {
+              console.log("Invalid PackedOn selected:", date);
+              field.onChange(null);
+            } else {
+              const formattedDate = format(date, "yyyy-MM-dd");
+              console.log(" PackedOn selected:", formattedDate);
+              field.onChange(formattedDate);
+            }
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              error={!!fieldState.error}
+              helperText={fieldState.error?.message}
+              variant="outlined"
+            />
+          )}
         />
       )}
     />
-  )}
-/>
   </LocalizationProvider>
 </ThemeProvider>
-  <br/><br/><br/>
- <ThemeProvider theme={theme}>
-   <LocalizationProvider dateAdapter={AdapterDateFns} locale={enGB}> 
-     <Controller
-       name="ExpiryDate"
-       control={control}
-       render={({ field, fieldState }) => {
-         return (
-           <DatePicker
-             className="DatePicker"
-             {...field}
-             label="Expiry Date*"
-             inputFormat="dd/MM/yyyy" 
-             mask="__/__/____"
-             minDate={new Date()} 
-             maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 3))}
-             value={
-               field.value && isValid(parse(field.value, "dd/MM/yyyy", new Date())) 
-                 ? parse(field.value, "dd/MM/yyyy", new Date()) 
-                 : null
-             }
-             onChange={(value) => {
-               if (!value || isNaN(value.getTime())) { // Ensure value is valid
-                 field.onChange(null);
-                 return;
-               }
-               const formattedDate = format(value, "dd/MM/yyyy"); 
-               field.onChange(formattedDate);
-             }}
-             renderInput={(params) => (
-               <TextField
-                 className="DatePicker"
-                 {...params}
-                 error={!!fieldState.error} 
-                 helperText={fieldState.error?.message} 
-                 variant="outlined"
-                 sx={{
-                   "& .MuiOutlinedInput-root": {
-                     "& .MuiOutlinedInput-notchedOutline": {
-                       borderColor: fieldState.error ? "red" : "black",
-                     },
-                   },
-                 }}
-               />
-             )}
-           />
-         );
-       }}
-     />
-   </LocalizationProvider>
+
+<br/><br/><br/>
+
+<ThemeProvider theme={theme}>
+  <LocalizationProvider dateAdapter={AdapterDateFns} locale={enGB}>
+    <Controller
+      name="ExpiryDate"
+      control={control}
+      render={({ field, fieldState }) => (
+        <DatePicker
+          label="Expiry Date *"
+          inputFormat="yyyy-MM-dd"
+          mask="____-__-__"
+          minDate={new Date()}
+          maxDate={new Date(new Date().setFullYear(new Date().getFullYear() + 3))}
+          value={field.value ? new Date(field.value) : null}
+          onChange={(date) => {
+            if (!date || isNaN(date.getTime())) {
+              console.log(" Invalid ExpiryDate1 selected:", date);
+              field.onChange(null);
+            } else {
+              const formattedDate = format(date, "yyyy-MM-dd");
+              console.log("ExpiryDate1 selected:", formattedDate);
+              field.onChange(formattedDate);
+            }
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              error={!!fieldState.error}
+              helperText={fieldState.error?.message}
+              variant="outlined"
+            />
+          )}
+        />
+      )}
+    />
+  </LocalizationProvider>
 </ThemeProvider>
+
+
         <br/><br/><br/>
 
 <Controller 
@@ -821,7 +799,7 @@ const fetchPlaceSuggestions = (input) => {
   />
   <br/><br/><br/>
   <ThemeProvider theme={theme1}>
-{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" type="submit" className='SubmitButt'>
+{CircularProgress1 ? (<CircularProgress/>):(<Button variant="contained" color="primary" onClick={onSubmit}  className='SubmitButt'>
             Post AD
           </Button>)}
           </ThemeProvider>

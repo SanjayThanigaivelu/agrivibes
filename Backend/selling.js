@@ -49,8 +49,6 @@ sellApi.post("/upload-product", upload.array("Images"), async (req, res) => {
             reject(err);
           })
           .on("finish", () => {
-            console.log("Uploaded file to GridFS:", uploadStream.id);
-            // Build the URL for accessing the image
             const imageUrl = `/images/${uploadStream.id.toString()}`; 
             imageUrls.push(imageUrl); // Save the image URL for reference
             resolve();
@@ -81,7 +79,6 @@ sellApi.get("/getProduct", async (req, res) => {
 
     const products = await db.collection("selling").find({}).toArray();
 
-    // Construct URLs for images and return populated products
     const populatedProducts = products.map((product) => {
       if (product.Images && product.Images.length > 0) {
         const imageUrls = product.Images.map((imageId) => {
@@ -308,7 +305,6 @@ PackedOn:1
 
 
 sellApi.get("/images/:id", async (req, res) => {
-  console.log("Requested image ID:", req.params.id);  // Log the image ID being requested
   try {
     const { id } = req.params;
 

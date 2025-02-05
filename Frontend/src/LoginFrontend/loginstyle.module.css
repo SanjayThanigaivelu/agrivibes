@@ -371,7 +371,10 @@ left: 19%;
 .register{
   font-size: 14px;
  position: relative;
- left: 5%;
+ left: 5px;
+margin-left: 15%;
+
+font-size: 13px !important;
 }
 
 .Box2{
