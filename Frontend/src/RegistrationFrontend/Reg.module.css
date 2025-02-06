@@ -85,20 +85,6 @@ a.log {
 }
 
 
-.Box1{
-    width: 400px;
-    height: auto;
-    margin: auto;
-    background-color: white;
-    padding: 3px;
-    border-radius: 10px;
-    box-shadow: 24px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: "translate(-50%, -50%)";
-}
 .Box2{
     display: flex;
     flex-direction: column;
@@ -159,10 +145,57 @@ font-size: 25px !important;
             box-sizing: border-box;
         }
 
- .images{
+.OTPheading{
+    position: absolute; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); /* Proper centering */
+    text-align: center; /* Ensures text is centered */
+    width: 100%; /* Takes full width to stay centered */
+    font-size: 18px; /* Adjust as needed */
+    font-weight: bold;
+}
+ 
+ .Box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 40%;
+    margin: auto;
+    background-color: white;
+    padding: 3px;
+    border-radius: 10px;
+    box-shadow: 24px;
+    text-align: center;
+    position: absolute;
+    top: 30%;
+  left: 4%;
+    transform: "translate(-50%, -50%)";
+}
+
+.emailOTP{
+    position: relative;
+    top: 20px;
+}
+.GenerateOTP,.ConfirmOTP{
+margin-top: 40px !important;
+}
+
+.Box3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 3px;
+}
+
+
+.images{
     display: none !important;
  }
- 
+
+
 }
 @media only screen and (max-width:580px) and (min-width:421px){
 
@@ -209,6 +242,52 @@ font-size: 25px !important;
         max-width: 380px !important;
         min-width: 380px !important; 
         box-sizing: border-box;
+    }
+
+    .OTPheading{
+        position: absolute; 
+        top: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); /* Proper centering */
+        text-align: center; /* Ensures text is centered */
+        width: 100%; /* Takes full width to stay centered */
+        font-size: 18px; /* Adjust as needed */
+        font-weight: bold;
+    }
+     
+    .Box1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        height: 50%;
+        margin: auto;
+        background-color: white;
+        padding: 3px;
+        border-radius: 10px;
+        box-shadow: 24px;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+      left: 4%;
+        transform: "translate(-50%, -50%)";
+    }
+    
+    .emailOTP{
+        position: relative;
+        top: 20px;
+    }
+    .GenerateOTP,.ConfirmOTP{
+    margin-top: 50px !important;
+   
+    }
+    
+    .Box3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 3px;
     }
 
 .images{
@@ -263,6 +342,51 @@ font-size: 25px !important;
         box-sizing: border-box;
     }
 
+    .OTPheading{
+        position: absolute; 
+        top: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); /* Proper centering */
+        text-align: center; /* Ensures text is centered */
+        width: 100%; /* Takes full width to stay centered */
+        font-size: 18px; /* Adjust as needed */
+        font-weight: bold;
+    }
+     
+    .Box1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        height: 50%;
+        margin: auto;
+        background-color: white;
+        padding: 3px;
+        border-radius: 10px;
+        box-shadow: 24px;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 14%;
+        transform: "translate(-50%, -50%)";
+    }
+    
+    .emailOTP{
+        position: relative;
+        top: 20px;
+    }
+    .GenerateOTP,.ConfirmOTP{
+    margin-top: 50px !important;
+    }
+    
+    .Box3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 3px;
+    }
+
 .images{
 display: none !important;
 }
@@ -315,6 +439,55 @@ font-size: 25px !important;
         box-sizing: border-box;
     }
 
+    .OTPheading{
+        position: absolute; 
+        top: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); /* Proper centering */
+        text-align: center; /* Ensures text is centered */
+        width: 100%; /* Takes full width to stay centered */
+        font-size: 18px; /* Adjust as needed */
+        font-weight: bold;
+    }
+     
+    .Box1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 50%;
+        margin: auto;
+        background-color: white;
+        padding: 3px;
+        border-radius: 10px;
+        box-shadow: 24px;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+      left: 25%;
+        transform: "translate(-50%, -50%)";
+    }
+    
+    .emailOTP{
+        position: relative;
+        top: 20px;
+    }
+    .GenerateOTP,.ConfirmOTP{
+    margin-top: 50px !important;
+    }
+    
+    .Box3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 3px;
+    }
+
+
+
+
+
 .images{
 display: none !important;
 }
@@ -365,11 +538,77 @@ font-size: 35px !important;
         font-size: medium;
         position: relative;
       left: 230px;
-      bottom: 18px;
-      
-      
-       
+      bottom: 18px;  
     }
+
+
+    .Box1{
+        width: 40%;
+        height: 40%;
+        margin: auto;
+        background-color: white;
+        padding: 3px;
+        border-radius: 10px;
+        box-shadow: 24px;
+        text-align: center;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        transform: "translate(-50%, -50%)";
+    }
+
+
+    
+    .OTPheading{
+        position: absolute; 
+        top: 20px; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        text-align: center; /* Ensures text is centered */
+        width: 100%; 
+        font-size: 22px !important; 
+        font-weight: bold;
+    }
+     
+    .Box1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 50%;
+        margin: auto;
+        background-color: white;
+        padding: 3px;
+        border-radius: 10px;
+        box-shadow: 24px;
+        text-align: center;
+        position: absolute;
+        top: 25%;
+        left: 35%;
+        transform: "translate(-50%, -50%)";
+    }
+    
+    .emailOTP{
+        position: relative;
+        top: 20px;
+    }
+
+    .GenerateOTP,.ConfirmOTP{
+    margin-top: 50px !important;
+    width: 150px !important;
+    height: 50px !important;
+    }
+
+    
+    .Box3{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 3px;
+    }
+
+
 
     .FullName,.PhoneNumber,.Email,.Password,.RePassword {
         

@@ -315,7 +315,7 @@ OtpSendButton(false);
         MuiButton: {
             styleOverrides: {
                 root: {
-                  padding: '4px 19px',
+                  padding: '4px 10px',
                  
                 },
             },
@@ -573,7 +573,7 @@ OtpSendButton(false);
         <Box className={styles.Box1}
           onClick={(e) => e.stopPropagation()}
         >
-          <Typography variant="h6" sx={{ mb: 2 }}>
+          <Typography  className= {styles.OTPheading}>
             Verify Your OTP
           </Typography>
           <Box component="form" onSubmit={handleOtpFormSubmit(otpValidator)} className={styles.Box2}>
@@ -643,10 +643,10 @@ OtpSendButton(false);
               </Typography>
             )}
 
-          <Box  className={styles.Box3} sx={{ mt: 1, display: "flex", gap: 2, justifyContent: "center"  }}> 
+          <Box  className={styles.Box3}> 
           <ThemeProvider theme={theme1}>
-          {otpLoading ? (<CircularProgress/>): (<Button variant='contained' disabled={otpbutt} color="primary"  onClick={()=>otpGenerator(getValues("Email"),getValues("PhoneNumber"))} startIcon={<SendIcon />} >Send OTP</Button>)}
-          <Button variant="contained" color="primary" type="submit"  startIcon={<VerifiedIcon />}>
+          {otpLoading ? (<CircularProgress/>): (<Button className={styles.GenerateOTP} variant='contained' disabled={otpbutt} color="primary" size='small'  onClick={()=>otpGenerator(getValues("Email"),getValues("PhoneNumber"))} startIcon={<SendIcon />} >Send OTP</Button>)}
+          <Button className={styles.ConfirmOTP} variant="contained" color="primary" type="submit" size='small' startIcon={<VerifiedIcon />}>
             Confirm OTP
           </Button>
           </ThemeProvider>
