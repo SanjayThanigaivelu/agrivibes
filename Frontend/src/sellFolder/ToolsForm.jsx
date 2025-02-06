@@ -398,7 +398,7 @@ function ToolsForm() {
                        {...field}
                        error={!!errors.years}
               helperText={errors.years?.message}
-              label="Year of Purchased *"
+              label="Year of Purchase *"
               disabled={isSubmitting}
               variant="outlined" sx={{ "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {

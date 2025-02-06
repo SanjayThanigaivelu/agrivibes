@@ -723,7 +723,7 @@ const Icon1=()=>(
 <div className="Agri Machine">
 <Link to='/sell/Machine' className="linked">
   <img src={categoryImages[agriMachineImage]} alt='Agri-Machine'/>
-  <h3>Agriculture Machine</h3>
+  <h3>Agricultural Machine</h3>
   </Link>
 </div>
 
@@ -750,7 +750,7 @@ const Icon1=()=>(
 <div className="Agri Product">
 <Link to='/sell/Finishedproduct' className="linked">
 <img src={categoryImages[FinshedProductImage]} alt='FinishedProduct'/>
-<h3>Agriculture Products</h3>
+<h3>Agricultural Products</h3>
 </Link>
 </div>
 
@@ -759,7 +759,7 @@ const Icon1=()=>(
 <div className="Agri rawProduct">
 <Link to='/sell/Rawproduct' className='linked'>
 <img src={categoryImages[RawProductImage]} alt='RowProduct'/>
-<h3>Agriculture Rawproducts</h3>
+<h3>Agricultural Rawproducts</h3>
 </Link>
 </div>
 
@@ -768,7 +768,7 @@ const Icon1=()=>(
 <div className="Agri Tools">
 <Link to='/sell/Tools' className="linked">
 <img src={categoryImages[ToolsImage]} alt='Tools'/>
-<h3>Agriculture Equipments</h3>
+<h3>Agricultural Equipments</h3>
 </Link>
 </div>
 </div>
