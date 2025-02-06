@@ -714,7 +714,7 @@ If not, it enriches the soil as nourishment"</strong>
 </div>
 </div>
 
-<h1 className= {style.organicHeading}>Organic Forming</h1>
+<h1 className= {style.organicHeading}>Organic Farming</h1>
 <div className={style.Organic}>
 <p className= {style.organicPara}>Organic farming prioritizes human welfare and environmental health, guided by principles of health, ecology, and fairness. 
 This sustainable practice combines tradition, innovation, and science, with roots dating back to Sir Albert Howard's studies of
@@ -736,7 +736,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
 </div>
 
-<h2 className= {style.webheading}>Goverment Website For Organic Forming</h2>
+<h2 className= {style.webheading}>Government Website For Organic Farming</h2>
 <div className= {style.website}>
 
 <div className= {style.firstWeb}>
@@ -752,7 +752,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 
 <div className={style.secondWeb}>
   <img src={kisan} alt='Kisan website' className= {style.image2}/>
-  <h4>Kissn Website</h4>
+  <h4>Kissan Website</h4>
   <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2,ml:18,gap:1}}>
   <ThemeProvider theme={theme1}>
   <Button variant='contained' onClick={()=>window.open('https://www.myscheme.gov.in/schemes/kcc')} startIcon={<TravelExploreIcon/>} size='small' className={style.button2}>Visit</Button>
@@ -782,7 +782,7 @@ web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </div>
 
 </div>
-<h1 className= {style.formersHeading}>The Formers</h1>
+<h1 className= {style.formersHeading}>The Farmers</h1>
 <div className={style.Formers}>
 <img src={TheFormer} alt="The Formers" className= {style.formerPic} />
   <p className={style.TheFormers}>
@@ -804,7 +804,7 @@ They truly are the unsung heroes of society.
 
 <div className={style.NewsLetter}>
   <strong className= {style.ideas}>
-  Hi, I’m Sanja Thanigaivelu—a passionate Full-Stack Developer and agriculture enthusiast dedicated to bridging the gap between Agriculture and Technology. 
+  Hi, I’m Sanjay Thanigaivelu—a passionate Full-Stack Developer and agriculture enthusiast dedicated to bridging the gap between Agriculture and Technology. 
   If you’re working on newsletters, blogs, or innovative ideas related to Tech, Agriculture, or my open-source project AgriVibes, I’d love to connect! Your ideas are always welcome, and I’m eager to collaborate to create a better world together. 
   Feel free to reach out—let’s make an impact!
   </strong>
