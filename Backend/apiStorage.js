@@ -14,7 +14,7 @@ const vibe = express();
 
 
 const corsOptions = {
-  origin: "http://localhost:3000", // Frontend URL
+ origin: ["http://localhost:3000", "https://agrivibes.netlify.app"], // Frontend URL
   credentials: true, // Allow cookies to be sent/received ....this part
 };
 
