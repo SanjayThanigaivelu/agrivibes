@@ -10,7 +10,8 @@
   }
   .Full{
     position: relative;
-    top: 2%;
+    min-height: 100vh;
+    
   }
   .Ribbon {
     display: flex;
@@ -26,7 +27,7 @@
     font-size: medium;
     height: 8vh;
   position: relative;
-  top: 10px;
+  top: 10px !important;
   }
   
     table td{
