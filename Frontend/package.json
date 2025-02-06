@@ -9,7 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@hookform/resolvers": "^3.9.1",
     "@mui/icons-material": "^6.1.6",
-    "@mui/material": "^6.4.1",
+    "@mui/material": "^5.8.6",
     "@mui/x-date-pickers": "^6.11.1",
     "@react-google-maps/api": "^2.20.5",
     "ajv": "^8.17.1",
