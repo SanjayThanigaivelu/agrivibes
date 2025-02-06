@@ -111,14 +111,15 @@ a.log {
 
 /*----------------------------------------------MEDIA QUERY STARTS---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (max-width:780px){
+@media only screen and (max-width:420px){
 
     .container {
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-        justify-content: center;
-        align-items:center;   
-        box-sizing: border-box; 
+        
+            max-width: 400px !important; /* Prevents it from stretching */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;    
     }
 
     .Inputfeild{
@@ -130,39 +131,260 @@ a.log {
 
         .heading{
  display: grid;
-left: 70px;
+left: 100px;
 font-size: 25px !important;
         }
 
         .RegisterButt{
            width: 99px;
+           position: relative;
+           left: 10px;
            font-size: small;
         }
 
         .login{
             font-size: small;
             position: relative;
-          left: 165px;
+          left: 170px;
            
         }
 
- .images ,.FullName, .PhoneNumber ,.Email ,.Password,.RePassword{
+        .FullName,.PhoneNumber,.Email,.Password,.RePassword {
+            
+            width: 100% !important;
+            max-width: 290px !important;
+            min-width: 290px !important; 
+           
+          
+            box-sizing: border-box;
+        }
+
+ .images{
     display: none !important;
  }
  
 }
-@media only screen and (max-width:1024px) and (min-width:781px){
+@media only screen and (max-width:580px) and (min-width:421px){
 
-.FullName1 , .PhoneNumber1, .Email1,.Password1 , .RePassword1{
-    display: none !important;
+    
+    .container {
+        
+        max-width: 450px !important; /* Prevents it from stretching */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+}
+
+.Inputfeild{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    }
+
+    .heading{
+display: grid;
+left: 140px;
+font-size: 25px !important;
+    }
+
+    .RegisterButt{
+       width: 99px;
+       position: relative;
+       left: 10px;
+       font-size: small;
+    }
+
+    .login{
+        font-size: small;
+        position: relative;
+      left: 250px;
+       
+    }
+
+    .FullName,.PhoneNumber,.Email,.Password,.RePassword {
+        
+        width: 100% !important;
+        max-width: 380px !important;
+        min-width: 380px !important; 
+        box-sizing: border-box;
+    }
+
+.images{
+display: none !important;
 }
 
 }
 
+@media only screen and (min-width:581px) and (max-width:724px) {
+
+    .container {
+        
+        max-width: 450px !important; /* Prevents it from stretching */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+}
+
+.Inputfeild{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    }
+
+    .heading{
+display: grid;
+left: 200px;
+font-size: 25px !important;
+    }
+
+    .RegisterButt{
+       width: 99px;
+       position: relative;
+       left: 10px;
+       font-size: large;
+    }
+
+    .login{
+        font-size: medium;
+        position: relative;
+      left: 350px;
+       bottom: 52px;
+    }
+
+    .FullName,.PhoneNumber,.Email,.Password,.RePassword {
+        
+        width: 100% !important;
+        max-width: 450px !important;
+        min-width: 450px !important; 
+        box-sizing: border-box;
+    }
+
+.images{
+display: none !important;
+}
+
+}
+
+@media only screen and (min-width:725px) and (max-width:1024px){
+
+    .container {
+        
+        max-width: 450px !important; /* Prevents it from stretching */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+}
+
+.Inputfeild{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    }
+
+    .heading{
+display: grid;
+left: 200px;
+font-size: 25px !important;
+    }
+
+    .RegisterButt{
+       width: 99px;
+       position: relative;
+       left: 10px;
+       font-size: large;
+    }
+
+    .login{
+        font-size: medium;
+        position: relative;
+      left: 350px;
+       bottom: 52px;
+    }
+
+    .FullName,.PhoneNumber,.Email,.Password,.RePassword {
+        
+        width: 100% !important;
+        max-width: 450px !important;
+        min-width: 450px !important; 
+        box-sizing: border-box;
+    }
+
+.images{
+display: none !important;
+}
+
+
+}
 
 @media only screen and (min-width:1025px){
 
-.FullName1, .PhoneNumber1,.Email1, .Password1, .RePassword1{
-    display: none !important;
+
+    .container {
+        
+        max-width: 1050px !important; /* Prevents it from stretching */
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 50px;
+        justify-content: center;
+        align-items:center;   
+        box-sizing: border-box;
+
 }
+
+.Inputfeild{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    }
+
+    .heading{
+display: grid;
+left: 100px;
+top: 60px;
+font-size: 35px !important;
+    }
+
+    .RegisterButt{
+       width: 150px;
+       height: 35px;
+       position: relative;
+       font-size: large;
+       top: 40px;
+       right: 100px;
+    }
+
+    .login{
+        font-size: medium;
+        position: relative;
+      left: 230px;
+      bottom: 18px;
+      
+      
+       
+    }
+
+    .FullName,.PhoneNumber,.Email,.Password,.RePassword {
+        
+        width: 100% !important;
+        max-width: 450px !important;
+        min-width: 450px !important; 
+        box-sizing: border-box;
+        position: relative;
+        right: 100px;
+        top: 50px;
+    }
+
+
+
+
+
+
 }

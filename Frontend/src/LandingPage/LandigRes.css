@@ -344,7 +344,7 @@ padding: 15px;
   border: 1px solid black;
   border-radius: 50px;
   background-color: #a5b4fc;
-  height: 150px;
+  height: 155px;
   width: 50%;
   left: 22%;
   top: 5%;
@@ -372,7 +372,7 @@ padding-bottom: 5px;
   background-color:#fda4af;
   width: 50%;
   height: 150px;
-top: 15%;
+top: 10%;
 left: 20%;
 font-size: 18px;
 }
@@ -382,7 +382,7 @@ font-size: 18px;
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 280px;
+  top: 170px;
   font-size: medium;
 }
 
@@ -395,7 +395,7 @@ font-size: 18px;
   padding: 5px;
   position: relative;
  font-size:small;
-  top: 50vh;
+  top: 30vh;
   left: 25%;
   flex-wrap: wrap;
 }
@@ -418,14 +418,14 @@ text-align: center;
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  top:-5px;
+  top:-15px;
  left: 1%;
   
 }
 .ContactButt1{
   border-radius: 30px;
   background-color: #0f172a;
-  
+   
 }
 
 
@@ -434,6 +434,12 @@ text-align: center;
 
 .Job-asking{
  padding: 50px;
+ position: relative;
+ 
+}
+.button{
+  position: relative;
+  bottom: 60px;
 }
 
 /*----------------------------------------------------FOOTER1------------------------------------*/
@@ -448,7 +454,7 @@ text-align: center;
     position: relative; 
     top:50px;
     bottom: 0px;
-    left: 5px;
+    left: 0px;
     padding-top:0px;
     padding-bottom: 60px;
     height: 35vh;
@@ -878,7 +884,10 @@ padding:30px;
 .Job-asking{
 padding: 50px;
 }
-
+.button{
+  position: relative;
+  bottom: 60px;
+}
 /*----------------------------------------------------FOOTER1------------------------------------*/
 .Footer1{
 width: 100%;
@@ -989,7 +998,7 @@ left: 21%;
   justify-content: center;
   align-items: center;
   position: relative;
-  top: 280px;
+  top: 380px;
 }
 
 .Formers{
@@ -1000,7 +1009,7 @@ left: 21%;
   width: 50%;
   padding: 5px;
   position: relative;
-  top: 50vh;
+  top: 20vh;
   left: 25%;
   flex-wrap: wrap;
 }
@@ -1030,9 +1039,9 @@ text-align: center;
 .ContactButt1{
   border-radius: 30px;
   background-color: #0f172a;
-  
+  position: relative;
+  width: 200px !important;
 }
-
 
 
   }
@@ -1051,6 +1060,14 @@ text-align: center;
     .Footer1{
       display: none;
     }
+    .ContactButt1{
+      border-radius: 30px;
+      background-color: #0f172a;
+      position: relative;
+      width: 200px !important;
+      height: 40px !important;
+    }
+    
   
   }
   

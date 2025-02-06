@@ -449,7 +449,7 @@ const onSubmit = async () => {
       name="PackedOn"
       control={control}
       render={({ field, fieldState }) => (
-        <DatePicker
+        <DatePicker className='DatePicker'
           label="Packed On *"
           inputFormat="yyyy-MM-dd"
           disableFuture
@@ -487,7 +487,7 @@ const onSubmit = async () => {
       name="ExpiryDate"
       control={control}
       render={({ field, fieldState }) => (
-        <DatePicker
+        <DatePicker className='DatePicker'
           label="Expiry Date *"
           inputFormat="yyyy-MM-dd"
           mask="____-__-__"

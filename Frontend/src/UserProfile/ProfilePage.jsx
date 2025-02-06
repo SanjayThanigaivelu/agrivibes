@@ -8,6 +8,7 @@ import EventIcon from '@mui/icons-material/Event';
 import MailIcon from '@mui/icons-material/Mail';
 
 import   '../LandingPage/AgriVibes.css';
+import '../LandingPage/LandigRes.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram ,faLinkedin,faGithub} from '@fortawesome/free-brands-svg-icons';
@@ -126,13 +127,6 @@ const [open3, setOpen3]=useState(false);
                       borderRadius: "35px",        
                     },
           
-                    
-                    "&:hover": {
-                      backgroundColor: "#d3cdcd", 
-                      borderLeft: "5px solid #6B8E23", 
-                      borderRadius: "35px", 
-                      transition: "all 0.3s ease", 
-                    }
                   },
                 },
               },

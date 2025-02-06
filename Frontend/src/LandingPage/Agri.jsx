@@ -805,7 +805,7 @@ const Icon1=()=>(
 <div className='Formers'>
   <strong className='AboutFarmers'>The people who sell tractors are rich. Those who sell fertilizer are rich. 
   The people who sell agricultural equipment are rich, and even those who sell seeds are rich. 
-  Yet the farmers who actually practice agriculture remain poor—and they are dying. Over 112,000 farmers have died 
+  Yet the farmers who actually practice agriculture remain poor...? and they are dying. Over 112,000 farmers have died 
   by suicide in the past ten years. Let’s make a change and protect our farmers. We need your ideas—connect with us to make a difference.</strong>
 
 <div className='ContactButton'>
@@ -814,8 +814,8 @@ const Icon1=()=>(
   component="a"
   href="https://mail.google.com/mail/?view=cm&fs=1&to=sanjaymuthulakshmi@gmail.com&su=Having%20an%20Idea&body=Hi,%20I%20have%20an%20Idea%20to%20discuss%20with%20you!"
   target="_blank"
-  sx={{borderRadius:"50px",backgroundColor:"#0f172a",width:"200px"}}
-
+  sx={{borderRadius:"50px",backgroundColor:"#0f172a"}}
+size='small'
   startIcon={<WorkIcon />}
   variant="contained"
   color="primary"
@@ -841,14 +841,16 @@ className='Developer-pic'
 
 <div className='button'>
 <ThemeProvider theme={theme2}>
-<Button  variant='contained' color='primary'  startIcon={<AccountCircleIcon/>} onClick={()=>window.open("https://myfirstportfolioweb.netlify.app/")}>About Me</Button>
+<Button  variant='contained' color='primary' size='small'className='AboutMe' startIcon={<AccountCircleIcon/>} onClick={()=>window.open("https://myfirstportfolioweb.netlify.app/")}>About Me</Button>
 <Button
   component="a"
+  size='small'
   href="https://mail.google.com/mail/?view=cm&fs=1&to=sanjaymuthulakshmi@gmail.com&su=Hiring%20Inquiry&body=Hi,%20I%20am%20interested%20in%20discussing%20an%20opportunity%20with%20you!"
   target="_blank"
   startIcon={<ContactMailIcon />}
   variant="contained"
   color="primary"
+  className='HireMe'
 >
   Hire Me
 </Button>

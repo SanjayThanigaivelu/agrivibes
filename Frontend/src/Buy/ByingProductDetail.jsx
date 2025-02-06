@@ -76,13 +76,6 @@ function ByingProductDetail({ isAuthenticated, setIsAuthenticated }) {
                   borderRadius: "35px",        
                 },
       
-                
-                "&:hover": {
-                  backgroundColor: "#d3cdcd", 
-                  borderLeft: "5px solid #6B8E23", 
-                  borderRadius: "35px", 
-                  transition: "all 0.3s ease", 
-                }
               },
             },
           },

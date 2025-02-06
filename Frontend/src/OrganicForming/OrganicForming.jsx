@@ -22,6 +22,8 @@ import axios from 'axios';
 import MenuIcon from '@mui/icons-material/Menu'; 
 import { LoadScript } from '@react-google-maps/api';
 import { Autocomplete, TextField } from "@mui/material";
+import AgricultureIcon from '@mui/icons-material/Agriculture';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 import { LocationContext } from '../Context/LocationContext.jsx';

@@ -1,4 +1,5 @@
 import React,{useState,useContext} from "react";
+import { useNavigate } from "react-router-dom";
 import   '../LandingPage/AgriVibes.css';
 import { Link } from 'react-router-dom';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -35,6 +36,9 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const libraries = ["places"];
 
 function Sell({ isAuthenticated, setIsAuthenticated }) {
+
+   const navigate = useNavigate();
+
   const { category } = useParams();
   const theme = createTheme({
     typography: {
@@ -74,14 +78,6 @@ function Sell({ isAuthenticated, setIsAuthenticated }) {
               backgroundColor: "transparent",  
               borderRadius: "35px",        
             },
-  
-            
-            "&:hover": {
-              backgroundColor: "#d3cdcd", 
-              borderLeft: "5px solid #6B8E23", 
-              borderRadius: "35px", 
-              transition: "all 0.3s ease", 
-            }
           },
         },
       },
