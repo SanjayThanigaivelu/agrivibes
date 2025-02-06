@@ -119,12 +119,9 @@ function ByingProductDetail({ isAuthenticated, setIsAuthenticated }) {
   async function Logout() {
     try {
       const response = await axios.post("https://agrivibess.onrender.com/login/logout", {}, { withCredentials: true });
-      console.log("Logout response:", response.data);
-  
       setIsAuthenticated(false);
       console.log("IsAuthenticated set to:", false);
-  
-      //navigate("/"); // Redirect to the login pagep
+      navigate("/"); 
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -348,7 +345,6 @@ console.log("Searching for:", searchValue);
       >
         {/* Menu Items */}
         <MenuItem onClick={() => {
-           console.log("MenuItem clicked");
   Logout();
   handleClose();
 }}>
@@ -448,15 +444,27 @@ console.log("Searching for:", searchValue);
                     style: { marginTop: "15px", width: "300px" },
                   }}
                 >
-                  <MenuItem
-                    onClick={() => {
-                      console.log("MenuItem clicked");
-                      handleClose();
-                    }}
-                  >
-                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
-                    Logout
-                  </MenuItem>
+                                  {/* Menu Items */}
+        <MenuItem onClick={() => {
+           console.log("MenuItem clicked");
+  Logout();
+  handleClose();
+}}>
+        {isAuthenticated ? (
+          <>   
+         
+      <LogoutIcon fontSize="small" sx={{ marginRight: "8px" }} />
+      <span>Logout</span> 
+  </>
+): (  <>
+        <LoginIcon fontSize="small" sx={{ marginRight: "8px" }} />
+          <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+            Login
+          </Link> 
+        </>
+)
+        }
+        </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <PersonIcon fontSize="small" style={{ marginRight: "8px" }} />
                     Profile

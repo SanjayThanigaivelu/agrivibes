@@ -146,9 +146,7 @@ const response = await axios.post("https://agrivibess.onrender.com/login/logout"
 console.log("Logout response:", response.data);
 
 setIsAuthenticated(false);
-console.log("IsAuthenticated set to:", false);
-
-//navigate("/"); // Redirect to the login pagep
+navigate("/"); 
 } catch (error) {
 console.error("Logout failed:", error);
 }
@@ -496,15 +494,27 @@ axios.post("https://agrivibess.onrender.com/sell/retriveAll",{
                     style: { marginTop: "15px", width: "300px" },
                   }}
                 >
-                  <MenuItem
-                    onClick={() => {
-                      console.log("MenuItem clicked");
-                      handleClose();
-                    }}
-                  >
-                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
-                    Logout
-                  </MenuItem>
+                                    {/* Menu Items */}
+        <MenuItem onClick={() => {
+           
+  Logout();
+  handleClose();
+}}>
+        {isAuthenticated ? (
+          <>   
+         
+      <LogoutIcon fontSize="small" sx={{ marginRight: "8px" }} />
+      <span>Logout</span> 
+  </>
+): (  <>
+        <LoginIcon fontSize="small" sx={{ marginRight: "8px" }} />
+          <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+            Login
+          </Link> 
+        </>
+)
+        }
+        </MenuItem>
                   <MenuItem onClick={() => {
     navigate('/profilee'); 
     handleClose(); 

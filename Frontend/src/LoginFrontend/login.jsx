@@ -30,6 +30,7 @@ const [timerActive, setTimerActive] = useState(false);
 const[CircularProgress1,setCircularProgress]=useState(false);
 const[CircularProgress2,setCircularProgress2]=useState(false);
 const[CircularProgress3,setCirularProgress3]=useState(false);
+const[CircularProgress4,setCircularProgress4]=useState(false);
 const[OTPData,setOTPData]=useState();
 const[getEmail,setEmail]=useState();
 
@@ -165,6 +166,7 @@ useEffect(()=>{
 
 //----------------------------------------------------------------------------------------------------------------------------
 function submitNow(formData) {
+  setCircularProgress4(true);
   try {
     axios.post("https://agrivibess.onrender.com/login/loginUser", {
       Email: formData.Email,
@@ -173,11 +175,12 @@ function submitNow(formData) {
       withCredentials: true, // Ensure cookies are sent
     })
     .then((response) => {
-      console.log("API Response:", response);
+      
 
       if (response.data.exists) {
         // Success case
         toast(response.data.message || "You have been Successfully Logged in...");
+        setCircularProgress4(false);
         reset({
           Email: "",
           Password: ""
@@ -191,6 +194,7 @@ function submitNow(formData) {
       // Handle backend error responses
       if (error.response) {
         const backendMessage = error.response.data.message;
+        setCircularProgress4(false);
         if (backendMessage) {
           toast(backendMessage); // Show the specific error message from the backend
           reset({
@@ -565,7 +569,7 @@ return (
 
 <ThemeProvider theme={theme}> 
 <Button variant='text' size='medium' color='secondary' onClick={boxModel} className={styles.ForgetPasswordButton} >Forget Password</Button>
-    <Button variant="contained" size="small" color="secondary" id={styles.loginButton} type="submit" className={styles.LoginButton}  startIcon={<LockOpenIcon />} >Login</Button>
+{CircularProgress4 ? (<CircularProgress/>) : (<Button variant="contained" size="small" color="secondary" id={styles.loginButton} type="submit" className={styles.LoginButton}  startIcon={<LockOpenIcon />} >Login</Button>)}
     </ThemeProvider>
 <h4 className={styles.register}>Don&apos;t have an account? <Link to='/register' className={styles.reg}>Register!</Link></h4>
 </div>

@@ -775,7 +775,6 @@ axios.post('https://agrivibess.onrender.com/profile/ProductDelete',{
       >
         {/* Menu Items */}
         <MenuItem onClick={() => {
-           console.log("MenuItem clicked");
   Logout();
   handleClose();
 }}>
@@ -876,15 +875,26 @@ axios.post('https://agrivibess.onrender.com/profile/ProductDelete',{
                     style: { marginTop: "15px", width: "300px" },
                   }}
                 >
-                  <MenuItem
-                    onClick={() => {
-                      console.log("MenuItem clicked");
-                      handleClose();
-                    }}
-                  >
-                    <LogoutIcon fontSize="small" style={{ marginRight: "8px" }} />
-                    Logout
-                  </MenuItem>
+                                    {/* Menu Items */}
+        <MenuItem onClick={() => {
+  Logout();
+  handleClose();
+}}>
+        {isAuthenticated ? (
+          <>   
+         
+      <LogoutIcon fontSize="small" sx={{ marginRight: "8px" }} />
+      <span>Logout</span> 
+  </>
+): (  <>
+        <LoginIcon fontSize="small" sx={{ marginRight: "8px" }} />
+          <Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>
+            Login
+          </Link> 
+        </>
+)
+        }
+        </MenuItem>
                   <MenuItem onClick={() => {
     navigate('/profilee'); 
     handleClose(); 
