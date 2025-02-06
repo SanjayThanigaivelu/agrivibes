@@ -567,7 +567,8 @@ display: flex;
     background-color: #e7e2df;
     font-size: medium;
     height: 8vh;
-    margin-top: 25px;
+    position:relative;
+    top: 5%;
   }
   
     table td{
