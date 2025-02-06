@@ -21,7 +21,8 @@
     background-color:#e7e2df;
     font-size: medium;
     height: 8vh;
-    margin-top: 25px;
+  position: relative;
+  top: 1%;
   }
   
     table td{
@@ -568,7 +569,7 @@ display: flex;
     font-size: medium;
     height: 8vh;
     position:relative;
-    top: 5%;
+    top: 1%;
   }
   
     table td{
