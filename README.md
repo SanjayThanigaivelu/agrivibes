@@ -74,7 +74,7 @@ AgriVibes dynamically loads images using `require.context` in React. This method
 
 🔗 **Portfolio:** [Visit my Portfolio](https://myfirstportfolioweb.netlify.app/)
 
-🚀 **Live Demo:** [Click Here to Try](#) *(https://agrivibes.netlify.app/agri)*
+🚀 **Live Demo:** [Click Here to Try](https://agrivibes.netlify.app/agri)
 
 For any inquiries or contributions, feel free to raise an issue or contact me.
 
