@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useParams, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -36,6 +36,9 @@ const libraries = ["places"];
 
 function ByingProductDetail({ isAuthenticated, setIsAuthenticated }) {
 
+  const navigate = useNavigate();
+
+  const [menuActive, setMenuActive] = useState(false);
     
     const theme = createTheme({
         typography: {
@@ -220,7 +223,7 @@ console.log("Searching for:", searchValue);
 
 
 
-  const [menuActive, setMenuActive] = useState(false);
+  
   
     const handleMenuToggle = () => {
       setMenuActive(!menuActive);

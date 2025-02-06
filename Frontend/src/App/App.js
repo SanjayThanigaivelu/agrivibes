@@ -10,10 +10,10 @@ import InitialBuy from '../Buy/InitialBuy.jsx';
 import { LocationProvider } from '../Context/LocationContext.jsx';
 import ByingProductDetail from '../Buy/ByingProductDetail.jsx';
 import OrganicForming from '../OrganicForming/OrganicForming.jsx';
-const Profile = lazy(() => import("../UserProfile/ProfilePage.jsx"));
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
+const Profile = lazy(() => import("../UserProfile/ProfilePage.jsx"));
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);

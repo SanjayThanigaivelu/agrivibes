@@ -870,7 +870,7 @@ return (
   )
 } catch(error){
 console.error('Error rendering login component:', error);
-console.log(styles.large-logo);
+
   return <div>Error loading component.</div>;
 
 }
