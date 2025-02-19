@@ -447,7 +447,7 @@ text-align: center;
 .button{
   position: relative;
   bottom: 60px;
-  
+  gap: 5px;
 }
 
 /*----------------------------------------------------FOOTER1------------------------------------*/
