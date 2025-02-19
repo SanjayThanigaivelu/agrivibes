@@ -347,13 +347,13 @@ color: black;
   align-items: center;
   justify-content: center;
   position: relative;
-padding: 15px;
+padding: 8px;
   border: 1px solid black;
   border-radius: 50px;
   background-color: #a5b4fc;
   height: 155px;
-  width: 50%;
-  left: 22%;
+  width: 58%;
+  left: 19%;
   top: 5%;
 
 }
@@ -380,7 +380,7 @@ padding-bottom: 5px;
   width: 50%;
   height: 150px;
 top: 10%;
-left: 20%;
+left:19%;
 font-size: 18px;
 }
 
@@ -402,7 +402,7 @@ font-size: 18px;
   padding: 5px;
   position: relative;
  font-size:small;
-  top: 30vh;
+  top: 40vh;
   left: 25%;
   flex-wrap: wrap;
 }
@@ -447,6 +447,7 @@ text-align: center;
 .button{
   position: relative;
   bottom: 60px;
+  
 }
 
 /*----------------------------------------------------FOOTER1------------------------------------*/
@@ -459,9 +460,9 @@ text-align: center;
     justify-content: center; 
     align-items: center; 
     position: relative; 
-    top:50px;
+    top:55px;
     bottom: 0px;
-    left: 0px;
+    left: 12px;
     padding-top:0px;
     padding-bottom: 60px;
     height: 35vh;
@@ -470,6 +471,7 @@ text-align: center;
   position: relative;
   left: 110px;
   bottom: 60px;
+ 
 }
 .logoimg{
   border-radius: 50px;
@@ -492,11 +494,11 @@ text-align: center;
   gap: 10px;                
   align-items: center;
   position: relative;
-  left: 15px;      
+  left: 25px;      
 }
 
 .CopyRight{
-  padding-left: 16px;
+  padding-left: 28px;
 
   font-size: 14px !important;
 }
@@ -1056,26 +1058,96 @@ text-align: center;
   }
   
   /* Desktop Styles (1024px and above) */
-  @media only screen and (min-width: 1025px) {
-    /* Hide hamburger icon on desktop */
-    .hamburger-icon ,.wrapper{
-      display: none;
+  @media only screen and (min-width: 1025px)  {
+   
+    .body{
+      font-family: 'Lora', serif;
+      line-height: 1.6;
+      margin: 0;  
+     overflow-y: scroll; 
+     background-color: #faf7f5
     }
+    .Full{
+      position: relative;
+      min-height: 100vh;
+      
+    }
+    .Ribbon {
+      display: flex;
+      flex-direction: row; 
+      justify-content:space-evenly; 
+      align-items: center;
+      padding: 10px;
+      width: 97vw; 
+      margin: 4vh auto; 
+      border: 2px solid whitesmoke;
+      border-radius: 60px;
+      background-color:#e7e2df;
+      font-size: medium;
+      height: 8vh;
+    position: relative;
+    top: 10px !important;
+    
+    }
+   
  
-    .Banner-image1{
+   .logo{
+       border-radius: 50%;
+       padding: 5px;
+   }
+
+   .table td{
+    padding: 3px;
+     vertical-align: middle;
+ }
+   
+   .WholeLocationContainer{
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    min-width: 320px; 
+    max-width: 100%; 
+    height: auto; 
+    padding: 10px; 
+    flex-grow: 1; 
+    position: relative;
+    left: 5px;
+}
+ 
+.SearchContainerForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  max-width: 380px; 
+  padding: 0 10px;  /* Optional padding to avoid edges on small screens */
+  position: relative;  
+  left: 10px;
+}
+
+.button-type{
+  position: relative;
+  right: 25px;
+}
+.button-type1{
+  position: relative;
+  right: 35px; 
+}
+.sell-button{
+  position:relative;
+  right: 40px;
+  width: 70px;
+}
+  
+   
+    
+    /* Hide hamburger icon on desktop */
+    .hamburger-icon ,.wrapper,.Banner-image1,.Footer1{
       display: none;
     }
 
-    .Footer1{
-      display: none;
-    }
-    .ContactButt1{
-      border-radius: 30px;
-      background-color: #0f172a;
-      position: relative;
-      width: 200px !important;
-      height: 40px !important;
-    }
+
+ 
     
   
   }

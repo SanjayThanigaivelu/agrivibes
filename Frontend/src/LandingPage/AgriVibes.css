@@ -26,7 +26,7 @@ body{
     justify-content:center;
     align-items: center;
 background-color:#e7e2df;
-overflow: visible;
+position: relative;
 }
 
 
@@ -58,9 +58,9 @@ table td{
     justify-content: center;
     align-items: center;
     width: 500px;
-    max-width: 800px; /* Remove max-width for more flexibility */
+    max-width: 600px; /* Remove max-width for more flexibility */
     padding: 0 10px;  /* Optional padding to avoid edges on small screens */
-    position: relative;
+    position: relative;  
   }
   
   /* MaterialText styles for TextField */
@@ -121,7 +121,8 @@ table td{
   /*-------------------------------------------------LOCATION CONTAINER---------------------------------------------*/
   
   .WholeLocationContainer{
-    width: 500px;
+    width: 500px ;
+    max-width: 500px;
     padding: 15px;
   }
 /* Base styles for LocationText */
@@ -411,7 +412,7 @@ background-color: white;
   justify-content: center;
   align-items: center;
   bottom: 20px;
-  left: 4%;
+  left: 3.5%;
   transform: translate(-50%, 0); /* Keeps it centered horizontally and aligned vertically */
   background-color: white;
   border-radius: 50%;
@@ -479,10 +480,10 @@ background-color: white;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  gap: 25px;
+  gap: 10px;
   position: absolute;
   bottom: 23px;
-  left: 93%;
+  left: 94%;
   transform: translate(-50%);
 }
 
@@ -498,36 +499,37 @@ background-color: white;
     align-items: center;
 }
 .Category-image{
-
 margin-top: 20px;
-margin-left: 80px;
+margin-left: 30px;
 display: grid;
 grid-template-columns: repeat(3,1fr);
+column-gap: 35px;
 row-gap: 45px;
-
-
+width: 100%; 
+max-width: 1200px; 
 }
 .Agri img{
-    width: 400px;
-    height: 350px;
+    width: 350px;
+    height: 300px;
     padding: 12px;
     box-sizing: content-box;
-    border-radius: 30px;
-    
+    border-radius: 30px;  
 }
-.Agri{
-    border: 2px solid black;
-    border-radius: 15px;
-    width: 420px;
-    height: 420px;
-    display: flex;
-    flex-direction: column; /* Ensure h3 and image are stacked vertically */
-    align-items: center;
-cursor: pointer;
-transition: all 0.3s ease-in-out;
-text-decoration: none;
-transform-origin: center; 
-overflow: hidden;
+
+.Agri {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 100%; /* Allow it to take the grid column's size */
+  max-width: 410px; /* Prevent it from getting too large */
+  height: auto; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  transform-origin: center; 
+  overflow: hidden;
 }
 .linked{
     text-decoration: none;
@@ -644,12 +646,12 @@ padding: 30px;
 }
 .poet1{
   position: relative;
-  left: 23%;
+  left: 20%;
   top:15px
 }
 .poet2{
   position: relative;
-left: 18%;
+left: 15%;
 }
 .Bharathiyar{
   display: flex;
@@ -665,7 +667,7 @@ padding-bottom: 5px;
   height: auto;
   width: 40%;
   left: 53%;
-bottom: 19.5%;
+bottom: 27.5%;
 }
 
 .FactOfFarmers{
@@ -705,7 +707,7 @@ padding: 5px;
   align-items: flex-end;
   justify-content: center;
   position: relative;
-  top: 100px;
+  top: 120px;
   right: 40%;
 }
 .ContactButt1{
@@ -758,7 +760,7 @@ font-size:large ;
 
 .Footer {
     width: 100%;
-    background-color: #232f3e;
+    background-color:#0f172a;
     color: white;
     text-decoration: none;
     display: flex;
@@ -790,9 +792,12 @@ justify-content: space-evenly;
     border: 2px solid transparent; /* Set a transparent border to avoid layout shift */
     border-radius: 3px;
     background-color: transparent;
-    box-sizing: border-box;
+    box-sizing: content-box;
     text-align: center;
     transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+   white-space: nowrap;
+ 
+   
 }
 
 .homecome:hover, .abouttt:hover {
@@ -808,11 +813,12 @@ justify-content: space-evenly;
 }
 .logo{
     position: relative;
-    top:5px;
+    top:0px;
 }
 .follow{
     position:relative;
     top: 15px;
+    white-space: nowrap;
 }
 .CopyRight{
   position: relative;
@@ -820,3 +826,16 @@ justify-content: space-evenly;
 }
 
 
+
+.hamburger-icon ,.wrapper,.Banner-image1,.Footer1{
+  display: none;
+}
+
+
+.ContactButt1{
+  border-radius: 30px;
+  background-color: #0f172a;
+  position: relative;
+  width: 200px !important;
+  height: 40px !important;
+}
