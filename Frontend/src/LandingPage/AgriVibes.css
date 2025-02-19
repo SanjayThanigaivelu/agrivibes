@@ -11,22 +11,25 @@ body{
    
 }
 .Full{
-    height: 100vh;
+  position: relative;
+  min-height: 100vh;  
 }
 
 .Ribbon{
-    font-size: large;
-    display: flex;
-    width: 98vw;
-    height: 12vh;
-    margin-top: 4vh;
-    margin-left: 0.4vw;
-    border: 5px solid whitesmoke;
-    border-radius: 60px;
-    justify-content:center;
-    align-items: center;
-background-color:#e7e2df;
+  display: flex;
+  flex-direction: row; 
+  justify-content:space-evenly; 
+  align-items: center;
+  padding: 10px;
+  width: 97vw; 
+  margin: 4vh auto; 
+  border: 2px solid whitesmoke;
+  border-radius: 60px;
+  background-color:#e7e2df;
+  font-size: medium;
+  height: 8vh;
 position: relative;
+top: 10px !important;
 }
 
 
@@ -275,6 +278,8 @@ table td{
     text-decoration: none;
 color: #000;
 background-color: white;
+position:relative;
+right: 4vw;
 }
 .sell-button i {
     margin-right: 10px; 
@@ -500,7 +505,7 @@ background-color: white;
 }
 .Category-image{
 margin-top: 20px;
-margin-left: 30px;
+margin-left: 35px;
 display: grid;
 grid-template-columns: repeat(3,1fr);
 column-gap: 35px;
@@ -817,7 +822,7 @@ justify-content: space-evenly;
 }
 .follow{
     position:relative;
-    top: 15px;
+    top: 8px;
     white-space: nowrap;
 }
 .CopyRight{

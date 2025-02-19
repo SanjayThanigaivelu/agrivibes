@@ -1069,8 +1069,7 @@ text-align: center;
     }
     .Full{
       position: relative;
-      min-height: 100vh;
-      
+      min-height: 100vh;  
     }
     .Ribbon {
       display: flex;
@@ -1087,7 +1086,6 @@ text-align: center;
       height: 8vh;
     position: relative;
     top: 10px !important;
-    
     }
    
  
@@ -1133,11 +1131,7 @@ text-align: center;
   position: relative;
   right: 35px; 
 }
-.sell-button{
-  position:relative;
-  right: 40px;
-  width: 70px;
-}
+
   
    
     

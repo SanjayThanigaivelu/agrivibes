@@ -8,8 +8,9 @@ body{
    overflow-y: scroll; 
 }
 .Full{
-    height: 100vh;
-}
+    position: relative;
+    min-height: 100vh;  
+  }
 
 /*---------------------------------------------------------------QUOTES---------------------------------------------------------------- */
 .heading{
@@ -31,15 +32,17 @@ body{
     align-items: center;
     position: relative;
 }
+
 .quotes1{
  padding: 50px;
   background-color: #fdba74 ;
   border-radius: 30px;
-  width: 300px;
+  width: 280px;
   height: 80px;
   box-sizing: content-box;
-  margin-left: 27px;
+  margin-left: 10px;
 }
+
 .content1,.content2, .content3{
     position: relative;
     bottom: 15px;
@@ -49,24 +52,24 @@ body{
 .quotes2{
 background-color:#a5b4fc;
 border-radius: 30px;
-width: 300px;
+width: 280px;
 height: 80px;
 padding: 50px;
 box-sizing: content-box;
 position: relative;
-left: 36%;
-bottom:25vh;
+left: 35.5%;
+bottom:32vh;
 }
 
 .quotes3{
 background-color:#fda4af;
 border-radius: 30px;
-width: 300px;
+width: 280px;
 height: 80px;
 padding: 50px;
 position: relative;
 left: 70%;
-bottom:51vh;
+bottom:65vh;
 }
 
 /*-------------------------------------------------------------ORGANIC FARMING STARTS----------------------------------------------------------------------------------- */
@@ -783,5 +786,5 @@ bottom: 6%;
 }
 
 @media only screen and (min-width:1025px){
-
+  
 }
