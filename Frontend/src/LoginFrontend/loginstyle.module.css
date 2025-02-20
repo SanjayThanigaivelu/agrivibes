@@ -3,17 +3,34 @@ input[type="password"]::-ms-clear {
     display: none;
 }
 
-html,body{
-  overflow-x: hidden;
-  overflow-y: hidden;
+ body, html{
+
+overflow-y: hidden;
+overflow-x: hidden;
 box-sizing: border-box;
-height: 100vh;
+height: auto;
+width: auto;
 margin: 0; 
- display: flex; 
- justify-content: center; 
- align-items: center; 
-    
+display: flex; 
+justify-content: center; 
+align-items: center;  
 }
+
+
+* {
+
+  box-sizing: border-box;
+  border: 10x solid red;
+}
+:global(body.hide-scrollbar) {
+  overflow: hidden;
+}
+
+:global(body.hide-scrollbar)::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers */
+}
+
+
 .login{
   display: flex;
  flex-direction: row;
@@ -22,13 +39,13 @@ margin-left: 18%;
 justify-content:center;
 align-items: center;
 border: 2px solid black;
-border-radius: 30px;
 width: 65%;
 height: 78vh;
 box-sizing:border-box;
+
 }
-.content{
-     
+
+.content{ 
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -37,30 +54,25 @@ position: relative;
 right: 40px;
 top: 15px;
 box-sizing: border-box;
+
 }
 
 #loginButton{
     position: relative;
-    bottom: 30px;
+    bottom: 35px;
     border-radius: 30px;
+    right: 250px;
 }
-.ForgetPassword {
-  position: relative;
-  right: 240px;
-  top:7px
 
-}
 .register{
     position: relative;
     bottom: 10px;
-   right: 75px;
-
+   right: 40px;
 }
 
 .background {
     background-color: #77DD77;
-    border-radius: 28px;
-    width: 100%;
+    width: 130%;
  height: 100%;
  display: flex;
     justify-content: center;
@@ -68,6 +80,7 @@ box-sizing: border-box;
     position: relative;
     box-sizing:border-box;
   }
+
   .large{
     width: 60%; /* Adjust size as needed */
     filter: drop-shadow(0px 45px 10px rgba(0, 0, 0, 0.4));
@@ -79,7 +92,7 @@ box-sizing: border-box;
     justify-content: center;
     align-items: center;
     position: relative;
-    bottom: 10px;
+    bottom: 5px;
     left: 200px;
   }
   .logo2{
@@ -101,8 +114,8 @@ box-sizing: border-box;
   
   a.reg:hover{
     transform: scale(0.95);
-    color: #388e3c; /* Change to a darker color */
-    opacity: 0.7; /* Slightly reduce opacity to emphasize effect */
+    color: #388e3c; 
+    opacity: 0.7; 
     filter: brightness(80%);
 }
     
@@ -121,8 +134,10 @@ box-sizing: border-box;
 }
 
 .LoginEmail1 {
-  width: 40ch;
+  width: 35ch;
   height: 50px;
+  position: relative;
+  left: 5px;
 }
 
 /* Ensure normal border style */
@@ -170,9 +185,10 @@ box-sizing: border-box;
 
 
 .LoginPassword1 {
-  width: 40ch;
+  width: 35ch;
   height: 80px;
-  /* Ensure normal border style */
+  position: relative;
+  left: 5px;
 }
 
 .LoginPassword1 .MuiOutlinedInput-root {
@@ -215,14 +231,10 @@ box-sizing: border-box;
 }
 /*------------------------------------------------BUTTONS---------------------------------*/
 
-.ForgetPasswordButton ,.LoginButton{
+.ForgetPasswordButton1 ,.LoginButton{
   border-radius: 35px;
 }
-.ForgetPasswordButton{
-  position: relative;
-  right: 250px;
-  top: 5px;
-}
+
 /*------------------------------------------------BOX MODEL 2,3,4,5,6,7------------------------------*/
 .Box2{
   width: 400px;
@@ -596,7 +608,11 @@ left: -10%;
   .LoginEmail01 ,.LoginPassword01 ,.container ,.ForgetPassEmail02,.emailOTP2,.background{
     display: none !important;
   }
- 
+  
+  
+
+
+
 }
 
 @media only screen and (min-width:1025px){
@@ -604,4 +620,6 @@ left: -10%;
     display: none !important;
   }
 
-}
+ 
+
+  }

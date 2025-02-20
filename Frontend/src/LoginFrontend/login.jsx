@@ -397,6 +397,13 @@ catch (error) {
   const boxModelClose=()=>setForgetBox(false);
   const boxModel1=()=>setForgetBox1(true);
   const boxModelClose1=()=>setForgetBox1(false);
+
+
+useEffect(() => {
+  document.body.classList.add("hide-scrollbar");
+  return () => document.body.classList.remove("hide-scrollbar");
+}, []);
+
 try{
 return (
     <div className={styles.login}>
@@ -554,8 +561,7 @@ return (
 
 
     <br/><br/>
-    
-   
+
     <div className= {styles.container}>
   <button
     type="button"

@@ -322,6 +322,10 @@ OtpSendButton(false);
         },
     },
   });
+useEffect(() => {
+  document.body.classList.add("hide-scrollbar");
+  return () => document.body.classList.remove("hide-scrollbar");
+}, []);
 //------------------------------------------------------------Form Starts-----------------------------------------------------------
   return (
     <div className={styles.register}>
@@ -386,7 +390,7 @@ OtpSendButton(false);
               variant="standard"
              
             
-              sx={{height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              sx={{height: '80px', "& .MuiFormHelperText-root": { marginTop: '2px' }, '& label.Mui-focused': {
     color: errors.PhoneNumber ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
@@ -423,7 +427,7 @@ OtpSendButton(false);
               helperText={errors.Email?.message}
               label="Email"
               variant="standard"
-              sx={{height: '80px', "& .MuiFormHelperText-root": { marginTop: '4px' }, '& label.Mui-focused': {
+              sx={{height: '80px', "& .MuiFormHelperText-root": { marginTop: '2px' }, '& label.Mui-focused': {
     color: errors.Email ?'#FF0000':'#66bb6a',
   },
   '& .MuiInput-underline:after': {
