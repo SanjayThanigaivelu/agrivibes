@@ -1,5 +1,5 @@
 
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect,useMemo} from 'react';
 import { useNavigate } from "react-router-dom";
 import   './AgriVibes.css';
 import '../LandingPage/LandigRes.css'
@@ -138,6 +138,7 @@ const theme = createTheme({
   });
   export default function Agri({ isAuthenticated, setIsAuthenticated }) {
 
+    const [menuActive, setMenuActive] = useState(false);
     const navigate = useNavigate();
 
   const agriMachineImage=getRandomImage(Object.keys(categoryImages).filter(key=>key.includes('Agriculture-Machine')));
@@ -312,12 +313,14 @@ const Icon1=()=>(
 //----------------------------------------------------HAMBERGUR LOGIC---------------------------------------------------------------------------------------
 
 
-  const [menuActive, setMenuActive] = useState(false);
+ 
 
   const handleMenuToggle = () => {
+    console.log("Menu Active:", menuActive);
     setMenuActive(!menuActive);
   };
 
+  
 
   return (
     <div className="Full">
@@ -482,12 +485,14 @@ const Icon1=()=>(
    
     {/* Mobile Menu */}
     <td className="hamburger-icon">
-  <IconButton
+
+<IconButton
     className="hamburger-button"
     onClick={handleMenuToggle} // Toggle the mobile menu visibility
   >
     <MenuIcon />
   </IconButton>
+ 
 </td>
     </tr>
     </thead>
@@ -495,8 +500,9 @@ const Icon1=()=>(
 
  {/* Entire Box Component (visible only when menuActive is true) */}
 <div className='wrapper'>
+
  {menuActive && (
-  
+ 
         <Box className="menu-container1">
           <div className="MaterialSearch1">
             <Box className="MaterialBox1">
@@ -505,7 +511,7 @@ const Icon1=()=>(
                   className="MaterialText1"
                   value={searchValue}
                   onChange={handleSearchChange}
-                  label="Find Tractor and more..."
+                  label="Find Tractor and more"
                   variant="outlined"
                 />
                 <IconButton type="submit" className="search-icon-button1">
@@ -590,6 +596,7 @@ const Icon1=()=>(
         </Box>
       )}
     </div>
+    
     </div>
 
     <div className="Banner-image">
@@ -907,5 +914,6 @@ className='Developer-pic'
 
     </div>
     </div>
+ 
   )
 }

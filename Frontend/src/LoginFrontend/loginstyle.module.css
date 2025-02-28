@@ -20,11 +20,13 @@ align-items: center;
 * {
 
   box-sizing: border-box;
-  border: 10x solid red;
+  
 }
+
 :global(body.hide-scrollbar) {
   overflow: hidden;
 }
+ 
 
 :global(body.hide-scrollbar)::-webkit-scrollbar {
   display: none; /* Hide scrollbar in WebKit browsers */

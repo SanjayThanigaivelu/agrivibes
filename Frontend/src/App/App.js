@@ -15,7 +15,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Profile = lazy(() => import("../UserProfile/ProfilePage.jsx"));
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(()=>{
+    return JSON.parse(localStorage.getItem("isAuthenticated")) || false
+  });
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     // Check if the user is authenticated by validating the token
@@ -27,10 +29,12 @@ function App() {
         });
         if (response.status === 200) {
           setIsAuthenticated(true);
+          localStorage.setItem("isAuthenticated",JSON.stringify(true));
         }
       } catch (error) {
         console.error("Authentication check failed:", error);
         setIsAuthenticated(false);
+        localStorage.setItem("isAuthenticated",JSON.stringify(false));
       }finally {
         //console.log("Setting loading to false");
         setLoading(false); // Set loading to false after check completes
@@ -39,6 +43,15 @@ function App() {
 
     checkAuth();
   }, []);
+
+  useEffect(() => {
+    console.log("🔄 App Component Re-rendered");
+  });
+
+  useEffect(() => {
+    console.log("🔄 App Component Re-rendered | isAuthenticated:", isAuthenticated);
+  }, [isAuthenticated]);
+  
   //console.log("Current Loading State:", loading);
 
   if (loading) {
@@ -98,7 +111,16 @@ function App() {
           element={isAuthenticated?<Navigate to="/agri" /> : <Login setIsAuthenticated={setIsAuthenticated} />}
         />     
         <Route/>
-        <Route path="/agri" element={isAuthenticated===null ? (<div>Loading...</div>):isAuthenticated?<Agri isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/> : <Navigate to="/" />} />
+        <Route 
+    path="/agri" 
+    element={
+      isAuthenticated ? (
+        <Agri isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+      ) : (
+        <Navigate to="/" />
+      )
+    } 
+  />
     <Route path='/register' element={<Registration/>}/>
     <Route path="/sell/:category"
   element={
